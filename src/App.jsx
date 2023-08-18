@@ -1,5 +1,12 @@
+
+import {Logo} from "./helpers/icons";
+
+
 export const App = () => {
   return (
+    <>
+      <Logo />
+      
     <div
       style={{
         height: '100vh',
@@ -11,6 +18,8 @@ export const App = () => {
       }}
     >
       React homework template
-    </div>
+      </div>
+      
+      </>
   );
 };
