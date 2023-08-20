@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkyour_pet=self.webpackChunkyour_pet||[]).push([[280],{7280:function(e,u,n){n.r(u);var r=n(184);u.default=function(){return(0,r.jsx)("h2",{children:"NodFoundPage"})}}}]);
+//# sourceMappingURL=280.e97bfb18.chunk.js.map
