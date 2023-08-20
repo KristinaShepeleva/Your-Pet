@@ -1,0 +1,6 @@
+.input {
+}
+.inputError {
+  border-color: red;
+  height: 90;
+}

@@ -1,0 +1,15 @@
+.title {
+  color: var(--unnamed, #111);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.input {
+}
+.inputError {
+  border-color: red;
+  height: 90;
+}
