@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/your-pet/static/css/main.203ee9d2.css",
+    "main.css": "/your-pet/static/css/main.851ef86e.css",
     "main.js": "/your-pet/static/js/main.b6427795.js",
     "static/js/274.4961a8d9.chunk.js": "/your-pet/static/js/274.4961a8d9.chunk.js",
     "static/css/579.7a2a474d.chunk.css": "/your-pet/static/css/579.7a2a474d.chunk.css",
@@ -22,7 +22,7 @@
     "static/media/Manrope-Regular.ttf": "/your-pet/static/media/Manrope-Regular.a9b9e09fe6b69741f316.ttf",
     "static/media/Manrope-Bold.ttf": "/your-pet/static/media/Manrope-Bold.47f6d7143da9d8c0e480.ttf",
     "index.html": "/your-pet/index.html",
-    "main.203ee9d2.css.map": "/your-pet/static/css/main.203ee9d2.css.map",
+    "main.851ef86e.css.map": "/your-pet/static/css/main.851ef86e.css.map",
     "main.b6427795.js.map": "/your-pet/static/js/main.b6427795.js.map",
     "274.4961a8d9.chunk.js.map": "/your-pet/static/js/274.4961a8d9.chunk.js.map",
     "579.7a2a474d.chunk.css.map": "/your-pet/static/css/579.7a2a474d.chunk.css.map",
@@ -38,7 +38,7 @@
     "918.15810397.chunk.js.map": "/your-pet/static/js/918.15810397.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.203ee9d2.css",
+    "static/css/main.851ef86e.css",
     "static/js/main.b6427795.js"
   ]
 }
