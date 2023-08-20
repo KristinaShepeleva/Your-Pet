@@ -1,11 +1,11 @@
 
-import {Logo} from "./helpers/icons";
+
 import {Routes} from './routes'
 
 export const App = () => {
   return (
     <>
-      <Logo />
+      
       
     <div
       // style={{
