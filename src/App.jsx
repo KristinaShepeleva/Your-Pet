@@ -1,25 +1,16 @@
-
-import {Logo} from "./helpers/icons";
-
+import { Route, Routes } from 'react-router-dom';
+import Main from './pages/MainPage/MainPage';
+import SharedLayout from 'components/SharedLayout/SharedLayout';
 
 export const App = () => {
   return (
     <>
-      <Logo />
-      
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-      </div>
-      
-      </>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Main />} />
+          <Route path="/main" element={<Main />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
