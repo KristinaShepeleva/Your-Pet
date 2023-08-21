@@ -8,9 +8,11 @@ const CustomInput = ({ ...props }) => {
       <input
         {...field}
         {...props}
-        className={meta.errors && meta.touched ? css.inputError : css.input}
+        className={meta.error && meta.touched ? css.inputError : css.input}
       />
-      {meta.error && meta.touched && <p className={css.error}>{meta.error}</p>}
+      {meta.error && meta.touched && (
+        <div className={css.error}>{meta.error}</div>
+      )}
     </>
   );
 };
