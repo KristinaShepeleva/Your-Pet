@@ -62,10 +62,6 @@
 }
 
 
-/* для використання кольору */
-/* color: 'var(--blue-color)', */
-
-
 *,
 *::before,
 *::after {
@@ -120,6 +116,7 @@ body {
   font-size: 14px;
     line-height: 1.37;
     background-color: #fef9f9;
+    color: "#111111";
 
     @media screen and (min-width: 768px) {
         font-size: 16px;
