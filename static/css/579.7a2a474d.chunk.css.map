@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/579.7a2a474d.chunk.css","mappings":"AAEA,+BACE,gBAAiB,CACjB,SACF","sources":["components/CustomInput/CustomInput.module.css"],"sourcesContent":[".input {\n}\n.inputError {\n  border-color: red;\n  height: 90;\n}\n"],"names":[],"sourceRoot":""}
