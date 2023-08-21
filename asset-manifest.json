@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/your-pet/static/css/main.851ef86e.css",
-    "main.js": "/your-pet/static/js/main.b6427795.js",
-    "static/js/274.4961a8d9.chunk.js": "/your-pet/static/js/274.4961a8d9.chunk.js",
+    "main.js": "/your-pet/static/js/main.634215a0.js",
+    "static/css/456.25e1849e.chunk.css": "/your-pet/static/css/456.25e1849e.chunk.css",
+    "static/js/456.6126a15e.chunk.js": "/your-pet/static/js/456.6126a15e.chunk.js",
     "static/css/579.7a2a474d.chunk.css": "/your-pet/static/css/579.7a2a474d.chunk.css",
     "static/js/579.f129ee4f.chunk.js": "/your-pet/static/js/579.f129ee4f.chunk.js",
     "static/css/721.4de1e513.chunk.css": "/your-pet/static/css/721.4de1e513.chunk.css",
@@ -14,17 +15,30 @@
     "static/js/280.e97bfb18.chunk.js": "/your-pet/static/js/280.e97bfb18.chunk.js",
     "static/js/540.bb53b3a1.chunk.js": "/your-pet/static/js/540.bb53b3a1.chunk.js",
     "static/js/918.15810397.chunk.js": "/your-pet/static/js/918.15810397.chunk.js",
+    "static/media/pictures-dsc-2x.png": "/your-pet/static/media/pictures-dsc-2x.b133a5202222b3b7edee.png",
+    "static/media/pictures-tbl-2x.png": "/your-pet/static/media/pictures-tbl-2x.65997bd981d891d1c0bd.png",
+    "static/media/pictures-dsc-1x.png": "/your-pet/static/media/pictures-dsc-1x.6e8e76a46c92505281ab.png",
+    "static/media/pictures-mob-2x.png": "/your-pet/static/media/pictures-mob-2x.30585ef4b15e6e056eaa.png",
+    "static/media/pictures-tbl-1x.png": "/your-pet/static/media/pictures-tbl-1x.6b73e058497468a71bfa.png",
     "static/media/Inter-Medium.ttf": "/your-pet/static/media/Inter-Medium.6dcbc9bed1ec438907ee.ttf",
     "static/media/Inter-Regular.ttf": "/your-pet/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
+    "static/media/pictures-mob-1x.png": "/your-pet/static/media/pictures-mob-1x.6ebec14cc8bdd3c8e71c.png",
     "static/media/Manrope-ExtraBold.ttf": "/your-pet/static/media/Manrope-ExtraBold.5b0ae7100ad1d12e53c9.ttf",
     "static/media/Manrope-SemiBold.ttf": "/your-pet/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
     "static/media/Manrope-Medium.ttf": "/your-pet/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
     "static/media/Manrope-Regular.ttf": "/your-pet/static/media/Manrope-Regular.a9b9e09fe6b69741f316.ttf",
     "static/media/Manrope-Bold.ttf": "/your-pet/static/media/Manrope-Bold.47f6d7143da9d8c0e480.ttf",
+    "static/media/bg-dsc-2x.png": "/your-pet/static/media/bg-dsc-2x.26a4d7f5a5cd556d3eae.png",
+    "static/media/bg-tbl-2x.png": "/your-pet/static/media/bg-tbl-2x.67b668a7489f35b0a3da.png",
+    "static/media/bg-dsc-1x.png": "/your-pet/static/media/bg-dsc-1x.4640c8f987ad821a38a1.png",
+    "static/media/bg-tbl-1x.png": "/your-pet/static/media/bg-tbl-1x.b7eb05ffad718448eedb.png",
+    "static/media/bg-mob-2x.png": "/your-pet/static/media/bg-mob-2x.3718878183569fc70412.png",
+    "static/media/bg-mob-1x.png": "/your-pet/static/media/bg-mob-1x.0cd02ce1d43a46754e63.png",
     "index.html": "/your-pet/index.html",
     "main.851ef86e.css.map": "/your-pet/static/css/main.851ef86e.css.map",
-    "main.b6427795.js.map": "/your-pet/static/js/main.b6427795.js.map",
-    "274.4961a8d9.chunk.js.map": "/your-pet/static/js/274.4961a8d9.chunk.js.map",
+    "main.634215a0.js.map": "/your-pet/static/js/main.634215a0.js.map",
+    "456.25e1849e.chunk.css.map": "/your-pet/static/css/456.25e1849e.chunk.css.map",
+    "456.6126a15e.chunk.js.map": "/your-pet/static/js/456.6126a15e.chunk.js.map",
     "579.7a2a474d.chunk.css.map": "/your-pet/static/css/579.7a2a474d.chunk.css.map",
     "579.f129ee4f.chunk.js.map": "/your-pet/static/js/579.f129ee4f.chunk.js.map",
     "721.4de1e513.chunk.css.map": "/your-pet/static/css/721.4de1e513.chunk.css.map",
@@ -39,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.851ef86e.css",
-    "static/js/main.b6427795.js"
+    "static/js/main.634215a0.js"
   ]
 }
