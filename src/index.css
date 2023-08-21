@@ -54,7 +54,7 @@
   --bg-color: #FEF9F9;
 
   /* linear-gradient */
-  --blue-linear-gradient: llinear-gradient(315deg, #419EF1 0%, #9BD0FF 100%);
+  --blue-linear-gradient: linear-gradient(315deg, #419EF1 0%, #9BD0FF 100%);
 
   /* shadows */
   --shadows-default: 3px 8px 14px rgba(136, 198, 253, 0.19);
@@ -109,7 +109,7 @@ button {
 
 body {
   margin: 0;
-  font-family: 'Manrope-Regular';
+  font-family: 'Manrope-Medium';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

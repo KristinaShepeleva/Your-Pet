@@ -1,0 +1,25 @@
+.title {
+    font-family: 'Manrope-Bold';
+    font-size: 48px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.wpapperFilter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wpapperCategoryList {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filterWrap {
+display: flex;
+    align-items: center;
+    gap: 12px;
+}

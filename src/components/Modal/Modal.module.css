@@ -1,0 +1,37 @@
+.modal__backdrop {
+    position: fixed;
+    z-index: 200;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #51515199;
+    backdrop-filter: blur(4px);
+}
+
+.modal__content {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 280px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+@media screen and (min-width: 768px) { 
+    .modal__content{
+    max-width: 680px;
+    }
+    
+}
+
+.closeicon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
