@@ -5,6 +5,7 @@ import { useState} from 'react';
 import NoticesSearch from '../../components/NoticesSearch/NoticesSearch';
 import AddPetButton from '../../components/AddPetButton/AddPetButton';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
+import Container from 'components/Container/Container';
 
 const Notices = () => {
   const [query, setQuery] = useState('');
@@ -18,6 +19,7 @@ const onFormSubmit = query => {
 
   return (
     <>
+      <Container>
       <h2 className={css.title}>Find your favorite pet</h2>
       <NoticesSearch onFormSubmit={onFormSubmit}></NoticesSearch>
       <div className={css.wpapperFilter}>
@@ -45,7 +47,8 @@ const onFormSubmit = query => {
       
         </div>
         </div>
-      <Outlet />
+        <Outlet />
+        </Container>
     </>
   );
 };

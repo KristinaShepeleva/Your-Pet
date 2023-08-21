@@ -3,15 +3,12 @@ import { Outlet } from 'react-router-dom';
 
 import Header from './Header/Header';
 
-import Container from 'components/Container/Container';
-
-
 export const SharedLayout = () => {
   return (
     <>
 
 
-      <Container>
+      
 
       <Suspense>
         <Header/>
@@ -19,7 +16,7 @@ export const SharedLayout = () => {
           <Outlet />
         </main>
         </Suspense>
-        </Container>
+        
     </>
   );
 };
