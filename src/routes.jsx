@@ -20,20 +20,25 @@ export const Routes = () => {
     {
       path: '/',
       element: <SharedLayout />,
-          children: [
-              HomeRoute,
-              LogInRoute,
-              RegisterRoute,
-              UserRoute,
-              AddPetRoute,
-              NoticesRoute,
-              NewsRoute,
-              OurFriendsRoute,
-          { path: "*", element: <NotFoundPage /> },
+      children: [
+        index,
+        HomeRoute,
+        LogInRoute,
+        RegisterRoute,
+        UserRoute,
+        AddPetRoute,
+        NoticesRoute,
+        NewsRoute,
+        OurFriendsRoute,
+        { path: '*', element: <NotFoundPage /> },
       ],
     },
   ]);
-    return element;
+  return element;
+};
+export const index = {
+  index: true,
+  element: <MainPage />,
 };
 
 export const HomeRoute = {
@@ -42,41 +47,44 @@ export const HomeRoute = {
 };
 
 export const LogInRoute = {
-    path: '/login',
-    element: <LogInPage />,
+  path: '/login',
+  element: <LogInPage />,
 };
 
 export const RegisterRoute = {
-    path: '/register',
-    element: <RegisterPage />,
+  path: '/register',
+  element: <RegisterPage />,
 };
 
 export const UserRoute = {
-    path: '/user',
-    element: <UserPage />,
+  path: '/user',
+  element: <UserPage />,
 };
 
 export const AddPetRoute = {
-path: '/add-pet',
+  path: '/add-pet',
   element: <AddPetPage />,
-}
+};
 
 export const NoticesRoute = {
-path: '/notices',
-    element: <NoticesPage />,
-    children: [
-        { path: 'sell', element: <TemporaryComponent title="SELL" /> },
-        { path: 'lost-found', element: <TemporaryComponent title="lost-found" /> },
-        { path: 'in-good-hands', element: <TemporaryComponent title="in-good-hands" /> },
-        { path: 'favorite', element: <TemporaryComponent title="favorite" /> },
-        {path: 'own', element: <TemporaryComponent title="own" />},
-  ]
-}
+  path: '/notices',
+  element: <NoticesPage />,
+  children: [
+    { path: 'sell', element: <TemporaryComponent title="SELL" /> },
+    { path: 'lost-found', element: <TemporaryComponent title="lost-found" /> },
+    {
+      path: 'in-good-hands',
+      element: <TemporaryComponent title="in-good-hands" />,
+    },
+    { path: 'favorite', element: <TemporaryComponent title="favorite" /> },
+    { path: 'own', element: <TemporaryComponent title="own" /> },
+  ],
+};
 export const NewsRoute = {
-path: '/news',
+  path: '/news',
   element: <NewsPage />,
-}
+};
 export const OurFriendsRoute = {
-path: '/friends',
+  path: '/friends',
   element: <OurFriendsPage />,
-}
+};
