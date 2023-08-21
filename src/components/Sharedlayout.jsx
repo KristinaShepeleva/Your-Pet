@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import Header from './Header/Header';
 
 export const SharedLayout = () => {
   return (
     <>
-      <h2>AppBar</h2>
       <Suspense>
+        <Header/>
         <main>
           <Outlet />
         </main>
