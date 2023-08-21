@@ -12,7 +12,6 @@ export const SharedLayout = () => {
 
 
       <Container>
-      <h2>AppBar</h2>
 
       <Suspense>
         <Header/>
