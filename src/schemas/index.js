@@ -8,7 +8,10 @@ export const registerSchema = yup.object().shape({
   password: yup
     .string()
     .min(5)
-    .matches(passwordRules, 'Please create a stronger password')
+    .matches(
+      passwordRules,
+      'The password must have 1 uppercase letter, 1 lowercase letter and 1 number'
+    )
     .required('Required'),
   confirmPassword: yup
     .string()
