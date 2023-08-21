@@ -1,5 +1,5 @@
 const News = () => {
-  return <h2>AddPetPage</h2>;
+  return <h2>News</h2>;
 };
 
 export default News;
