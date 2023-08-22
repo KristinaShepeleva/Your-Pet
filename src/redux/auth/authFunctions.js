@@ -1,12 +1,21 @@
 export const handelPending = state => {
   state.isLoading = true;
 };
-export const handelFulfilled = (state, { payload }) => {
+export const loginFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.user = payload.user;
   state.token = payload.token;
   state.isLoggedIn = true;
   state.error = null;
+  state.isNewUser = false;
+};
+export const registerFulfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.user = payload.user;
+  state.token = payload.token;
+  state.isLoggedIn = true;
+  state.error = null;
+  state.isNewUser = true;
 };
 export const handelRejected = (state, { payload }) => {
   state.isLoading = false;
@@ -20,6 +29,7 @@ export const logoutFulfilled = state => {
   state.isLoggedIn = false;
   state.error = null;
   state.isRefreshing = false;
+  state.isNewUser = false;
 };
 export const currentFulfilled = (state, { payload }) => {
   state.isLoading = false;
@@ -27,4 +37,5 @@ export const currentFulfilled = (state, { payload }) => {
   state.isRefreshing = true;
   state.user = payload;
   state.error = null;
+  state.isNewUser = false;
 };
