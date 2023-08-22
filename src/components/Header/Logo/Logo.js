@@ -9,7 +9,7 @@ export default function LogoComponent({isMobile}) {
     const navigate = useNavigate();
 
     const navigateToMain = () => {
-      navigate('/main');
+      navigate('/');
     };
   return (
     <div className={css.logo} onClick={navigateToMain}>
