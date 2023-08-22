@@ -1,11 +1,13 @@
 import { Link, Outlet } from 'react-router-dom';
 
 import css from './NoticesPage.module.css';
-import { useState} from 'react';
+import { useState } from 'react';
+
 import NoticesSearch from '../../components/NoticesSearch/NoticesSearch';
 import AddPetButton from '../../components/AddPetButton/AddPetButton';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
 import Container from 'components/Container/Container';
+import NoticesCategories from '../../components/NoticesCategories/NoticesCategories'
 
 const Notices = () => {
   const [query, setQuery] = useState('');
@@ -22,7 +24,8 @@ const onFormSubmit = query => {
       <Container>
       <h2 className={css.title}>Find your favorite pet</h2>
       <NoticesSearch onFormSubmit={onFormSubmit}></NoticesSearch>
-      <div className={css.wpapperFilter}>
+        <div className={css.wpapperFilter}>
+          <NoticesCategories/>
       <ul className={css.wpapperCategoryList}>
         <li>
           <Link to="sell">sell</Link>

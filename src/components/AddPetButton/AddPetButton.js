@@ -2,7 +2,7 @@ import css from './AddPetButton.module.css';
 
 import {PlusSmallIcon} from '../../helpers/icons'
 
-const AddPetButton = ({path}) => { 
+const AddPetButton = () => { 
 
 
 

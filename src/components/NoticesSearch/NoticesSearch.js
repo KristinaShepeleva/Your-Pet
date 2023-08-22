@@ -43,7 +43,7 @@ const NoticesSearch = ({ onFormSubmit }) => {
                 onClick={() => setQuery('')}
                 query={query}
                 aria-label="Discard query">
-                <CrossSmallIcon />
+                <CrossSmallIcon className={css.icon} />
             </button>
         </form>
     )

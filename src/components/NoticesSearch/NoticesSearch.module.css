@@ -1,13 +1,16 @@
 .form{
     position: relative;
-    
     display: flex;
     justify-content: center;
     align-items: center;
     
-    margin: 0 auto;
-    width: 608px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 280px;
 }
+
+
 
 
 .input {
@@ -15,11 +18,12 @@
     max-height: 44px;
     padding: 10px 20px;
     color: #888888;
-    font-size: 20px;
+    font-size: 14px;
     
     background-color: #fff;
     border-radius: 24px;
     border: none;
+    box-shadow: var(--shadows-default);
 }
 
 .searchBtn {
@@ -27,21 +31,33 @@
     top: 10px;
     right: 40px;
     display: flex;
-        justify-content: center;
-        align-items: center;
-    
-        background-color: transparent;
-        border: none;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
 }
 
 .clearBtn {
     position: absolute;
-right: 13px;
-
-    
+    right: 13px;
     display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent;
-            border: none;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+
+.icon {
+    stroke: var(--yellow-color);
+}
+
+
+@media screen and (min-width: 768px) {
+    .form {
+        width: 608px;
+        margin-bottom: 40px;
+    }
+    .input { 
+        font-size: 20px;
+    }
 }

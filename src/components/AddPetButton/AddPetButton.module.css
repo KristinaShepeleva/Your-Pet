@@ -12,6 +12,10 @@ padding-bottom: 8px;
 border: none;
 }
 
+.addBtn:hover {
+    background: var(--blue-linear-gradient);
+}
+
 .addIcon {
     fill: #fff;
 }
@@ -21,4 +25,8 @@ color: var(--bg-color);
     font-family: 'Manrope-Bold';
     font-size: 16px;
     letter-spacing: 0.64px;
+}
+
+@media screen and (min-width: 768px) {
+
 }
