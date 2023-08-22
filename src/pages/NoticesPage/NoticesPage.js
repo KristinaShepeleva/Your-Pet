@@ -13,7 +13,7 @@ import NoticesCategories from '../../components/NoticesCategories/NoticesCategor
 
 const Notices = () => {
   const [query, setQuery] = useState('');
-const  isLoggedIn  = useSelector(selectIsLoggedIn);
+  const  isLoggedIn  = useSelector(selectIsLoggedIn);
   
   
 const onFormSubmit = query => {

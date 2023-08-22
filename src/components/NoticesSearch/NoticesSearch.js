@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import css from './NoticesSearch.module.css'
 
-import {SearchIcon, CrossSmallIcon} from '../../helpers/icons'
+import {SearchIcon, CrossBigIcon} from '../../helpers/icons'
 
 
 
@@ -34,17 +34,17 @@ const NoticesSearch = ({ onFormSubmit }) => {
                 onChange={onInputChange}
             >
             </input>
-
+<div className={css.iconWrapper}>
             <button className={css.searchBtn} type="submit" query={query} aria-label="Submit">
                 <SearchIcon />
             </button>
-
-            <button className={css.clearBtn} type="button"
+      {query && (<button className={css.clearBtn} type="button"
                 onClick={() => setQuery('')}
                 query={query}
                 aria-label="Discard query">
-                <CrossSmallIcon className={css.icon} />
-            </button>
+                <CrossBigIcon className={css.icon} />
+            </button>)}
+            </div>
         </form>
     )
 };
