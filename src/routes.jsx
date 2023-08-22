@@ -20,17 +20,16 @@ export const Routes = () => {
     {
       path: '/',
       element: <SharedLayout />,
-      children: [
-        index,
-        HomeRoute,
-        LogInRoute,
-        RegisterRoute,
-        UserRoute,
-        AddPetRoute,
-        NoticesRoute,
-        NewsRoute,
-        OurFriendsRoute,
-        { path: '*', element: <NotFoundPage /> },
+          children: [
+              {index: true, element:  <MainPage />},
+              LogInRoute,
+              RegisterRoute,
+              UserRoute,
+              AddPetRoute,
+              NoticesRoute,
+              NewsRoute,
+              OurFriendsRoute,
+          { path: "*", element: <NotFoundPage /> },
       ],
     },
   ]);
@@ -38,11 +37,6 @@ export const Routes = () => {
 };
 export const index = {
   index: true,
-  element: <MainPage />,
-};
-
-export const HomeRoute = {
-  path: '/main',
   element: <MainPage />,
 };
 
