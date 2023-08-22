@@ -9,37 +9,50 @@
     margin-bottom: 20px;
     width: 280px;
 }
-
-
-
-
 .input {
     width: 100%;
     max-height: 44px;
     padding: 10px 20px;
-    color: #888888;
+    color: var(--primary-text-color);
     font-size: 14px;
-    
+
     background-color: #fff;
     border-radius: 24px;
     border: none;
+    outline: none;
     box-shadow: var(--shadows-default);
 }
 
-.searchBtn {
-   position: absolute;
+.input:active {
+    background-color: #fff;
+}
+
+.input:focus {
+    background-color: #fff;
+}
+
+.input::placeholder {
+    color: var(--text-color-grey);
+}
+
+.iconWrapper {
+    position: absolute;
+    display: flex;
     top: 10px;
-    right: 40px;
+    right: 13px;
+}
+
+
+.searchBtn {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
     border: none;
+    margin-right: 10px;
 }
 
 .clearBtn {
-    position: absolute;
-    right: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
