@@ -6,7 +6,7 @@ import { registerSchema } from 'schemas';
 import CustomInput from 'components/CustomInput/CustomInput';
 import { CheckIcon, CrossBigIcon, EyeClosedIcon } from 'helpers/icons';
 import { useDispatch } from 'react-redux';
-import { createUser, login } from 'redux/auth/authOperations';
+import { createUser } from 'redux/auth/authOperations';
 
 const initialValues = {
   username: '',
