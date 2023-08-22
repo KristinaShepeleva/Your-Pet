@@ -21,7 +21,7 @@ export const Routes = () => {
       path: '/',
       element: <SharedLayout />,
           children: [
-              HomeRoute,
+              {index: true, element:  <MainPage />},
               LogInRoute,
               RegisterRoute,
               UserRoute,
@@ -34,11 +34,6 @@ export const Routes = () => {
     },
   ]);
     return element;
-};
-
-export const HomeRoute = {
-  path: '/main',
-  element: <MainPage />,
 };
 
 export const LogInRoute = {

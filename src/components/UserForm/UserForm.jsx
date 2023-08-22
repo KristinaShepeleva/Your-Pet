@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik';
 // import { FormError } from "./FormError";
 import { userSchema } from '../../schemas';
 import { FormError } from './FormError';
-import { CrossSmallIcon, EditIcon } from '../../helpers/icons';
+// import { CrossSmallIcon, EditIcon } from '../../helpers/icons';
 import { useState } from 'react';
 
 const initialValues = {
@@ -39,10 +39,10 @@ export const UserForm = () => {
         validationSchema={userSchema}
       >
               {formik => {
-                  const stopEditingData= () => {
-                      formik.resetForm()
-                      toggleIsActive();
-                  }
+                //   const stopEditingData= () => {
+                //       formik.resetForm()
+                //       toggleIsActive();
+                //   }
           return (
             <Form>
               <label>
