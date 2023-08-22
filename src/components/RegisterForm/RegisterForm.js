@@ -4,9 +4,15 @@ import { NavLink } from 'react-router-dom';
 import css from './RegisterForm.module.css';
 import { registerSchema } from 'schemas';
 import CustomInput from 'components/CustomInput/CustomInput';
-import { CheckIcon, CrossBigIcon, EyeClosedIcon } from 'helpers/icons';
+import {
+  CheckIcon,
+  CrossBigIcon,
+  EyeClosedIcon,
+  EyeOpenIcon,
+} from 'helpers/icons';
 import { useDispatch } from 'react-redux';
 import { createUser } from 'redux/auth/authOperations';
+import { useState } from 'react';
 
 const initialValues = {
   username: '',
@@ -16,7 +22,18 @@ const initialValues = {
 };
 
 const RegisterForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const dispatch = useDispatch();
+
+  const toogleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toogleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const onSubmit = async (value, actions) => {
     const newUser = {
@@ -37,18 +54,25 @@ const RegisterForm = () => {
         onSubmit={onSubmit}
         className={css.formik}
       >
-        {({ isValid, submitCount }) => {
-          // console.log(props);
-
+        {({ isValid, submitCount, values, errors }) => {
+          const error = !isValid && submitCount > 0;
           return (
             <Form className={css.form}>
-              <CustomInput
-                type="name"
-                name="username"
-                placeholder="Name"
-                isValid={isValid}
-                submitCount={submitCount}
-              />
+              <div className={css.iconInput}>
+                <CustomInput
+                  type="name"
+                  name="username"
+                  placeholder="Name"
+                  isValid={isValid}
+                  submitCount={submitCount}
+                />
+                {error && errors.username && (
+                  <CrossBigIcon className={css.crossEmailIcon} />
+                )}
+                {!errors.username && values.username !== '' && (
+                  <CheckIcon className={css.checkEmailIcon} />
+                )}
+              </div>
               <div className={css.iconInput}>
                 <CustomInput
                   type="email"
@@ -57,33 +81,57 @@ const RegisterForm = () => {
                   isValid={isValid}
                   submitCount={submitCount}
                 />
-                <CheckIcon className={css.checkEmailIcon} />
-                <CrossBigIcon className={css.crossIcon} />
+                {error && errors.email && (
+                  <CrossBigIcon className={css.crossEmailIcon} />
+                )}
+                {!errors.email && values.email !== '' && (
+                  <CheckIcon className={css.checkEmailIcon} />
+                )}
               </div>
               <div className={css.iconInput}>
                 <CustomInput
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
                   isValid={isValid}
                   submitCount={submitCount}
                 />
-                <CheckIcon className={css.checkIcon} />
-                <CrossBigIcon className={css.crossIcon} />
-                <EyeClosedIcon className={css.eyeIcon} />
+                {error && errors.password && (
+                  <CrossBigIcon className={css.crossIcon} />
+                )}
+                {!errors.password && values.password !== '' && (
+                  <CheckIcon className={css.checkIcon} />
+                )}
+                <button
+                  type="button"
+                  onClick={toogleShowPassword}
+                  className={css.eyeIcon}
+                >
+                  {showPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                </button>
               </div>
               <div className={css.iconInput}>
                 <CustomInput
-                  type="password"
+                  type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
                   placeholder="Confirm password"
                   isValid={isValid}
                   submitCount={submitCount}
                   style={{ marginBottom: 0 }}
                 />
-                <CheckIcon className={css.checkIcon} />
-                <CrossBigIcon className={css.crossIcon} />
-                <EyeClosedIcon className={css.eyeIcon} />
+                {error && errors.confirmPassword && (
+                  <CrossBigIcon className={css.crossIcon} />
+                )}
+                {!errors.confirmPassword && values.confirmPassword !== '' && (
+                  <CheckIcon className={css.checkIcon} />
+                )}
+                <button
+                  type="button"
+                  onClick={toogleShowConfirmPassword}
+                  className={css.eyeIcon}
+                >
+                  {showConfirmPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                </button>
               </div>
               <button className={css.btn} type="submit">
                 Registration
