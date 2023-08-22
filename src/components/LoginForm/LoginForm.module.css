@@ -45,6 +45,18 @@
     margin-top: 40px;
   }
 }
+.input {
+  padding: 12px 16px;
+  height: 48px;
+  width: 100%;
+  border-radius: 40px;
+  border: 1px solid var(--unnamed, #54adff);
+  margin-bottom: 14px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+}
 .iconInput {
   position: relative;
 }

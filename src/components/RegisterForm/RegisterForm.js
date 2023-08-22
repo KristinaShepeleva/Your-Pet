@@ -37,40 +37,60 @@ const RegisterForm = () => {
         onSubmit={onSubmit}
         className={css.formik}
       >
-        {props => (
-          <Form className={css.form}>
-            <CustomInput type="name" name="username" placeholder="Name" />
-            <div className={css.iconInput}>
-              <CustomInput type="email" name="email" placeholder="Email" />
-              <CheckIcon className={css.checkEmailIcon} />
-              <CrossBigIcon className={css.crossIcon} />
-            </div>
-            <div className={css.iconInput}>
+        {({ isValid, submitCount }) => {
+          // console.log(props);
+
+          return (
+            <Form className={css.form}>
               <CustomInput
-                type="password"
-                name="password"
-                placeholder="Password"
+                type="name"
+                name="username"
+                placeholder="Name"
+                isValid={isValid}
+                submitCount={submitCount}
               />
-              <CheckIcon className={css.checkIcon} />
-              <CrossBigIcon className={css.crossIcon} />
-              <EyeClosedIcon className={css.eyeIcon} />
-            </div>
-            <div className={css.iconInput}>
-              <CustomInput
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm password"
-                style={{ marginBottom: 0 }}
-              />
-              <CheckIcon className={css.checkIcon} />
-              <CrossBigIcon className={css.crossIcon} />
-              <EyeClosedIcon className={css.eyeIcon} />
-            </div>
-            <button className={css.btn} type="submit">
-              Registration
-            </button>
-          </Form>
-        )}
+              <div className={css.iconInput}>
+                <CustomInput
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  isValid={isValid}
+                  submitCount={submitCount}
+                />
+                <CheckIcon className={css.checkEmailIcon} />
+                <CrossBigIcon className={css.crossIcon} />
+              </div>
+              <div className={css.iconInput}>
+                <CustomInput
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  isValid={isValid}
+                  submitCount={submitCount}
+                />
+                <CheckIcon className={css.checkIcon} />
+                <CrossBigIcon className={css.crossIcon} />
+                <EyeClosedIcon className={css.eyeIcon} />
+              </div>
+              <div className={css.iconInput}>
+                <CustomInput
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  isValid={isValid}
+                  submitCount={submitCount}
+                  style={{ marginBottom: 0 }}
+                />
+                <CheckIcon className={css.checkIcon} />
+                <CrossBigIcon className={css.crossIcon} />
+                <EyeClosedIcon className={css.eyeIcon} />
+              </div>
+              <button className={css.btn} type="submit">
+                Registration
+              </button>
+            </Form>
+          );
+        }}
       </Formik>
       <div className={css.linkContainer}>
         Already have an account?
