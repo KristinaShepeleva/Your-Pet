@@ -1,20 +1,11 @@
-
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-
+import css from './RegisterPage.module.css';
 const RegisterPage = () => {
   return (
-    <>
-      <p>RegisterPage</p>
+    <div className={css.registerPage}>
       <RegisterForm />
-    </>
+    </div>
   );
 };
 
 export default RegisterPage;
-
-// const Register = () => {
-//   return <h2>Register</h2>;
-// };
-
-// export default Register;
-

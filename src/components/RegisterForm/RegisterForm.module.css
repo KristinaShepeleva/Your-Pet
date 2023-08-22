@@ -1,15 +1,116 @@
+.container {
+  background: var(--unnamed, #fff);
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  padding: 40px 12px;
+  height: 95%;
+  max-width: 280px;
+  max-height: 480px;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    max-width: 608px;
+    max-height: 629px;
+    padding: 60px 75px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-height: 617px;
+  }
+}
 .title {
   color: var(--unnamed, #111);
   text-align: center;
-  font-family: Manrope;
+  font-family: 'Manrope-Medium';
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  @media screen and (min-width: 768px) {
+    font-size: 36px;
+  }
+  @media screen and (min-width: 1280px) {
+    letter-spacing: 1.44px;
+  }
 }
-.input {
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
 }
-.inputError {
-  border-color: red;
-  height: 90;
+.iconInput {
+  position: relative;
+}
+.eyeIcon {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  stroke: #54adff;
+  width: 24px;
+  height: 24px;
+}
+.crossIcon {
+  stroke: #f43f5e;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+}
+.checkIcon {
+  position: absolute;
+  top: 12px;
+  right: 40px;
+  stroke: #00c3ad;
+}
+.checkEmailIcon {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  stroke: #00c3ad;
+}
+.btn {
+  color: var(--unnamed, #fff);
+  font-size: 20px;
+  font-style: normal;
+  font-family: 'Manrope-Medium';
+
+  font-weight: 500;
+  /* font-weight: 600; */
+  line-height: normal;
+  letter-spacing: 0.8px;
+  border-radius: 40px;
+  background: var(--unnamed, #54adff);
+  border: none;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 40px;
+}
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  color: var(--c, #888);
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  margin-top: 8px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+  }
+}
+.link {
+  color: var(--unnamed, #54adff);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-decoration-line: underline;
+  margin-left: 4px;
 }

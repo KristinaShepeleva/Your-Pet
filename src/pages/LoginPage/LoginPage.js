@@ -1,21 +1,13 @@
-
 import LoginForm from 'components/LoginForm/LoginForm';
 import React from 'react';
+import css from './LoginPage.module.css';
 
 const LoginPage = () => {
   return (
-    <div>
-      <p>LoginPage</p>
+    <div className={css.loginPage}>
       <LoginForm />
     </div>
   );
 };
 
 export default LoginPage;
-
-// const Login = () => {
-//   return <h2>LoginPage</h2>;
-// };
-
-// export default Login;
-

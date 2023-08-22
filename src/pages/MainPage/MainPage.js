@@ -1,5 +1,10 @@
-const Main = () => {
-  return <h2>MainPage</h2>;
-};
+import Main from '../../components/Main/Main';
 
-export default Main;
+const MainPage = () => {
+  return (
+    <>
+      <Main/>
+    </>
+  );
+};
+export default MainPage;
