@@ -1,6 +1,7 @@
 import css from './AddPetButton.module.css';
 
-import {PlusSmallIcon} from '../../helpers/icons'
+import { PlusSmallIcon, PlusBigIcon } from '../../helpers/icons';
+
 
 const AddPetButton = () => { 
 
@@ -8,8 +9,11 @@ const AddPetButton = () => {
 
     return (
         <button className={css.addBtn}>
+
+            <PlusSmallIcon className={css.addIcon} />
+            <PlusBigIcon className={css.addIconBig}/>
             <p className={css.textBtn}>Add Pet</p>
-            <PlusSmallIcon className={css.addIcon}/>
+            
         </button>
     )
 }

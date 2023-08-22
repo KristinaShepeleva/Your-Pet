@@ -6,19 +6,10 @@
     margin-bottom: 40px;
 }
 
-@media screen and (min-width: 768px) {
-    .title {
-    font-size: 48px;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-  
- }
 
 .wpapperFilter {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -28,8 +19,22 @@
     gap: 12px;
 }
 
-.filterWrap {
-display: flex;
-    align-items: center;
-    gap: 12px;
+
+
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: 48px;
+    }
+        .filterWrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    
+}
+
+@media screen and (min-width: 1280px) {
+.wpapperFilter {
+        align-items: center;
+    }
 }
