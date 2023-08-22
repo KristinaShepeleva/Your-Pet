@@ -1,9 +1,9 @@
 import * as yup from 'yup';
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
 
 export const registerSchema = yup.object().shape({
-  username: yup.string().required('Required'),
+  username: yup.string().min(2).max(16).required('Required'),
   email: yup.string().email('Please enter a valid email').required('Required'),
   password: yup
     .string()

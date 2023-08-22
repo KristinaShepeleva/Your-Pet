@@ -5,18 +5,21 @@ import css from './LoginForm.module.css';
 import { loginSchema } from 'schemas';
 import CustomInput from 'components/CustomInput/CustomInput';
 import { CheckIcon, CrossBigIcon, EyeClosedIcon } from 'helpers/icons';
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/auth/authOperations';
 
 const initialValues = {
   email: '',
   password: '',
 };
 
-const onSubmit = (value, actions) => {
-  console.log(value);
-  actions.resetForm();
-};
-
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
+  const onSubmit = (value, actions) => {
+    dispatch(login(value));
+    actions.resetForm();
+  };
   return (
     <div className={css.container}>
       <h1 className={css.title}>Login</h1>

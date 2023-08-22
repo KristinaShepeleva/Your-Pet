@@ -5,6 +5,8 @@ import css from './RegisterForm.module.css';
 import { registerSchema } from 'schemas';
 import CustomInput from 'components/CustomInput/CustomInput';
 import { CheckIcon, CrossBigIcon, EyeClosedIcon } from 'helpers/icons';
+import { useDispatch } from 'react-redux';
+import { createUser } from 'redux/auth/authOperations';
 
 const initialValues = {
   username: '',
@@ -13,15 +15,23 @@ const initialValues = {
   confirmPassword: '',
 };
 
-const onSubmit = async (value, actions) => {
-  console.log(value);
-  console.log(actions);
-
-  actions.setErrors();
-  actions.resetForm();
-};
-
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+
+  const onSubmit = async (value, actions) => {
+    // console.log(value);
+    // console.log(actions);
+    const newUser = {
+      name: value.username,
+      email: value.email,
+      password: value.password,
+    };
+    console.log(newUser);
+
+    dispatch(createUser(newUser));
+    actions.resetForm();
+  };
+
   return (
     <div className={css.container}>
       <h1 className={css.title}>Registration</h1>
