@@ -19,13 +19,13 @@ export const UserForm = () => {
   //  const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     // dispatch(logIn(values));
-      console.log(actions);
-    console.log(values);
+    //   console.log(actions);
+    // console.log(values);
       actions.resetForm();
       toggleIsActive()
     };
     
-    console.log(isActive, 'isActive');
+    // console.log(isActive, 'isActive');
     const toggleIsActive = () => {
         setIsActive(!isActive);
         // Formik.resetForm()
