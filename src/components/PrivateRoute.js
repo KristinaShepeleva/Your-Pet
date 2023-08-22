@@ -1,5 +1,6 @@
 import { useAuth } from 'hooks';
 import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   const { isLoggedIn } = useAuth();
@@ -8,3 +9,8 @@ const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
 };
 
 export default PrivateRoute;
+
+PrivateRoute.propTypes = {
+  component: PropTypes.elementType.isRequired,
+  redirectTo: PropTypes.string,
+};

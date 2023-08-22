@@ -11,6 +11,7 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
 export const currentUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
@@ -25,8 +26,8 @@ export const currentUser = createAsyncThunk(
       const { data } = axios.get('/api/auth/current');
       return data;
     } catch (e) {
-      console.log(e.message);
-      return thunkAPI.rejectWithValue(e.message);
+      console.log(e.response.data.message);
+      return thunkAPI.rejectWithValue(e.response);
     }
   }
 );
@@ -39,8 +40,8 @@ export const createUser = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (e) {
-      console.log(e.message);
-      return thunkAPI.rejectWithValue(e.message);
+      console.log(e.response.data.message);
+      return thunkAPI.rejectWithValue(e.respons);
     }
   }
 );
@@ -53,8 +54,9 @@ export const login = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (e) {
-      console.log(e.message);
-      return thunkAPI.rejectWithValue(e.message);
+      const res = e.response;
+      console.log(res.data.message);
+      return thunkAPI.rejectWithValue(res);
     }
   }
 );
@@ -65,7 +67,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     token.unset();
     return data;
   } catch (e) {
-    console.log(e.message);
-    return thunkAPI.rejectWithValue(e.message);
+    console.log(e.response.data.message);
+    return thunkAPI.rejectWithValue(e.response);
   }
 });

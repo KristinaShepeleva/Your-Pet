@@ -19,7 +19,8 @@ export const registerFulfilled = (state, { payload }) => {
 };
 export const handelRejected = (state, { payload }) => {
   state.isLoading = false;
-  state.error = payload;
+  state.error.message = payload.data.message;
+  state.error.status = payload.status;
 };
 
 export const logoutFulfilled = state => {

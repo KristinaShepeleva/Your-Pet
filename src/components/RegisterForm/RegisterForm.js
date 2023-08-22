@@ -58,94 +58,98 @@ const RegisterForm = () => {
           const error = !isValid && submitCount > 0;
           return (
             <Form className={css.form}>
-              <div className={css.iconInput}>
-                <CustomInput
-                  type="name"
-                  name="username"
-                  placeholder="Name"
-                  isValid={isValid}
-                  submitCount={submitCount}
-                />
-                {error && errors.username && (
-                  <CrossBigIcon className={css.crossEmailIcon} />
-                )}
-                {!errors.username && values.username !== '' && (
-                  <CheckIcon className={css.checkEmailIcon} />
-                )}
+              <div>
+                <div className={css.iconInput}>
+                  <CustomInput
+                    type="name"
+                    name="username"
+                    placeholder="Name"
+                    isValid={isValid}
+                    submitCount={submitCount}
+                  />
+                  {error && errors.username && (
+                    <CrossBigIcon className={css.crossEmailIcon} />
+                  )}
+                  {!errors.username && values.username !== '' && (
+                    <CheckIcon className={css.checkEmailIcon} />
+                  )}
+                </div>
+                <div className={css.iconInput}>
+                  <CustomInput
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    isValid={isValid}
+                    submitCount={submitCount}
+                  />
+                  {error && errors.email && (
+                    <CrossBigIcon className={css.crossEmailIcon} />
+                  )}
+                  {!errors.email && values.email !== '' && (
+                    <CheckIcon className={css.checkEmailIcon} />
+                  )}
+                </div>
+                <div className={css.iconInput}>
+                  <CustomInput
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    placeholder="Password"
+                    isValid={isValid}
+                    submitCount={submitCount}
+                  />
+                  {error && errors.password && (
+                    <CrossBigIcon className={css.crossIcon} />
+                  )}
+                  {!errors.password && values.password !== '' && (
+                    <CheckIcon className={css.checkIcon} />
+                  )}
+                  <button
+                    type="button"
+                    onClick={toogleShowPassword}
+                    className={css.eyeIcon}
+                  >
+                    {showPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                  </button>
+                </div>
+                <div className={css.iconInput}>
+                  <CustomInput
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    name="confirmPassword"
+                    placeholder="Confirm password"
+                    isValid={isValid}
+                    submitCount={submitCount}
+                    style={{ marginBottom: 0 }}
+                  />
+                  {error && errors.confirmPassword && (
+                    <CrossBigIcon className={css.crossIcon} />
+                  )}
+                  {!errors.confirmPassword && values.confirmPassword !== '' && (
+                    <CheckIcon className={css.checkIcon} />
+                  )}
+                  <button
+                    type="button"
+                    onClick={toogleShowConfirmPassword}
+                    className={css.eyeIcon}
+                  >
+                    {showConfirmPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                  </button>
+                </div>
               </div>
-              <div className={css.iconInput}>
-                <CustomInput
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  isValid={isValid}
-                  submitCount={submitCount}
-                />
-                {error && errors.email && (
-                  <CrossBigIcon className={css.crossEmailIcon} />
-                )}
-                {!errors.email && values.email !== '' && (
-                  <CheckIcon className={css.checkEmailIcon} />
-                )}
-              </div>
-              <div className={css.iconInput}>
-                <CustomInput
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Password"
-                  isValid={isValid}
-                  submitCount={submitCount}
-                />
-                {error && errors.password && (
-                  <CrossBigIcon className={css.crossIcon} />
-                )}
-                {!errors.password && values.password !== '' && (
-                  <CheckIcon className={css.checkIcon} />
-                )}
-                <button
-                  type="button"
-                  onClick={toogleShowPassword}
-                  className={css.eyeIcon}
-                >
-                  {showPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
+              <div>
+                <button className={css.btn} type="submit">
+                  Registration
                 </button>
+                <div className={css.linkContainer}>
+                  <p>Already have an account?</p>
+                  <NavLink to="/login" className={css.link}>
+                    Login
+                  </NavLink>
+                </div>
               </div>
-              <div className={css.iconInput}>
-                <CustomInput
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  name="confirmPassword"
-                  placeholder="Confirm password"
-                  isValid={isValid}
-                  submitCount={submitCount}
-                  style={{ marginBottom: 0 }}
-                />
-                {error && errors.confirmPassword && (
-                  <CrossBigIcon className={css.crossIcon} />
-                )}
-                {!errors.confirmPassword && values.confirmPassword !== '' && (
-                  <CheckIcon className={css.checkIcon} />
-                )}
-                <button
-                  type="button"
-                  onClick={toogleShowConfirmPassword}
-                  className={css.eyeIcon}
-                >
-                  {showConfirmPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
-                </button>
-              </div>
-              <button className={css.btn} type="submit">
-                Registration
-              </button>
             </Form>
           );
         }}
       </Formik>
-      <div className={css.linkContainer}>
-        Already have an account?
-        <NavLink to="/login" className={css.link}>
-          Login
-        </NavLink>
-      </div>
     </div>
   );
 };
