@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import Logo from '../Logo/Logo';
-import {CrossSmallIcon} from '../../../helpers/icons';
+import {CrossBigIcon} from '../../../helpers/icons';
 
 import styles from './BurgerMenu.module.css';
 
@@ -8,9 +8,9 @@ export default function MobileMenu({ children, onClick, isMobile }) {
   return createPortal(
  
       <div className={styles.mobileMenu}>
-        <div className={styles.head} onClick={onClick}>
+        <div className={styles.head} >
           <Logo isMobile={isMobile} />
-          <CrossSmallIcon className={styles.closeButton} />
+          <CrossBigIcon className={styles.closeButton} onClick={onClick} />
         </div>
         {children}
       </div>,
