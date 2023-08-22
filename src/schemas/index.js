@@ -1,6 +1,8 @@
 import * as yup from 'yup';
 
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const emailRegExp = /.+@.+\..+/i;
+const nameRegExp = /^[a-zа-яё]{2,16}$/i;
 
 export const registerSchema = yup.object().shape({
   username: yup.string().required('Required'),
@@ -23,4 +25,20 @@ export const loginSchema = yup.object().shape({
     .min(5)
     .matches(passwordRules, 'Not valid password')
     .required('Required'),
+});
+
+export const userSchema = yup.object().shape({
+  photo: yup.string(),
+  name: yup
+    .string()
+    .required('Required')
+    .matches(nameRegExp, 'Enter a valid Name'),
+  email: yup
+    .string()
+    .trim()
+    .required('Required')
+    .matches(emailRegExp, 'Enter a valid Email'),
+  birthday: yup.string().required('Required'),
+  phone: yup.string().required('Required'),
+  city: yup.string().required('Required'),
 });
