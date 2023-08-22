@@ -16,6 +16,7 @@ const initialState = {
   error: null,
   token: null,
   isRefreshing: false,
+  isNewUser: false,
 };
 
 const arrayThunks = [createUser, login, logout, currentUser];

@@ -1,3 +1,5 @@
+import PrivateRoute from 'components/PrivateRoute';
+import RegistretedRoute from 'components/RegistretedRoute';
 import { SharedLayout } from 'components/Sharedlayout';
 import { TemporaryComponent } from 'components/TemporaryComponent';
 import { lazy } from 'react';
@@ -20,16 +22,16 @@ export const Routes = () => {
     {
       path: '/',
       element: <SharedLayout />,
-          children: [
-              {index: true, element:  <MainPage />},
-              LogInRoute,
-              RegisterRoute,
-              UserRoute,
-              AddPetRoute,
-              NoticesRoute,
-              NewsRoute,
-              OurFriendsRoute,
-          { path: "*", element: <NotFoundPage /> },
+      children: [
+        { index: true, element: <MainPage /> },
+        LogInRoute,
+        RegisterRoute,
+        UserRoute,
+        AddPetRoute,
+        NoticesRoute,
+        NewsRoute,
+        OurFriendsRoute,
+        { path: '*', element: <NotFoundPage /> },
       ],
     },
   ]);
@@ -42,21 +44,22 @@ export const index = {
 
 export const LogInRoute = {
   path: '/login',
-  element: <LogInPage />,
+  element: <RegistretedRoute component={LogInPage} redirectTo="/user" />,
 };
 
 export const RegisterRoute = {
   path: '/register',
-  element: <RegisterPage />,
+  element: <RegistretedRoute component={RegisterPage} redirectTo="/user" />,
 };
 
 export const UserRoute = {
   path: '/user',
-  element: <UserPage />,
+  element: <PrivateRoute component={UserPage} redirectTo="/login" />,
 };
 
 export const AddPetRoute = {
   path: '/add-pet',
+  // element: <PrivateRoute component={AddPetPage} />,
   element: <AddPetPage />,
 };
 

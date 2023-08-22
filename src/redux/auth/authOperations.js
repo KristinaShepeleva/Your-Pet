@@ -26,7 +26,7 @@ export const currentUser = createAsyncThunk(
       return data;
     } catch (e) {
       console.log(e.message);
-      return thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -40,7 +40,7 @@ export const createUser = createAsyncThunk(
       return data;
     } catch (e) {
       console.log(e.message);
-      return thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -54,7 +54,7 @@ export const login = createAsyncThunk(
       return data;
     } catch (e) {
       console.log(e.message);
-      return thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -66,6 +66,6 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return data;
   } catch (e) {
     console.log(e.message);
-    return thunkAPI.rejectWithValue(e);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
