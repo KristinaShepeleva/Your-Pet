@@ -24,12 +24,7 @@ const RegisterForm = () => {
       email: value.email,
       password: value.password,
     };
-    await dispatch(createUser(newUser));
-    const loginUser = {
-      email: value.email,
-      password: value.password,
-    };
-    await dispatch(login(loginUser));
+    dispatch(createUser(newUser));
     actions.resetForm();
   };
 
