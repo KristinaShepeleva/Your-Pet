@@ -24,6 +24,7 @@ export const Routes = () => {
       element: <SharedLayout />,
       children: [
         { index: true, element: <MainPage /> },
+        HomeRoute,
         LogInRoute,
         RegisterRoute,
         UserRoute,
@@ -41,7 +42,10 @@ export const index = {
   index: true,
   element: <MainPage />,
 };
-
+export const HomeRoute = {
+  path: '/main',
+  element: <MainPage />,
+};
 export const LogInRoute = {
   path: '/login',
   element: <RegistretedRoute component={LogInPage} redirectTo="/user" />,

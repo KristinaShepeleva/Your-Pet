@@ -9,7 +9,7 @@ import dogsDesc2x from '../../images/pictures-dsc-2x.png';
 const Main = () => {
   return (
     <section className={styles.sectionMain}>
-      <div className="container">
+      <div className={styles.container}>
         <div className={styles.positionText}>
           <div>
             <h1 className={styles.text}>Take good care of your small pets</h1>
