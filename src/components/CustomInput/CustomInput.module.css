@@ -3,7 +3,7 @@
   height: 48px;
   width: 100%;
   border-radius: 40px;
-  border: 1px solid var(--unnamed, #54adff);
+  border: 1px solid var(--blue-color);
   margin-bottom: 14px;
 
   @media screen and (min-width: 768px) {
@@ -11,17 +11,14 @@
   }
 }
 .inputError {
-  padding: 12px 16px;
-  height: 48px;
-  width: 100%;
-  border-radius: 40px;
-  border: 1px solid #f43f5e;
+  border: 1px solid var(--red-color);
   margin-bottom: 0;
 }
-/* .inputSucsses {
-} */
+.inputSuccess {
+  border: 1px solid var(--greencolor);
+}
 .input::placeholder {
-  color: var(--c, #888);
+  color: var(--text-color-grey);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -32,7 +29,7 @@ input:focus {
   outline: none;
 }
 .error {
-  color: var(--red, #f43f5e);
+  color: var(--red-color);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

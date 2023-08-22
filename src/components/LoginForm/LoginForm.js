@@ -4,9 +4,15 @@ import { NavLink } from 'react-router-dom';
 import css from './LoginForm.module.css';
 import { loginSchema } from 'schemas';
 import CustomInput from 'components/CustomInput/CustomInput';
-import { CheckIcon, CrossBigIcon, EyeClosedIcon } from 'helpers/icons';
+import {
+  CheckIcon,
+  CrossBigIcon,
+  EyeClosedIcon,
+  EyeOpenIcon,
+} from 'helpers/icons';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/authOperations';
+import { useState } from 'react';
 
 const initialValues = {
   email: '',
@@ -14,14 +20,19 @@ const initialValues = {
 };
 
 const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
 
-  const onSubmit = (value, actions) => {
-    console.log(actions);
+  const toogleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
+  const onSubmit = (value, actions) => {
     dispatch(login(value));
     actions.resetForm();
   };
+
   return (
     <div className={css.container}>
       <h1 className={css.title}>Login</h1>
@@ -30,9 +41,8 @@ const LoginForm = () => {
         validationSchema={loginSchema}
         onSubmit={onSubmit}
       >
-        {({ isValid, submitCount }) => {
-          // console.log('props', isValid);
-
+        {({ isValid, submitCount, values, errors }) => {
+          const error = !isValid && submitCount > 0;
           return (
             <Form className={css.form}>
               <div>
@@ -44,21 +54,35 @@ const LoginForm = () => {
                     isValid={isValid}
                     submitCount={submitCount}
                   />
-                  <CheckIcon className={css.checkEmailIcon} />
-                  <CrossBigIcon className={css.crossIcon} />
+                  {error && errors.email && (
+                    <CrossBigIcon className={css.crossEmailIcon} />
+                  )}
+                  {!errors.email && values.email !== '' && (
+                    <CheckIcon className={css.checkEmailIcon} />
+                  )}
                 </div>
                 <div className={css.iconInput}>
                   <CustomInput
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     placeholder="Password"
                     isValid={isValid}
                     submitCount={submitCount}
                     style={{ marginBottom: 0 }}
                   />
-                  <CheckIcon className={css.checkIcon} />
-                  <CrossBigIcon className={css.crossIcon} />
-                  <EyeClosedIcon className={css.eyeIcon} />
+                  {error && errors.password && (
+                    <CrossBigIcon className={css.crossIcon} />
+                  )}
+                  {!errors.password && values.password !== '' && (
+                    <CheckIcon className={css.checkIcon} />
+                  )}
+                  <button
+                    type="button"
+                    onClick={toogleShowPassword}
+                    className={css.eyeIcon}
+                  >
+                    {showPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                  </button>
                 </div>
               </div>
               <div>

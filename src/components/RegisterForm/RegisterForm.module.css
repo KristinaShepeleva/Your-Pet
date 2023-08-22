@@ -1,6 +1,6 @@
 .container {
-  background: var(--unnamed, #fff);
-  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  background: #fff;
+  box-shadow: var(--shadow-default);
   padding: 40px 12px;
   height: 95%;
   max-width: 280px;
@@ -18,7 +18,7 @@
   }
 }
 .title {
-  color: var(--unnamed, #111);
+  color: var(--primary-text-color);
   text-align: center;
   font-family: 'Manrope-Medium';
   font-size: 24px;
@@ -47,32 +47,35 @@
   position: absolute;
   top: 12px;
   right: 16px;
-  stroke: #54adff;
-  width: 24px;
-  height: 24px;
+  border: none;
+  background-color: inherit;
 }
 .crossIcon {
-  stroke: #f43f5e;
+  stroke: var(--red-color);
   position: absolute;
   top: 12px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
+  right: 40px;
 }
 .checkIcon {
   position: absolute;
   top: 12px;
   right: 40px;
-  stroke: #00c3ad;
+  stroke: var(--greencolor);
 }
 .checkEmailIcon {
   position: absolute;
   top: 12px;
   right: 16px;
-  stroke: #00c3ad;
+  stroke: var(--greencolor);
+}
+.crossEmailIcon {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  stroke: var(--red-color);
 }
 .btn {
-  color: var(--unnamed, #fff);
+  color: #fff;
   font-size: 20px;
   font-style: normal;
   font-family: 'Manrope-Medium';
@@ -82,7 +85,7 @@
   line-height: normal;
   letter-spacing: 0.8px;
   border-radius: 40px;
-  background: var(--unnamed, #54adff);
+  background: var(--blue-color);
   border: none;
   width: 100%;
   padding: 10px 0;
@@ -91,7 +94,7 @@
 .linkContainer {
   display: flex;
   justify-content: center;
-  color: var(--c, #888);
+  color: var(--text-color-grey);
   text-align: center;
   font-size: 12px;
   font-style: normal;
@@ -105,7 +108,7 @@
   }
 }
 .link {
-  color: var(--unnamed, #54adff);
+  color: var(--blue-color);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
