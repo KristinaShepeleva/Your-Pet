@@ -9,7 +9,8 @@ import NoticesSearch from '../../components/NoticesSearch/NoticesSearch';
 import AddPetButton from '../../components/AddPetButton/AddPetButton';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
 import Container from 'components/Container/Container';
-import NoticesCategories from '../../components/NoticesCategories/NoticesCategories'
+import NoticesCategories from '../../components/NoticesCategories/NoticesCategories';
+import NoticesCategoriesList from '../../components/NoticesCategoriesList/NoticesCategoriesList'
 
 const Notices = () => {
   const [query, setQuery] = useState('');
@@ -37,6 +38,13 @@ const onFormSubmit = query => {
          
           <Link to="/add-pet"><AddPetButton ></AddPetButton></Link>
         </div>
+        </div>
+        
+        <div className={css.listCardContainer}>
+
+          <NoticesCategoriesList/>
+            
+
         </div>
         <Outlet />
         </Container>
