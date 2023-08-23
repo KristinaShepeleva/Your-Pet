@@ -6,17 +6,12 @@ import Header from './Header/Header';
 export const SharedLayout = () => {
   return (
     <>
-
-
-      
-
       <Suspense>
-        <Header/>
+        <Header />
         <main>
           <Outlet />
         </main>
-        </Suspense>
-        
+      </Suspense>
     </>
   );
 };

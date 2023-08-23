@@ -13,7 +13,7 @@ const initialState = {
   user: {},
   isLoggedIn: false,
   isLoading: false,
-  error: null,
+  error: { message: '', status: null },
   token: null,
   isRefreshing: false,
   isNewUser: false,

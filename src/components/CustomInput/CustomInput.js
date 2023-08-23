@@ -1,4 +1,6 @@
 import { useField } from 'formik';
+import PropTypes from 'prop-types';
+
 import css from './CustomInput.module.css';
 
 const CustomInput = ({ submitCount, isValid, ...props }) => {
@@ -21,3 +23,11 @@ const CustomInput = ({ submitCount, isValid, ...props }) => {
 };
 
 export default CustomInput;
+
+CustomInput.propTypes = {
+  submitCount: PropTypes.number.isRequired,
+  isValid: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};

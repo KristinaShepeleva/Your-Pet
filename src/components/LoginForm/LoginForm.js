@@ -13,6 +13,9 @@ import {
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/authOperations';
 import { useState } from 'react';
+// import { useAuth } from 'hooks';
+// import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 const initialValues = {
   email: '',
@@ -22,7 +25,18 @@ const initialValues = {
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  // const { error } = useAuth();
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const errorStatus = error.status;
+  //   if (errorStatus === 400) {
+  //     return toast.error('eqweqweq');
+  //   }
+  //   if (errorStatus === 401) {
+  //     return toast.error('231231231');
+  //   }
+  // }, [error]);
 
   const toogleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -36,6 +50,7 @@ const LoginForm = () => {
   return (
     <div className={css.container}>
       <h1 className={css.title}>Login</h1>
+      {/* {error.status === 400} */}
       <Formik
         initialValues={initialValues}
         validationSchema={loginSchema}
@@ -86,14 +101,16 @@ const LoginForm = () => {
                 </div>
               </div>
               <div>
-                <button type="submit" className={css.btn}>
-                  Login
-                </button>
-                <div className={css.linkContainer}>
-                  Don't have an account?
-                  <NavLink to="/register" className={css.link}>
-                    Register
-                  </NavLink>
+                <div>
+                  <button type="submit" className={css.btn}>
+                    Login
+                  </button>
+                  <div className={css.linkContainer}>
+                    <p>Don't have an account? </p>
+                    <NavLink to="/register" className={css.link}>
+                      Register
+                    </NavLink>
+                  </div>
                 </div>
               </div>
             </Form>
