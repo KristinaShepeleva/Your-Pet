@@ -1,20 +1,22 @@
 const { createSlice } = require('@reduxjs/toolkit');
 const { createUser, login, logout, currentUser } = require('./authOperations');
 const {
-  handelFulfilled,
   handelPending,
   handelRejected,
   logoutFulfilled,
   currentFulfilled,
+  registerFulfilled,
+  loginFulfilled,
 } = require('./authFunctions');
 
 const initialState = {
   user: {},
   isLoggedIn: false,
   isLoading: false,
-  error: null,
+  error: { message: '', status: null },
   token: null,
   isRefreshing: false,
+  isNewUser: false,
 };
 
 const arrayThunks = [createUser, login, logout, currentUser];
@@ -30,8 +32,10 @@ const authSlice = createSlice({
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
             case createUser:
+              registerFulfilled(state, action);
+              break;
             case login:
-              handelFulfilled(state, action);
+              loginFulfilled(state, action);
               break;
             case logout:
               logoutFulfilled(state, action);

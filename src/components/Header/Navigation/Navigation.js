@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useAuth } from '../../../hooks/useAuth';
+import {UserIcon} from "../../../helpers/icons"
 import MainNav from '../MainNav/MainNav';
-// import UserNav from '../UserNav/UserNav';
+import UserNav from '../UserNav/UserNav';
 import AuthNav from '../AuthNav/AuthNav';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { MenuIcon } from '../../../helpers/icons';
@@ -8,12 +10,8 @@ import styles from './Navigation.module.css';
 
 export default function Navigation({ isDesktop, isTablet, isMobile }) {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
-
-  useEffect(() => {
-    if (isDesktop) {
-      setShowBurgerMenu(false);
-    }
-  }, [isDesktop]);
+  const { isLoggedIn } = useAuth();
+  const {user} = useAuth();
 
   const toggleMobileMenu = e => {
     e.preventDefault();
@@ -25,23 +23,27 @@ export default function Navigation({ isDesktop, isTablet, isMobile }) {
       {isDesktop && (
         <>
           <MainNav />
-          <AuthNav />
+          {isLoggedIn ? <UserNav /> : <AuthNav />}
         </>
       )}
-      {(isTablet || isMobile) && (
+      {isTablet && (
         <>
-          {isTablet && <AuthNav />}
+          {isLoggedIn ? <UserNav /> : <AuthNav />}
           <MenuIcon className={styles.burger} onClick={toggleMobileMenu} />
         </>
       )}
-        {showBurgerMenu && (
+      {isMobile && (
+        <>
+          {isLoggedIn && <UserNav isMobile={isMobile}/>}
+          <MenuIcon className={styles.burger} onClick={toggleMobileMenu} />
+        </>
+      )}
+      {showBurgerMenu && (
         <BurgerMenu onClick={toggleMobileMenu} isMobile={isMobile}>
-          
-          {isMobile && <AuthNav onClick={toggleMobileMenu}/>}
-          <MainNav onClick={toggleMobileMenu}/>
+          {isMobile && (!isLoggedIn ? <AuthNav onClick={toggleMobileMenu} /> : <div className={styles.userData}><UserIcon  /><p>{user.name}</p></div>)}
+          <MainNav onClick={toggleMobileMenu} />
         </BurgerMenu>
       )}
-      
     </div>
   );
 }
