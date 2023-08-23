@@ -1,37 +1,44 @@
 .modalBackdrop {
-    position: fixed;
-    z-index: 400;
-    overflow-y: scroll;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #51515199;
-    backdrop-filter: blur(4px);
+  position: fixed;
+  z-index: 400;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #51515199;
+  backdrop-filter: blur(4px);
 }
 
 .modalContent {
-    position: absolute;
-    z-index: 100;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 280px;
-    width: 100%;
-    padding: 12px;
-    border-radius: 20px;
-    background-color: #ffffff;
-}
-
-@media screen and (min-width: 768px) { 
-    .modal__content{
-    max-width: 680px;
-    }
-    
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 280px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  @media screen and (min-width: 768px) {
+    max-width: 608px;
+    padding: 32px;
+    padding-bottom: 24px;
+  }
 }
 
 .modalCloseBtn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background-color: inherit;
+  @media screen and (min-width: 768px) {
+    top: 24px;
+    right: 24px;
+  }
+}
+.iconClose {
+  stroke: var(--blue-color);
 }

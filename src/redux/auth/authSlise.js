@@ -7,6 +7,7 @@ const {
   currentFulfilled,
   registerFulfilled,
   loginFulfilled,
+  logoutReject,
 } = require('./authFunctions');
 
 const initialState = {
@@ -28,7 +29,20 @@ const authSlice = createSlice({
     arrayThunks.forEach(fetch => {
       builder
         .addCase(fetch.pending, handelPending)
-        .addCase(fetch.rejected, handelRejected)
+        .addCase(fetch.rejected, (state, action) => {
+          switch (fetch) {
+            case createUser:
+            case login:
+            case currentUser:
+              handelRejected(state, action);
+              break;
+            case logout:
+              logoutReject(state, action);
+              break;
+            default:
+              break;
+          }
+        })
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
             case createUser:
