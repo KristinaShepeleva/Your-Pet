@@ -1,6 +1,6 @@
-.modal__backdrop {
+.modalBackdrop {
     position: fixed;
-    z-index: 200;
+    z-index: 400;
     overflow-y: scroll;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     backdrop-filter: blur(4px);
 }
 
-.modal__content {
+.modalContent {
     position: absolute;
     z-index: 3;
     top: 50%;
@@ -30,7 +30,7 @@
     
 }
 
-.closeicon {
+.modalCloseBtn {
     position: absolute;
     top: 12px;
     right: 12px;

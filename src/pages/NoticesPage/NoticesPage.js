@@ -5,16 +5,21 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
 
+
+
 import NoticesSearch from '../../components/NoticesSearch/NoticesSearch';
 import AddPetButton from '../../components/AddPetButton/AddPetButton';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
 import Container from 'components/Container/Container';
 import NoticesCategories from '../../components/NoticesCategories/NoticesCategories';
-import NoticesCategoriesList from '../../components/NoticesCategoriesList/NoticesCategoriesList'
+import NoticesCategoriesList from '../../components/NoticesCategoriesList/NoticesCategoriesList';
+import ModalContainer from 'components/ModalContainer/ModalContainer';
 
 const Notices = () => {
   const [query, setQuery] = useState('');
-  const  isLoggedIn  = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   
 const onFormSubmit = query => {
@@ -22,6 +27,10 @@ const onFormSubmit = query => {
   };
 
   console.log(query);
+
+  const toggleModal = () => {
+  setIsModalOpen(prevState => !prevState);
+};
 
   return (
     <>
@@ -36,7 +45,8 @@ const onFormSubmit = query => {
         <div className={css.filterWrap}>
           <NoticesFilters></NoticesFilters>
          
-          <Link to="/add-pet"><AddPetButton ></AddPetButton></Link>
+            <Link to="/add-pet"><AddPetButton ></AddPetButton></Link>
+            <button onClick={toggleModal} type="button">test modal</button>
         </div>
         </div>
         
@@ -47,6 +57,12 @@ const onFormSubmit = query => {
 
         </div>
         <Outlet />
+
+        {isModalOpen && (<ModalContainer toggleModal={toggleModal}>
+      
+          <p>Modal</p>
+    </ModalContainer>
+  )}
         </Container>
     </>
   );

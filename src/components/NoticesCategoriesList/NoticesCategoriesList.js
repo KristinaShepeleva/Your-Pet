@@ -20,13 +20,15 @@ const NoticesCategoriesList = () => {
                     <p className={css.category}>{pet.category}</p>
                     <button className={css.favoritBtn}
                         type="button"
-                    onClick={console.log("toggleFavorites(pet)")}>
+                            // onClick={console.log("toggleFavorites(pet)")}
+                        >
                         <HeartFillIcon className={css.fillIcon}/>
             
                     </button>
                     <button className={css.deleteBtn}
                         type="button"
-                    onClick={console.log("DeletePet(pet._id)")}> 
+                            // onClick={console.log("DeletePet(pet._id)")}
+                        > 
                         <DeleteIcon/>
                     </button>
                     <ul className={css.infoWrapper}>
@@ -50,7 +52,8 @@ const NoticesCategoriesList = () => {
                         <button className={css.button}
                             type="button"
                             text="Learn more"
-                        onClick={console.log("openModalMore(pet._id)")}>Learn more</button>
+                            // onClick={console.log("openModalMore(pet._id)")}
+                        >Learn more</button>
                     </div>
 
                 
