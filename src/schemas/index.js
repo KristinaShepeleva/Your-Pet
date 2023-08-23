@@ -1,6 +1,8 @@
 import * as yup from 'yup';
 
+
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+
 const emailRegExp = /.+@.+\..+/i;
 const nameRegExp = /^[a-zа-яё]{2,16}$/i;
 
@@ -32,7 +34,9 @@ export const loginSchema = yup.object().shape({
 });
 
 export const userSchema = yup.object().shape({
-  photo: yup.string(),
+  // avatarURL: yup.string(),
+  avatarURL: yup.mixed(),
+
   name: yup
     .string()
     .required('Required')

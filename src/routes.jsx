@@ -1,5 +1,7 @@
+
 import PrivateRoute from 'components/PrivateRoute';
 import RegistretedRoute from 'components/RegistretedRoute';
+
 import { SharedLayout } from 'components/Sharedlayout';
 import { TemporaryComponent } from 'components/TemporaryComponent';
 import { lazy } from 'react';
@@ -38,17 +40,11 @@ export const Routes = () => {
   ]);
   return element;
 };
-export const index = {
-  index: true,
-  element: <MainPage />,
-};
-export const HomeRoute = {
-  path: '/main',
-  element: <MainPage />,
-};
+
 export const LogInRoute = {
   path: '/login',
   element: <RegistretedRoute component={LogInPage} redirectTo="/user" />,
+
 };
 
 export const RegisterRoute = {
