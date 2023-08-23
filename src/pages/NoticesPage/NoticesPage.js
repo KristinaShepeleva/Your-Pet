@@ -22,6 +22,8 @@ const Notices = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isPetsModalOpen, setIsPetsModalOpen] = useState(false);
 
   const onFormSubmit = query => {
     setQuery(query);
@@ -32,7 +34,12 @@ const Notices = () => {
   const toggleModal = () => {
     setIsModalOpen(prevState => !prevState);
   };
-
+  const toggleDeleteModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
+  const togglePetsModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
   return (
     <>
       <Container>
@@ -42,11 +49,16 @@ const Notices = () => {
           <NoticesCategories isUser={isLoggedIn} />
           <div className={css.filterWrap}>
             <NoticesFilters></NoticesFilters>
-
             <Link to="/add-pet">
               <AddPetButton></AddPetButton>
             </Link>
             <button onClick={toggleModal} type="button">
+              test modal
+            </button>
+            <button onClick={toggleDeleteModal} type="button">
+              test modal
+            </button>{' '}
+            <button onClick={togglePetsModal} type="button">
               test modal
             </button>
           </div>
@@ -60,13 +72,13 @@ const Notices = () => {
             <AtentionModal />
           </ModalContainer>
         )}
-        {isModalOpen && (
-          <ModalContainer toggleModal={toggleModal}>
+        {isDeleteModalOpen && (
+          <ModalContainer toggleModal={toggleDeleteModal}>
             <DeleteModal />
           </ModalContainer>
         )}
-        {isModalOpen && (
-          <ModalContainer toggleModal={toggleModal}>
+        {isPetsModalOpen && (
+          <ModalContainer toggleModal={togglePetsModal}>
             <PetsModal />
           </ModalContainer>
         )}
