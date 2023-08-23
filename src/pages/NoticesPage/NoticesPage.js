@@ -14,6 +14,8 @@ import NoticesCategoriesList from '../../components/NoticesCategoriesList/Notice
 import ModalContainer from 'components/ModalContainer/ModalContainer';
 
 import AtentionModal from 'components/AtentionModal/AtentionModal';
+import DeleteModal from 'components/DeleteModal/DeleteModal';
+import PetsModal from 'components/PetsModal/PetsModal';
 
 const Notices = () => {
   const [query, setQuery] = useState('');
@@ -49,15 +51,23 @@ const Notices = () => {
             </button>
           </div>
         </div>
-
         <div className={css.listCardContainer}>
           <NoticesCategoriesList />
         </div>
         <Outlet />
-
         {isModalOpen && (
           <ModalContainer toggleModal={toggleModal}>
             <AtentionModal />
+          </ModalContainer>
+        )}
+        {isModalOpen && (
+          <ModalContainer toggleModal={toggleModal}>
+            <DeleteModal />
+          </ModalContainer>
+        )}
+        {isModalOpen && (
+          <ModalContainer toggleModal={toggleModal}>
+            <PetsModal />
           </ModalContainer>
         )}
       </Container>
