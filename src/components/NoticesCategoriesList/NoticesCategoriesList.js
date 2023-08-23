@@ -1,12 +1,15 @@
+
+
 import css from './NoticesCategoriesList.module.css';
 // import defaultImg from '../../images/defaul-img/defaulimg.png';
 import { DeleteIcon, HeartFillIcon, LocationIcon, ClockIcon, MaleIcon, FamileIcon } from '../../helpers/icons';
 
+
+
+
 import {notices} from './test'
 
-const NoticesCategoriesList = () => { 
-
-    
+const NoticesCategoriesList = ({handlePetsModal, handleDeleteModal}) => { 
     
 
     return (
@@ -26,8 +29,8 @@ const NoticesCategoriesList = () => {
             
                     </button>
                     <button className={css.deleteBtn}
-                        type="button"
-                            // onClick={console.log("DeletePet(pet._id)")}
+                            onClick={handleDeleteModal}
+                            type="button"
                         > 
                         <DeleteIcon/>
                     </button>
@@ -52,11 +55,10 @@ const NoticesCategoriesList = () => {
                         <button className={css.button}
                             type="button"
                             text="Learn more"
-                            // onClick={console.log("openModalMore(pet._id)")}
+                            onClick={handlePetsModal}
                         >Learn more</button>
                     </div>
-
-                
+              
             </li>
              ))}
             

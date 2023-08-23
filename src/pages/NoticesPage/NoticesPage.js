@@ -1,7 +1,8 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import css from './NoticesPage.module.css';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
 
@@ -11,20 +12,26 @@ import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
 import Container from 'components/Container/Container';
 import NoticesCategories from '../../components/NoticesCategories/NoticesCategories';
 import NoticesCategoriesList from '../../components/NoticesCategoriesList/NoticesCategoriesList';
-import ModalContainer from 'components/ModalContainer/ModalContainer';
 
+import ModalContainer from 'components/ModalContainer/ModalContainer';
 import AtentionModal from 'components/AtentionModal/AtentionModal';
-import DeleteModal from 'components/DeleteModal/DeleteModal';
 import PetsModal from 'components/PetsModal/PetsModal';
+import DeleteModal from 'components/DeleteModal/DeleteModal';
+
 
 const Notices = () => {
   const [query, setQuery] = useState('');
+  
+  const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isPetsModalOpen, setIsPetsModalOpen] = useState(false);
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    
+    
+  
+  
   const onFormSubmit = query => {
     setQuery(query);
   };
@@ -32,14 +39,23 @@ const Notices = () => {
   console.log(query);
 
   const toggleModal = () => {
-    setIsModalOpen(prevState => !prevState);
+    if (!isLoggedIn) {
+       setIsModalOpen(prevState => !prevState);
+    } else {
+      navigate("/add-pet");
+    }
   };
+
   const toggleDeleteModal = () => {
     setIsDeleteModalOpen(prevState => !prevState);
-  };
-  const togglePetsModal = () => {
+    };
+    
+    const togglePetsModal = () => {
     setIsPetsModalOpen(prevState => !prevState);
   };
+ 
+  
+
   return (
     <>
       <Container>
@@ -49,22 +65,13 @@ const Notices = () => {
           <NoticesCategories isUser={isLoggedIn} />
           <div className={css.filterWrap}>
             <NoticesFilters></NoticesFilters>
-            <Link to="/add-pet">
-              <AddPetButton></AddPetButton>
-            </Link>
-            <button onClick={toggleModal} type="button">
-              test modal
-            </button>
-            <button onClick={toggleDeleteModal} type="button">
-              test modal
-            </button>{' '}
-            <button onClick={togglePetsModal} type="button">
-              test modal
-            </button>
+
+            <AddPetButton handeModal={toggleModal} />
+           
           </div>
         </div>
         <div className={css.listCardContainer}>
-          <NoticesCategoriesList />
+          <NoticesCategoriesList handlePetsModal={togglePetsModal} handleDeleteModal={toggleDeleteModal} />
         </div>
         <Outlet />
         {isModalOpen && (
@@ -72,14 +79,14 @@ const Notices = () => {
             <AtentionModal />
           </ModalContainer>
         )}
-        {isDeleteModalOpen && (
-          <ModalContainer toggleModal={toggleDeleteModal}>
-            <DeleteModal />
-          </ModalContainer>
-        )}
         {isPetsModalOpen && (
           <ModalContainer toggleModal={togglePetsModal}>
             <PetsModal />
+          </ModalContainer>
+                    )}
+                    {isDeleteModalOpen && (
+          <ModalContainer toggleModal={toggleDeleteModal}>
+            <DeleteModal />
           </ModalContainer>
         )}
       </Container>

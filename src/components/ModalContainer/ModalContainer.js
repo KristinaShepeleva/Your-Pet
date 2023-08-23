@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { CrossSmallIcon } from '../../helpers/icons';
 
 import css from './ModalContainer.module.css';
+
 const modalContainer = document.getElementById('modal-root');
 
 const ModalContainer = ({ toggleModal, children }) => {
