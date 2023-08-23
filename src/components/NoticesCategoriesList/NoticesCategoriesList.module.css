@@ -73,19 +73,14 @@
         border-radius: 50%;
 }
 
-
-
 .fillIcon {
-    /* fill:#54ADFF; */
     stroke: #54ADFF;
-   
 }
 
 .fillIcon:hover, 
 .fillIcon:focus {
     fill:#54ADFF;
     stroke: #54ADFF;
-
 }
 
 .deleteBtn {
@@ -127,6 +122,17 @@
     border-radius: 16px;
     background-color: var(--blue-light-color);
     margin-left: 8px;
+    stroke: var(--blue-color)
+}
+
+.info:hover {
+    color: var(--bg-color);
+    stroke: var(--bg-color);
+
+}
+
+.info:hover {
+    background-color: var(--blue-color);
 }
 
 .bottonCard {
