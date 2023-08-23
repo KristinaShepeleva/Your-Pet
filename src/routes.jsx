@@ -1,3 +1,4 @@
+import { RestrictedRoute } from 'components/RestrictedRoute';
 import { SharedLayout } from 'components/Sharedlayout';
 import { TemporaryComponent } from 'components/TemporaryComponent';
 import { lazy } from 'react';
@@ -35,14 +36,11 @@ export const Routes = () => {
   ]);
   return element;
 };
-export const index = {
-  index: true,
-  element: <MainPage />,
-};
+
 
 export const LogInRoute = {
   path: '/login',
-  element: <LogInPage />,
+  element: <RestrictedRoute component={<LogInPage />} redirectTo='/user'/>,
 };
 
 export const RegisterRoute = {

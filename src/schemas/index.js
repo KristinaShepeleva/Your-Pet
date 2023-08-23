@@ -1,10 +1,8 @@
 import * as yup from 'yup';
 
-
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 const emailRegExp = /.+@.+\..+/i;
 const nameRegExp = /^[a-zа-яё]{2,16}$/i;
-
 
 export const registerSchema = yup.object().shape({
   username: yup.string().min(2).max(16).required('Required'),
@@ -33,7 +31,9 @@ export const loginSchema = yup.object().shape({
 });
 
 export const userSchema = yup.object().shape({
-  photo: yup.string(),
+  // avatarURL: yup.string(),
+  avatarURL: yup.mixed(),
+
   name: yup
     .string()
     .required('Required')
