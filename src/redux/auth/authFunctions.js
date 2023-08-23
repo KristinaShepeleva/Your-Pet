@@ -8,6 +8,7 @@ export const handelRejected = (state, { payload }) => {
     status: payload.status,
   };
 };
+
 export const registerFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.isNewUser = true;
@@ -41,4 +42,13 @@ export const currentFulfilled = (state, { payload }) => {
   state.user = payload;
   state.error = { message: '', status: null };
   state.isNewUser = false;
+};
+export const logoutReject = state => {
+  state.isLoading = false;
+  state.isRefreshing = false;
+  state.isNewUser = false;
+  state.isLoggedIn = false;
+  state.user = {};
+  state.token = null;
+  state.error = { message: '', status: null };
 };

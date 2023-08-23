@@ -4,13 +4,11 @@ import { useEffect } from 'react';
 
 import { CrossSmallIcon } from '../../helpers/icons';
 
-import css from './ModalContainer.module.css'
+import css from './ModalContainer.module.css';
 const modalContainer = document.getElementById('modal-root');
 
-
-const ModalContainer = ({toggleModal, children }) => {
-  
-useEffect(() => {
+const ModalContainer = ({ toggleModal, children }) => {
+  useEffect(() => {
     const onKeyDown = event => {
       if (event.code === 'Escape') {
         toggleModal();
@@ -30,22 +28,23 @@ useEffect(() => {
     }
   };
 
-
   return createPortal(
     <>
-    <div onClick={onBackdroplOpen} className={css.modalBackdrop}>
-      <div className={css.modalContent}>
-
-          <button className={css.modalCloseBtn} type="button" onClick={toggleModal}>
-        <CrossSmallIcon/>
+      <div onClick={onBackdroplOpen} className={css.modalBackdrop}>
+        <div className={css.modalContent}>
+          <button
+            className={css.modalCloseBtn}
+            type="button"
+            onClick={toggleModal}
+          >
+            <CrossSmallIcon className={css.iconClose} />
           </button>
-         {children}
+          {children}
+        </div>
       </div>
-      
-      </div>
-      </>,
+    </>,
     modalContainer
-    )
+  );
 };
 
 ModalContainer.propTypes = {
