@@ -1,5 +1,7 @@
-const NotFound = () => {
-  return <h2>NodFoundPage</h2>;
+import NotFound from '../../components/NotFound/NotFound';
+
+const NotFoundPage = () => {
+  return <NotFound />;
 };
 
-export default NotFound;
+export default NotFoundPage;
