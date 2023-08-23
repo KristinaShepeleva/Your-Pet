@@ -26,8 +26,7 @@ export const Routes = () => {
       element: <SharedLayout />,
       children: [
         { index: true, element: <MainPage /> },
-        HomeRoute,
-        LogInRoute,
+               LogInRoute,
         RegisterRoute,
         UserRoute,
         AddPetRoute,
