@@ -22,3 +22,17 @@
       margin-left: 22px;
     }
   }
+  .userData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    margin-top: 40px;
+    margin-bottom: 84px;
+    color: #FFC107;
+font-size: 16px;
+font-weight: 500;
+letter-spacing: 0.64px;
+line-height: normal;
+  }
