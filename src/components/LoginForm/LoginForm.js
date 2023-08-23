@@ -1,5 +1,9 @@
 import { Form, Formik } from 'formik';
 import { NavLink } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 import css from './LoginForm.module.css';
 import { loginSchema } from 'schemas';
@@ -10,12 +14,7 @@ import {
   EyeClosedIcon,
   EyeOpenIcon,
 } from 'helpers/icons';
-import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/authOperations';
-import { useState } from 'react';
-// import { useAuth } from 'hooks';
-// import { toast } from 'react-toastify';
-// import { toast } from 'react-toastify';
 
 const initialValues = {
   email: '',
@@ -25,32 +24,26 @@ const initialValues = {
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  // const { error } = useAuth();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   const errorStatus = error.status;
-  //   if (errorStatus === 400) {
-  //     return toast.error('eqweqweq');
-  //   }
-  //   if (errorStatus === 401) {
-  //     return toast.error('231231231');
-  //   }
-  // }, [error]);
 
   const toogleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = (value, actions) => {
-    dispatch(login(value));
-    actions.resetForm();
+  const onSubmit = value => {
+    dispatch(login(value)).then(data => {
+      const error = data.payload;
+      if (error.status === 401) {
+        return toast.error(`${error.data.message}`);
+      } else if (error.status === 400) {
+        return toast.error('Invalid Email');
+      }
+    });
   };
 
   return (
     <div className={css.container}>
       <h1 className={css.title}>Login</h1>
-      {/* {error.status === 400} */}
       <Formik
         initialValues={initialValues}
         validationSchema={loginSchema}
@@ -58,6 +51,7 @@ const LoginForm = () => {
       >
         {({ isValid, submitCount, values, errors }) => {
           const error = !isValid && submitCount > 0;
+
           return (
             <Form className={css.form}>
               <div>
@@ -117,6 +111,7 @@ const LoginForm = () => {
           );
         }}
       </Formik>
+      <ToastContainer autoClose={3000} />
     </div>
   );
 };

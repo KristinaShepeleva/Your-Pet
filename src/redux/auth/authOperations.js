@@ -13,7 +13,7 @@ const token = {
 };
 
 export const currentUser = createAsyncThunk(
-  'auth/current',
+  'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistToken = state.auth.token;
@@ -26,8 +26,9 @@ export const currentUser = createAsyncThunk(
       const { data } = axios.get('/api/auth/current');
       return data;
     } catch (e) {
-      console.log(e.response.data.message);
-      return thunkAPI.rejectWithValue(e.response);
+      const res = e.response;
+      console.log(res.data.message);
+      return thunkAPI.rejectWithValue(res);
     }
   }
 );
@@ -40,8 +41,9 @@ export const createUser = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (e) {
-      console.log(e.response.data.message);
-      return thunkAPI.rejectWithValue(e.respons);
+      const res = e.response;
+      console.log(res.data.message);
+      return thunkAPI.rejectWithValue(res);
     }
   }
 );
@@ -67,7 +69,8 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     token.unset();
     return data;
   } catch (e) {
-    console.log(e.response.data.message);
-    return thunkAPI.rejectWithValue(e.response);
+    const res = e.response;
+    console.log(res.data.message);
+    return thunkAPI.rejectWithValue(res);
   }
 });

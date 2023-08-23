@@ -1,5 +1,9 @@
 import { Form, Formik } from 'formik';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 import css from './RegisterForm.module.css';
 import { registerSchema } from 'schemas';
@@ -10,9 +14,7 @@ import {
   EyeClosedIcon,
   EyeOpenIcon,
 } from 'helpers/icons';
-import { useDispatch } from 'react-redux';
 import { createUser } from 'redux/auth/authOperations';
-import { useState } from 'react';
 
 const initialValues = {
   username: '',
@@ -35,13 +37,20 @@ const RegisterForm = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const onSubmit = async (value, actions) => {
+  const onSubmit = (value, actions) => {
     const newUser = {
       name: value.username,
       email: value.email,
       password: value.password,
     };
-    dispatch(createUser(newUser));
+    dispatch(createUser(newUser)).then(data => {
+      const error = data.payload;
+      if (error.status === 409) {
+        return toast.error('User with this email is already registered');
+      } else if (error.status === 400) {
+        return toast.error('Invalid Email');
+      }
+    });
     actions.resetForm();
   };
 
@@ -150,6 +159,7 @@ const RegisterForm = () => {
           );
         }}
       </Formik>
+      <ToastContainer autoClose={3000} />
     </div>
   );
 };
