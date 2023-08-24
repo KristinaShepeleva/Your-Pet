@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import css from './AddPetButton.module.css';
 import { PlusSmallIcon, PlusBigIcon } from '../../helpers/icons';
-import ModalContainer from 'components/ModalContainer/ModalContainer';
-import AtentionModal from 'components/AtentionModal/AtentionModal';
 import { useAuth } from 'hooks';
+import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
+import AtentionModal from 'components/Modals/AtentionModal/AtentionModal';
 
 const AddPetButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -11,10 +11,10 @@ import {
   FamileIcon,
 } from '../../helpers/icons';
 import { notices } from './test';
-import ModalPetsContainer from 'components/ModalContainer/ModalPetsContaine';
-import ModalContainer from 'components/ModalContainer/ModalContainer';
-import DeleteModal from 'components/DeleteModal/DeleteModal';
-import PetsModal from 'components/PetsModal/PetsModal';
+import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
+import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
+import ModalPetsContainer from 'components/Modals/ModalContainer/ModalPetsContaine';
+import PetsModal from 'components/Modals/PetsModal/PetsModal';
 
 const NoticesCategoriesList = () => {
   const [isPetsModalOpen, setIsPetsModalOpen] = useState(false);
