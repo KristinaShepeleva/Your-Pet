@@ -4,7 +4,7 @@
   justify-content: center;
   padding: 48px 8px;
   @media screen and (min-width: 768px) {
-    padding: 28px 8px 36px 8px;
+    padding: 28px 8px;
   }
 }
 .titleAtention {
@@ -32,6 +32,7 @@
     font-size: 20px;
     line-height: 28px; /* 140% */
     letter-spacing: 0.8px;
+    margin: 40px 0 40px 0;
   }
 }
 .btnContainer {
@@ -49,8 +50,8 @@
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.64px;
+  border: none;
   border-radius: 40px;
-  border: 2px solid var(--yellow-color);
   background-color: var(--yellow-color);
   text-align: center;
   padding: 8px 0;
@@ -75,7 +76,7 @@
   border-radius: 40px;
   border: 2px solid var(--yellow-color);
   background-color: inherit;
-  padding: 8px 0;
+  padding: 7px 0;
   width: 100%;
   @media screen and (min-width: 768px) {
     width: 142px;

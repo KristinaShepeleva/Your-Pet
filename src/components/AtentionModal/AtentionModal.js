@@ -1,6 +1,5 @@
-import React from 'react';
 import css from './AtentionModal.module.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PawprintIcon } from 'helpers/icons';
 
 const AtentionModal = () => {
@@ -14,15 +13,15 @@ const AtentionModal = () => {
         access these features.
       </p>
       <div className={css.btnContainer}>
-        <NavLink to="/login" className={css.link}>
+        <Link to="/login">
           <button type="button" className={css.btnLogIn}>
             Log IN
             <PawprintIcon className={css.linkIcon} />
           </button>
-        </NavLink>
-        <NavLink to="/register" className={css.link}>
+        </Link>
+        <Link to="/register">
           <button className={css.btnRegister}>Registration</button>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );
