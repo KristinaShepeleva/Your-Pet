@@ -1,8 +1,8 @@
 import { HeartFillIcon, HeartIcon } from 'helpers/icons';
 import css from './PetsModal.module.css';
 import { useState } from 'react';
-import ModalContainer from 'components/ModalContainer/ModalContainer';
-import ContactsModal from 'components/ContactsModal/ContactsModal';
+import ModalContainer from '../ModalContainer/ModalContainer';
+import ContactsModal from '../ContactsModal/ContactsModal';
 
 const PetsModal = ({ pet, togglePetsModal }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);

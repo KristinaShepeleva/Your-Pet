@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 
-import { CrossBigIcon } from '../../helpers/icons';
+import { CrossBigIcon } from '../../../helpers/icons';
 
-import css from './ModalPetsContaine.module.css';
+import css from './ModalContainer.module.css';
+
 const modalContainer = document.getElementById('modal-root');
 
-const ModalPetsContainer = ({ toggleModal, children }) => {
+const ModalContainer = ({ toggleModal, children }) => {
   useEffect(() => {
     const onKeyDown = event => {
       if (event.code === 'Escape') {
@@ -47,9 +48,9 @@ const ModalPetsContainer = ({ toggleModal, children }) => {
   );
 };
 
-ModalPetsContainer.propTypes = {
+ModalContainer.propTypes = {
   toggleModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-export default ModalPetsContainer;
+export default ModalContainer;
