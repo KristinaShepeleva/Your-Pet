@@ -1,10 +1,13 @@
-import { UserForm } from 'components/UserForm/UserForm';
+import Container from 'components/Container/Container';
+import { UserForm } from 'components/UserForm/Form/UserForm';
 
 const User = () => {
   return (
     <>
-      <h2>UserPage</h2>
-      <UserForm />
+      <Container>
+        <h2>UserPage</h2>
+        <UserForm />
+      </Container>
     </>
   );
 };
