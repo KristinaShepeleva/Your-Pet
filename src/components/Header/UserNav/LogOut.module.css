@@ -1,0 +1,32 @@
+.button {display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  border-radius: 40px;
+  background: var(--blue-color);
+  border: none;
+  width: 135px;
+  padding: 8px 20px;
+  margin-right: 24px;
+}
+
+@media screen and  (max-width: 767px){
+    .button {margin-top: 159px;}
+}
+  @media screen and (min-width: 768px) {
+    .button {margin-left: 345px;}
+  }
+
+
+   @media screen and  (min-width: 1280px){
+    .button {margin-left: 0;}
+}
+
+.icon {
+  stroke: var(--bg-color);
+  margin-left: 8px;
+}

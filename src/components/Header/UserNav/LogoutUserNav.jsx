@@ -4,6 +4,7 @@ import { LogoutIcon } from 'helpers/icons';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/authOperations';
+import styles from './LogOut.module.css';
 
 export const LogoutUserNav = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ export const LogoutUserNav = () => {
 
   return (
     <>
-      <button type="button" onClick={toggleLogoutModal}>
-        <LogoutIcon /> Logout
+      <button className={styles.button} type="button" onClick={toggleLogoutModal}>
+      <p>Log out</p> <LogoutIcon className={styles.icon} /> 
       </button>
       {isLogoutModal && (
         <ModalContainer toggleModal={toggleLogoutModal}>
