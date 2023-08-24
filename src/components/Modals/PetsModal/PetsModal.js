@@ -4,12 +4,11 @@ import { useState } from 'react';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import ContactsModal from '../ContactsModal/ContactsModal';
 
-const PetsModal = ({ pet, togglePetsModal }) => {
+const PetsModal = ({ pet }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const toggleModal = () => {
     setIsOpenModal(!isOpenModal);
-    togglePetsModal();
   };
 
   return (
@@ -38,10 +37,12 @@ const PetsModal = ({ pet, togglePetsModal }) => {
               <li className={css.infoItem}>{pet.location}</li>
               <li className={css.infoItem}>{pet.sex}</li>
               <li className={`${css.contacts} ${css.infoItem}`}>
-                {pet.contacts.email}
+                <a href={`mailto:${pet.contacts.email}`}>
+                  {pet.contacts.email}
+                </a>
               </li>
               <li className={`${css.contacts} ${css.infoItem}`}>
-                {pet.contacts.phone}
+                <a href={`tel:${pet.contacts.phone}`}>{pet.contacts.phone}</a>
               </li>
             </ul>
           </div>
@@ -57,11 +58,7 @@ const PetsModal = ({ pet, togglePetsModal }) => {
         <button className={css.btnContact} onClick={toggleModal}>
           Contact
         </button>
-        <button
-          type="button"
-          className={css.btnAddTo}
-          // onClick={toggleDeleteModal}
-        >
+        <button type="button" className={css.btnAddTo}>
           Add to
           {pet.favorite ? (
             <HeartFillIcon className={css.iconFill} />
@@ -72,7 +69,7 @@ const PetsModal = ({ pet, togglePetsModal }) => {
       </div>
       {isOpenModal && (
         <ModalContainer toggleModal={toggleModal}>
-          <ContactsModal />
+          <ContactsModal pet={pet} />
         </ModalContainer>
       )}
     </div>
