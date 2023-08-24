@@ -57,11 +57,18 @@
   padding: 8px 0;
   width: 100%;
   margin-bottom: 12px;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 768px) {
     margin-right: 20px;
     margin-bottom: 0;
     width: 165px;
   }
+}
+.btnLogIn:hover,
+.btnLogIn:focus {
+  box-shadow: 7px 13px 14px rgba(232, 211, 116, 0.24);
 }
 .linkIcon {
   fill: var(--bg-color);
@@ -78,7 +85,14 @@
   background-color: inherit;
   padding: 7px 0;
   width: 100%;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 768px) {
     width: 142px;
   }
+}
+.btnRegister:hover,
+.btnRegister:focus {
+  box-shadow: 7px 13px 14px rgba(232, 211, 116, 0.24);
 }
