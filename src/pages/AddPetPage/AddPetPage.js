@@ -1,5 +1,13 @@
+import AddPetPage from '../../components/AddPetForm/AddPetPage';
+import css from './AddPetPage.module.css';
+
+
 const AddPet = () => {
-  return <h2>AddPetPage</h2>;
+  return (
+    <div className={css.addPetPage}>
+      <AddPetPage />
+    </div>
+  );
 };
 
 export default AddPet;
