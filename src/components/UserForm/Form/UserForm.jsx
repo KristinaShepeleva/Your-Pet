@@ -12,6 +12,7 @@ import {  useState } from 'react';
 import { userSchema } from 'schemas';
 import { UserInput } from '../UserInput/UserInput';
 import css from './UserForm.module.css';
+import { LogoutUser } from 'components/UserForm/LogoutUser';
 
 export const UserForm = () => {
   const { user } = useAuth();
@@ -168,6 +169,7 @@ console.log(confirmAvatar);
           <CrossBigIcon className={css.icon} />
         </button>
       )}
+      <LogoutUser />
     </div>
   );
 };
