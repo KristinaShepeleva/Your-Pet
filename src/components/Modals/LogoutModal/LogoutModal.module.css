@@ -1,0 +1,68 @@
+.containet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 65px 0 48px;
+  @media screen and (min-width: 768px) {
+    padding: 76px 0;
+    align-items: center;
+  }
+}
+.title {
+  color: var(--primary-text-color);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  padding: 0 28px;
+  @media screen and (min-width: 768px) {
+    font-size: 36px;
+    letter-spacing: 1.44px;
+  }
+}
+.btnContainer {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin-top: 48px;
+  }
+}
+.btn {
+  color: var(--blue-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  border-radius: 40px;
+  border: 2px solid var(--blue-color);
+  width: 100%;
+  padding: 7px 0;
+  background-color: inherit;
+  margin: 44px 0 8px;
+  @media screen and (min-width: 768px) {
+    width: 130px;
+    margin: 0;
+  }
+}
+.btnYes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  border-radius: 40px;
+  background: var(--blue-color);
+  border: none;
+  width: 100%;
+  padding: 8px;
+  @media screen and (min-width: 768px) {
+    width: 130px;
+    margin-left: 17px;
+  }
+}
+.icon {
+  stroke: var(--bg-color);
+  margin-left: 8px;
+}
