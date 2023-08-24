@@ -9,7 +9,6 @@
   max-height: 480px;
   border-radius: 20px;
   margin: auto;
-  margin-top: 40px;
 
   @media screen and (min-width: 768px) {
     max-width: 608px;
