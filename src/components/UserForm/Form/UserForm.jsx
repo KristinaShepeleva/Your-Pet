@@ -3,12 +3,11 @@ import {
   CameraIcon,
   CheckIcon,
   CrossBigIcon,
-  CrossSmallIcon,
   EditIcon,
   PhotoDefault,
 } from 'helpers/icons';
 import { useAuth } from 'hooks';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { userSchema } from 'schemas';
 import { UserInput } from '../UserInput/UserInput';
 import css from './UserForm.module.css';
@@ -19,7 +18,7 @@ export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
-console.log(confirmAvatar);
+  console.log(confirmAvatar);
   const formik = useFormik({
     initialValues: {
       avatarURL: '',
@@ -45,45 +44,55 @@ console.log(confirmAvatar);
   });
   return (
     <div className={css.wrapper}>
-      <form onSubmit={formik.handleSubmit}>
-        <div className={css.boxAvatar}>
+      <form  onSubmit={formik.handleSubmit}>
+        
+        <div className={isActive ? css.boxAvatar : `${css.boxAvatar} ${css.formActiv}`}>
           {avatarURL ? (
-            <img className={css.imgAvatar} src={URL.createObjectURL(avatarURL)} alt="avatar" />
+            <img
+              className={css.imgAvatar}
+              src={URL.createObjectURL(avatarURL)}
+              alt="avatar"
+            />
           ) : user?.avatarURL ? (
             <img className={css.imgAvatar} src={user.avatarURL} alt="avatar" />
           ) : (
-            <div>
-              <PhotoDefault />
-            </div>
+            <PhotoDefault />
           )}
         </div>
-       {!isActive && confirmAvatar && ( <div >
-          <button
-            type="button"
-            style={{ color: 'blue' }}
-            onClick={() => setConfirmAvatar(false)}
-          >
-            {' '}
-            <CheckIcon />
-          </button>
-          <span>Confirm</span>
-          <button
-            type="button"
-        
-            onClick={() => {
-              setConfirmAvatar(false);
-              formik.setFieldValue('avatarURL', '');
-              setAvatarURL(null);
-            
-            }}
-          >
-            {' '}
-            <CrossSmallIcon />
-          </button>
-        </div>)}
+        {!isActive && confirmAvatar && (
+          <div className={css.confirmBtBox}>
+            <button
+              className={css.confirmBt}
+              type="button"
+              onClick={() => setConfirmAvatar(false)}
+            >
+              {' '}
+              <CheckIcon style={{ stroke:"#54ADFF",}}/>
+            </button>
+            <span className={css.textConfirm}>Confirm</span>
+            <button className={css.confirmBt}
+              type="button"
+              onClick={() => {
+                setConfirmAvatar(false);
+                formik.setFieldValue('avatarURL', '');
+                setAvatarURL(null);
+              }}
+            >
+              {' '}
+              <CrossBigIcon style={{ stroke:"#F43F5E",}} />
+            </button>
+          </div>
+        )}
         <label className={css.labelInputFale}>
-        {!isActive && !confirmAvatar && ( <button className={css.editAvatarBt} type='button' onClick={() => setConfirmAvatar(true)}>
-            <CameraIcon className={css.editAvatarIcon} /> Edit photo</button>)}
+          {!isActive && !confirmAvatar && (
+            <button
+              className={css.editAvatarBt}
+              type="button"
+              onClick={() => setConfirmAvatar(true)}
+            >
+              <CameraIcon className={css.editAvatarIcon} /> Edit photo
+            </button>
+          )}
           <input
             className={css.inputFile}
             name="avatarURL"
@@ -97,79 +106,82 @@ console.log(confirmAvatar);
           />
         </label>
         <div className={css.formGroup}>
-        <UserInput
-          text="Name"
-          name="name"
-          type="text"
-          isActive={isActive}
-          onChange={formik.handleChange}
-          value={formik.values.name}
-          error={formik.touched.name && formik.errors.name}
-          helperText={formik.errors.name}
-        />
-        <UserInput
-          text="Email"
-          name="email"
-          type="email"
-          isActive={isActive}
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          error={formik.touched.email && formik.errors.email}
-          helperText={formik.errors.email}
-        />
-        <UserInput
-          text="Birthday"
-          name="birthday"
-          type="date"
-          isActive={isActive}
-          onChange={formik.handleChange}
-          value={formik.values.birthday}
-          error={formik.touched.birthday && formik.errors.birthday}
-          helperText={formik.errors.birthday}
-        />
-        <UserInput
-          text="Phone"
-          name="phone"
-          type="tel"
-          isActive={isActive}
-          onChange={formik.handleChange}
-          value={formik.values.phone}
-          error={formik.touched.phone && formik.errors.phone}
-          helperText={formik.errors.phone}
-        />
-        <UserInput
-          text="City"
-          name="city"
-          type="text"
-          isActive={isActive}
-          onChange={formik.handleChange}
-          value={formik.values.city}
-          error={formik.touched.city && formik.errors.city}
-          helperText={formik.errors.city}
-        />
-</div>
-        {!isActive && <button type="submit">Save</button>}
-  
+          <UserInput
+            text="Name"
+            name="name"
+            type="text"
+            isActive={isActive}
+            onChange={formik.handleChange}
+            value={formik.values.name}
+            error={formik.touched.name && formik.errors.name}
+            helperText={formik.errors.name}
+          />
+          <UserInput
+            text="Email"
+            name="email"
+            type="email"
+            isActive={isActive}
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            error={formik.touched.email && formik.errors.email}
+            helperText={formik.errors.email}
+          />
+          <UserInput
+            text="Birthday"
+            name="birthday"
+            type="date"
+            isActive={isActive}
+            onChange={formik.handleChange}
+            value={formik.values.birthday}
+            error={formik.touched.birthday && formik.errors.birthday}
+            helperText={formik.errors.birthday}
+          />
+          <UserInput
+            text="Phone"
+            name="phone"
+            type="tel"
+            isActive={isActive}
+            onChange={formik.handleChange}
+            value={formik.values.phone}
+            error={formik.touched.phone && formik.errors.phone}
+            helperText={formik.errors.phone}
+          />
+          <UserInput
+            text="City"
+            name="city"
+            type="text"
+            isActive={isActive}
+            onChange={formik.handleChange}
+            value={formik.values.city}
+            error={formik.touched.city && formik.errors.city}
+            helperText={formik.errors.city}
+          />
+        </div>
+        {!isActive && (<div className={css.saveBtBox}><button className={css.saveBt} type="submit">Save</button></div>)}
       </form>
       {isActive ? (
-        <button className={css.EditCloseBt}type="button" onClick={() => setIsActive(!isActive)}>
+        <button
+          className={css.EditCloseBt}
+          type="button"
+          onClick={() => setIsActive(!isActive)}
+        >
           <EditIcon />
         </button>
       ) : (
-        <button className={css.EditCloseBt}
+        <button
+          className={css.EditCloseBt}
           type="reset"
           onClick={() => {
             formik.resetForm();
             setIsActive(!isActive);
             setAvatarURL(null);
-            setConfirmAvatar(false)
+            setConfirmAvatar(false);
           }}
         >
-         
-          <CrossBigIcon className={css.icon} />
+          <CrossBigIcon className={css.iconPhoto} />
         </button>
       )}
-      <LogoutUser />
+      {isActive && (<LogoutUser />)}
     </div>
   );
 };
