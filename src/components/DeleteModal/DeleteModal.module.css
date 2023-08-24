@@ -1,0 +1,91 @@
+.delete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 0;
+  @media screen and (min-width: 768px) {
+    padding: 28px 0;
+  }
+}
+.titleDelete {
+  color: var(--primary-text-color);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  @media screen and (min-width: 768px) {
+    color: #000;
+    font-size: 28px;
+    letter-spacing: -0.28px;
+  }
+}
+.content {
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.14px;
+  padding: 0 20px;
+  margin: 14px 0 44px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    letter-spacing: -0.16px;
+    padding: 0 80px;
+    margin: 40px 0 48px 0;
+  }
+}
+
+.span {
+  text-align: center;
+  font-weight: 700;
+  margin-left: 6px;
+}
+.btnContainer {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+.btnCancel {
+  color: var(--blue-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  width: 100%;
+  border-radius: 40px;
+  border: 2px solid var(--blue-color);
+  background-color: inherit;
+  padding: 6px 0;
+  margin-bottom: 8px;
+  @media screen and (min-width: 768px) {
+    margin-right: 17px;
+    margin-bottom: 0;
+    width: 129px;
+  }
+}
+
+.btnYes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  width: 100%;
+  border-radius: 40px;
+  background-color: var(--blue-color);
+  border: none;
+  padding: 8px 0;
+  @media screen and (min-width: 768px) {
+    width: 129px;
+  }
+}
+.icon {
+  stroke: var(--bg-color);
+  margin-left: 8px;
+}
