@@ -52,6 +52,7 @@
   --greencolor: #00C3AD;
   --red-color: #F43F5E;
   --bg-color: #FEF9F9;
+  --bg-modal-color: #FFFFFF;
 
   /* linear-gradient */
   --blue-linear-gradient: linear-gradient(315deg, #419EF1 0%, #9BD0FF 100%);
