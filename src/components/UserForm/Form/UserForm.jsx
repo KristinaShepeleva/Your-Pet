@@ -10,7 +10,7 @@ import {
 import { useAuth } from 'hooks';
 import {  useState } from 'react';
 import { userSchema } from 'schemas';
-import { UserInput } from './UserInput';
+import { UserInput } from '../UserInput/UserInput';
 import css from './UserForm.module.css';
 
 export const UserForm = () => {
@@ -43,20 +43,20 @@ console.log(confirmAvatar);
     validationSchema: userSchema,
   });
   return (
-    <>
+    <div className={css.wrapper}>
       <form onSubmit={formik.handleSubmit}>
-        <div>
+        <div className={css.boxAvatar}>
           {avatarURL ? (
-            <img src={URL.createObjectURL(avatarURL)} alt="avatar" />
+            <img className={css.imgAvatar} src={URL.createObjectURL(avatarURL)} alt="avatar" />
           ) : user?.avatarURL ? (
-            <img src={user.avatarURL} alt="avatar" />
+            <img className={css.imgAvatar} src={user.avatarURL} alt="avatar" />
           ) : (
             <div>
               <PhotoDefault />
             </div>
           )}
         </div>
-       {!isActive && confirmAvatar && ( <div>
+       {!isActive && confirmAvatar && ( <div >
           <button
             type="button"
             style={{ color: 'blue' }}
@@ -65,7 +65,7 @@ console.log(confirmAvatar);
             {' '}
             <CheckIcon />
           </button>
-          <p>Confirm</p>
+          <span>Confirm</span>
           <button
             type="button"
         
@@ -80,11 +80,9 @@ console.log(confirmAvatar);
             <CrossSmallIcon />
           </button>
         </div>)}
-        <label>
-        {!isActive && !confirmAvatar && ( <div onClick={() => setConfirmAvatar(true)}>
-                    <CameraIcon /> <p>Edit photo</p>
-          </div>)}
-
+        <label className={css.labelInputFale}>
+        {!isActive && !confirmAvatar && ( <button className={css.editAvatarBt} type='button' onClick={() => setConfirmAvatar(true)}>
+            <CameraIcon className={css.editAvatarIcon} /> Edit photo</button>)}
           <input
             className={css.inputFile}
             name="avatarURL"
@@ -97,6 +95,7 @@ console.log(confirmAvatar);
             accept="image/*,.png,.jpg,.gif,.web"
           />
         </label>
+        <div className={css.formGroup}>
         <UserInput
           text="Name"
           name="name"
@@ -147,16 +146,16 @@ console.log(confirmAvatar);
           error={formik.touched.city && formik.errors.city}
           helperText={formik.errors.city}
         />
-
+</div>
         {!isActive && <button type="submit">Save</button>}
   
       </form>
       {isActive ? (
-        <button type="button" onClick={() => setIsActive(!isActive)}>
+        <button className={css.EditCloseBt}type="button" onClick={() => setIsActive(!isActive)}>
           <EditIcon />
         </button>
       ) : (
-        <button
+        <button className={css.EditCloseBt}
           type="reset"
           onClick={() => {
             formik.resetForm();
@@ -165,10 +164,10 @@ console.log(confirmAvatar);
             setConfirmAvatar(false)
           }}
         >
-          {' '}
-          <CrossBigIcon />
+         
+          <CrossBigIcon className={css.icon} />
         </button>
       )}
-    </>
+    </div>
   );
 };
