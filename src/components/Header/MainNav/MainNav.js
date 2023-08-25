@@ -13,7 +13,7 @@ export default function Nav({ onClick }) {
             </NavLink>
           </li>
           <li className={css.item} onClick={onClick}>
-            <NavLink className={css.link} to="/notices">
+            <NavLink className={css.link} to="/notices/sell">
               Find pet
             </NavLink>
           </li>

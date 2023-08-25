@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import css from './AddPetButton.module.css';
-import { PlusSmallIcon, PlusBigIcon } from '../../helpers/icons';
+import { PlusSmallIcon, PlusBigIcon } from '../../../helpers/icons';
 import { useAuth } from 'hooks';
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
 import AtentionModal from 'components/Modals/AtentionModal/AtentionModal';

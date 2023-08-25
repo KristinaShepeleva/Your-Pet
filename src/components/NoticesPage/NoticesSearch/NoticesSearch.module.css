@@ -1,0 +1,80 @@
+.container {
+  margin-top: 44px;
+  @media screen and (min-width: 768px) {
+    margin-top: 80px;
+  }
+}
+.title {
+  text-align: center;
+  font-family: 'Manrope-Bold';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 24px;
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+}
+
+.form {
+  position: relative;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    width: 608px;
+    margin: 0 auto 40px;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 14px;
+  height: 44px;
+  border-radius: 24px;
+  border: none;
+  outline: none;
+  box-shadow: var(--shadows-default);
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.input::placeholder {
+  color: var(--text-color-grey);
+  font-size: 14px;
+  font-family: 'Inter-Regular';
+  font-weight: 400;
+  letter-spacing: 0.56px;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.searchBtn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background-color: inherit;
+  border: none;
+  width: 24px;
+  height: 24px;
+  @media screen and (min-width: 768px) {
+    right: 20px;
+  }
+  /* margin-right: 10px; */
+}
+
+.clearBtn {
+  position: absolute;
+  top: 10px;
+  right: 38px;
+  background-color: transparent;
+  border: none;
+  @media screen and (min-width: 768px) {
+    right: 46px;
+  }
+}
+.icon {
+  stroke: var(--yellow-color);
+}

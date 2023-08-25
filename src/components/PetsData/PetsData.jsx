@@ -1,6 +1,6 @@
-import AddPetButton from 'components/AddPetButton/AddPetButton';
 import { PetsList } from 'components/PetsList/PetsList';
 import css from './PetsData.module.css';
+import AddPetButton from 'components/NoticesPage/AddPetButton/AddPetButton';
 
 export const PetsData = () => {
   return (
