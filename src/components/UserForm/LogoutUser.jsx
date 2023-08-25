@@ -7,7 +7,7 @@ export const LogoutUser = () => {
     const dispatch = useDispatch();
     return (
       <button className={css.bt}type="button" onClick={() => dispatch(logout())}>
-        <LogoutIcon /> Logout
+        <LogoutIcon style={{stroke: "#54ADFF"}}/> Logout
       </button>
     )
 }
