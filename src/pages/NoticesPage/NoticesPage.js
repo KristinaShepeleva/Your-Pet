@@ -1,46 +1,38 @@
 import { Link, Outlet } from 'react-router-dom';
 
 import css from './NoticesPage.module.css';
-import { useState } from 'react';
 
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/authSelectors';
-
-import NoticesSearch from '../../components/NoticesSearch/NoticesSearch';
-import AddPetButton from '../../components/AddPetButton/AddPetButton';
-import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
 import Container from 'components/Container/Container';
-import NoticesCategories from '../../components/NoticesCategories/NoticesCategories';
-import NoticesCategoriesList from '../../components/NoticesCategoriesList/NoticesCategoriesList';
+import { useAuth } from 'hooks';
+import NoticesSearch from 'components/NoticesPage/NoticesSearch/NoticesSearch';
+import NoticesCategoriesNav from 'components/NoticesPage/NoticesCategoriesNav/NoticesCategoriesNav';
+import NoticesFilters from 'components/NoticesPage/NoticesFilters/NoticesFilters';
+import AddPetButton from 'components/NoticesPage/AddPetButton/AddPetButton';
+import NoticesCategoriesList from 'components/NoticesPage/NoticesCategoriesList/NoticesCategoriesList';
 
 const Notices = () => {
-  const [query, setQuery] = useState('');
-
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  const onFormSubmit = query => {
-    setQuery(query);
-  };
-
-  console.log(query);
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
       <Container>
-        <h2 className={css.title}>Find your favorite pet</h2>
-        <NoticesSearch onFormSubmit={onFormSubmit}></NoticesSearch>
+        {/* ///////////////////////////// NoticesSearch*/}
+        <NoticesSearch />
         <div className={css.wpapperFilter}>
-          <NoticesCategories isUser={isLoggedIn} />
+          {/* //////////////////////////////////// NoticesCategoriesNav*/}
+          <NoticesCategoriesNav />
           <div className={css.filterWrap}>
-            <NoticesFilters></NoticesFilters>
+            {/* ///////////////////////////////////// NoticesFilters */}
+            <NoticesFilters />
             <Link to={isLoggedIn && '/add-pet'}>
+              {/* /////////////////////////////// AddPetPage*/}
               <AddPetButton />
             </Link>
           </div>
         </div>
-        <div className={css.listCardContainer}>
-          <NoticesCategoriesList />
-        </div>
+        {/* ///////////////////////////////// NoticesCategoriesList*/}
+        <NoticesCategoriesList />
+
         <Outlet />
       </Container>
     </>

@@ -63,14 +63,14 @@ export const NoticesRoute = {
   path: '/notices',
   element: <NoticesPage />,
   children: [
-    { path: 'sell', element: <TemporaryComponent title="SELL" /> },
-    { path: 'lost-found', element: <TemporaryComponent title="lost-found" /> },
+    { path: 'sell', element: <TemporaryComponent /> },
+    { path: 'lost-found', element: <TemporaryComponent /> },
     {
       path: 'in-good-hands',
-      element: <TemporaryComponent title="in-good-hands" />,
+      element: <TemporaryComponent />,
     },
-    { path: 'favorite', element: <TemporaryComponent title="favorite" /> },
-    { path: 'own', element: <TemporaryComponent title="own" /> },
+    { path: 'favorite', element: <TemporaryComponent /> },
+    { path: 'own', element: <TemporaryComponent /> },
   ],
 };
 export const NewsRoute = {

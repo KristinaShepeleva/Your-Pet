@@ -1,47 +1,23 @@
-.title {
-    font-family: 'Manrope-Bold';
-    font-size: 28px;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 40px;
-}
-
-
 .wpapperFilter {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  @media screen and (min-width: 1280px) {
+    align-items: center;
+  }
 }
 
 .wpapperCategoryList {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filterWrap {
+  @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
     gap: 12px;
-}
-
-.listCardContainer {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: space-between;
-    height: 100%;
-    margin-bottom: 40px;
-}
-
-@media screen and (min-width: 768px) {
-    .title {
-        font-size: 48px;
-    }
-        .filterWrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-    
-}
-
-@media screen and (min-width: 1280px) {
-.wpapperFilter {
-        align-items: center;
-    }
+  }
 }

@@ -1,0 +1,140 @@
+.listItem {
+  border-radius: 0px 0px 40px 40px;
+  box-shadow: var(--shadows-default);
+}
+
+.imgContainer {
+  position: relative;
+  height: 288px;
+}
+
+.img {
+  height: 288px;
+  object-fit: cover;
+}
+
+.category {
+  position: absolute;
+  top: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+  max-height: 32px;
+  padding: 11px 17px;
+  font-size: 14px;
+  color: var(--primary-text-color);
+  background-color: var(--blue-light-color);
+  border-radius: 0px 16px 16px 0px;
+}
+
+.favoritBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue-light-color);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+}
+
+.fillIcon {
+  stroke: #54adff;
+}
+
+.fillIcon:hover,
+.fillIcon:focus {
+  fill: #54adff;
+}
+.fullIcon {
+  fill: #54adff;
+}
+.deleteBtn {
+  position: absolute;
+  top: 68px;
+  right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue-light-color);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+}
+
+.infoWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Manrope-SemiBold';
+  font-size: 12px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--blue-light-color);
+  margin-left: 8px;
+  stroke: var(--blue-color);
+}
+
+.info:hover {
+  color: var(--bg-color);
+  stroke: var(--bg-color);
+}
+
+.info:hover {
+  background-color: var(--blue-color);
+}
+
+.buttonCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0px 0px 40px 40px;
+  padding: 0 16px;
+}
+
+.titleCard {
+  width: 100%;
+  font-family: 'Manrope-Bold';
+  text-align: left;
+  font-size: 24px;
+  padding: 20px 0;
+}
+
+.button {
+  display: flex;
+  width: 100%;
+  padding: 8px 28px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 2px solid var(--blue-color);
+  background-color: transparent;
+  margin: 0 16px 24px;
+  font-size: 16px;
+  color: var(--blue-color);
+}
