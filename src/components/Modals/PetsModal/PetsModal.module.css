@@ -101,7 +101,14 @@
 }
 .contacts {
   color: var(--yellow-color);
+  border-radius: 40px;
+  transition: text-decoration-line 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.contacts:hover,
+.contacts:focus {
   text-decoration-line: underline;
+  box-shadow: 7px 13px 14px rgba(232, 211, 116, 0.24);
 }
 .comments {
   color: #000;
@@ -138,11 +145,18 @@
   background-color: inherit;
   padding: 7px 0;
   margin-bottom: 8px;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 768px) {
     margin-right: 17px;
     margin-bottom: 0;
     width: 129px;
   }
+}
+.btnContact:hover,
+.btnContact:focus {
+  box-shadow: var(--shadows-hover);
 }
 .btnAddTo {
   display: flex;
@@ -158,9 +172,16 @@
   background-color: var(--blue-color);
   border: none;
   padding: 8px 0;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 768px) {
     width: 129px;
   }
+}
+.btnAddTo:hover,
+.btnAddTo:focus {
+  box-shadow: var(--shadows-hover);
 }
 .iconFill {
   fill: var(--bg-color);

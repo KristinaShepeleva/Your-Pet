@@ -1,6 +1,8 @@
 .registerPage {
-  padding-bottom: 50px;
+  padding: 50px 0 50px;
   background-size: cover;
+
+  height: 650px;
   background-image: url('../../images/bg-mob-1x.png');
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -8,7 +10,7 @@
     background-image: url('../../images/bg-mob-2x.png');
   }
   @media screen and (min-width: 481px) {
-    background-size: contain;
+    height: 800px;
     padding-bottom: 80px;
 
     background-image: url('../../images/bg-tbl-1x.png');
@@ -20,6 +22,8 @@
     }
   }
   @media screen and (min-width: 769px) {
+    height: 900px;
+
     background-image: url('../../images/bg-dsc-1x.png');
 
     @media (min-device-pixel-ratio: 2),

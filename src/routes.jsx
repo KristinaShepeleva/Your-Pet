@@ -1,4 +1,3 @@
-
 import PrivateRoute from 'components/PrivateRoute';
 import RegistretedRoute from 'components/RegistretedRoute';
 
@@ -43,7 +42,6 @@ export const Routes = () => {
 export const LogInRoute = {
   path: '/login',
   element: <RegistretedRoute component={LogInPage} redirectTo="/user" />,
-
 };
 
 export const RegisterRoute = {
@@ -58,7 +56,6 @@ export const UserRoute = {
 
 export const AddPetRoute = {
   path: '/add-pet',
-  // element: <PrivateRoute component={AddPetPage} />,
   element: <AddPetPage />,
 };
 

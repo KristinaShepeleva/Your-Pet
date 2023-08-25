@@ -4,7 +4,7 @@ export const handelPending = state => {
 export const handelRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = {
-    message: payload.data.message,
+    message: payload.message,
     status: payload.status,
   };
 };

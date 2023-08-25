@@ -28,7 +28,10 @@ export const currentUser = createAsyncThunk(
     } catch (e) {
       const res = e.response;
       console.log(res.data.message);
-      return thunkAPI.rejectWithValue(res);
+      return thunkAPI.rejectWithValue({
+        message: res.data.message,
+        status: res.status,
+      });
     }
   }
 );
@@ -43,7 +46,10 @@ export const createUser = createAsyncThunk(
     } catch (e) {
       const res = e.response;
       console.log(res.data.message);
-      return thunkAPI.rejectWithValue(res);
+      return thunkAPI.rejectWithValue({
+        message: res.data.message,
+        status: res.status,
+      });
     }
   }
 );
@@ -58,7 +64,10 @@ export const login = createAsyncThunk(
     } catch (e) {
       const res = e.response;
       console.log(res.data.message);
-      return thunkAPI.rejectWithValue(res);
+      return thunkAPI.rejectWithValue({
+        message: res.data.message,
+        status: res.status,
+      });
     }
   }
 );
@@ -71,7 +80,10 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   } catch (e) {
     const res = e.response;
     console.log(res.data.message);
-    return thunkAPI.rejectWithValue(res);
+    return thunkAPI.rejectWithValue({
+      message: res.data.message,
+      status: res.status,
+    });
   }
 });
 // cat5@cat.com
