@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import {
-  // CameraIcon,
+  CameraIcon,
   CheckIcon,
   CrossBigIcon,
   EditIcon,
@@ -23,7 +23,7 @@ export const UserForm = () => {
 const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
-      // avatarURL: '',
+      avatarURL: '',
       name: user.name,
       email: user.email,
       birthday: '2018-04-28',
@@ -87,7 +87,7 @@ const dispatch = useDispatch()
             </button>
           </div>
         )}
-        {/* <label className={css.labelInputFale}>
+        <label className={css.labelInputFale}>
           {!isActive && !confirmAvatar && (
             <button
               className={css.editAvatarBt}
@@ -108,7 +108,7 @@ const dispatch = useDispatch()
             }}
             accept="image/*,.png,.jpg,.gif,.web"
           />
-        </label> */}
+        </label>
         <div className={css.formGroup}>
           <UserInput
             text="Name"

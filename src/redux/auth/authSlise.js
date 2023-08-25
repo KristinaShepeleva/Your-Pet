@@ -50,7 +50,6 @@ const authSlice = createSlice({
               break;
           }
         })
-        .addCase(updateUser.rejected, (state, action) => {})
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
             case createUser:
