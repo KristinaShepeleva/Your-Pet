@@ -1,0 +1,324 @@
+.WrapperForm {
+  display: flex;
+  margin-top: 16px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .WrapperForm {
+    flex-direction: row;
+    gap: 45px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .WrapperForm {
+    gap: 96px;
+  }
+}
+
+.SexText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  color: #111111;
+}
+
+@media screen and (min-width: 768px) {
+  .SexText {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.SexOption {
+  display: flex;
+  gap: 23px;
+  margin-top: 8px;
+}
+
+.LabelInput {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.WrapperFormSellInputs {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.SexElement {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  width: 92px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #888888;
+}
+
+.WrapperLabelInput {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+.LabelStep {
+  color: #111111;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+@media screen and (min-width: 768px) {
+  .LabelStep {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.Input {
+  border-radius: 40px;
+  box-shadow: none;
+  outline: none;
+  font-size: 14px;
+  padding: 9px 16px;
+  border: 1px solid #54adff;
+}
+
+@media screen and (min-width: 768px) {
+  .Input {
+    max-width: 395px;
+    font-size: 16px;
+    padding: 15px;
+  }
+}
+
+.WrapperPoto {
+  display: flex;
+  gap: 14px;
+  margin-top: 16px;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .WrapperPoto {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .WrapperPoto {
+    gap: 33px;
+  }
+}
+
+.WrapperAddPhoto {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+  gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .WrapperAddPhoto {
+    flex-direction: column;
+    margin-top: 24px;
+  }
+}
+
+.LabelAddText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  color: #111111;
+  width: 81px;
+}
+
+@media screen and (min-width: 768px) {
+  .LabelAddText {
+    font-size: 20px;
+    line-height: 26px;
+    width: 140px;
+  }
+}
+
+.LabelAdd {
+  width: 112px;
+  height: 112px;
+  background-color: #cce4fb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .LabelAdd {
+    width: 182px;
+    height: 182px;
+    border-radius: 40px;
+  }
+}
+
+.PreviewPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.IconAdd {
+  width: 30px;
+  margin: 40px auto;
+}
+
+@media screen and (min-width: 768px) {
+  .IconAdd {
+    width: 48px;
+    margin: 65px auto;
+  }
+}
+
+.WrapperTextareaOne {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.WrapperTextarea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -15px;
+}
+
+@media screen and (min-width: 767px) {
+  .WrapperTextarea {
+    margin-bottom: 53px;
+    margin-top: -12px;
+    margin-left: -8px;
+  }
+}
+
+.TextareaText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  color: #111111;
+}
+
+@media screen and (min-width: 768px) {
+  .TextareaText {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.TextareaAddOne,
+.TextareaAdd {
+  height: 83px;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #54adff;
+  border-radius: 20px;
+  resize: none;
+  outline: none;
+  padding: 12px 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .TextareaAddOne,
+  .TextareaAdd {
+    width: 393px;
+    font-size: 16px;
+    padding: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .TextareaAdd {
+    width: 395px;
+    height: 192px;
+  }
+}
+
+.ButtonNext {
+  background-color: #54adff;
+  border-radius: 40px;
+  padding: 8px 86px;
+  color: #fef9f9;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 767px) {
+  .ButtonNext {
+    margin-top: -5px;
+    margin-left: 68px;
+  }
+}
+
+.ButtonEl {
+  display: flex;
+  gap: 11.43px;
+}
+
+.LinkAddPet {
+  margin-left: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.LinkAddPetCancel {
+  border-radius: 40px;
+  color: #54adff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  margin-left: -5px;
+
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+}
+
+@media screen and (min-width: 767px) {
+  .LinkAddPetCancel {
+    margin-top: 2px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .LinkAddPet {
+    flex-direction: column-reverse;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .LinkAddPetCancel {
+    padding: 8px 86px;
+  }
+
+  .LabelAddText {
+    margin-top: 34px;
+  }
+
+  .WrapperFormSellInputs {
+    margin-top: 16px;
+  }
+}
