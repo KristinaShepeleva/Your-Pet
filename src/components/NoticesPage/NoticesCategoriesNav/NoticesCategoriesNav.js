@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import css from './NoticesCategoriesNav.module.css';
-import { useAuth } from 'hooks';
+// import { useAuth } from 'hooks';
 
 const NoticesCategoriesNav = () => {
   // const { isLoggedIn } = useAuth();
