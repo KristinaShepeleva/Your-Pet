@@ -7,8 +7,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 export const LogoutUser = () => {
-  const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
+     
   const [isLogoutModal, setIsLogoutModal] = useState(false);
   const toggleLogoutModal = () => {
     setIsLogoutModal(!isLogoutModal);
@@ -20,8 +21,7 @@ export const LogoutUser = () => {
   return (
     <>
       <button className={css.bt} type="button" onClick={toggleLogoutModal}>
-        <LogoutIcon /> Logout
-      </button>
+        <LogoutIcon style={{stroke: "#54ADFF"}}/> Logout</button>
       {isLogoutModal && (
         <ModalContainer toggleModal={toggleLogoutModal}>
           <LogoutModal

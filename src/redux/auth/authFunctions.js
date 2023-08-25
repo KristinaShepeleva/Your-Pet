@@ -52,3 +52,13 @@ export const logoutReject = state => {
   state.token = null;
   state.error = { message: '', status: null };
 };
+
+export const updateUserFulfilled = (state, { payload }) => {
+  // console.log(payload);
+  state.isLoading = false;
+  state.isLoggedIn = true;
+  state.isRefreshing = true;
+  state.user = payload;
+  state.error = { message: '', status: null };
+  state.isNewUser = false;
+};

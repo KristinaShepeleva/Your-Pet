@@ -1,5 +1,11 @@
 const { createSlice } = require('@reduxjs/toolkit');
-const { createUser, login, logout, currentUser } = require('./authOperations');
+const {
+  createUser,
+  login,
+  logout,
+  currentUser,
+  updateUser,
+} = require('./authOperations');
 const {
   handelPending,
   handelRejected,
@@ -8,6 +14,7 @@ const {
   registerFulfilled,
   loginFulfilled,
   logoutReject,
+  updateUserFulfilled,
 } = require('./authFunctions');
 
 const initialState = {
@@ -20,7 +27,7 @@ const initialState = {
   isNewUser: false,
 };
 
-const arrayThunks = [createUser, login, logout, currentUser];
+const arrayThunks = [createUser, login, logout, currentUser, updateUser];
 
 const authSlice = createSlice({
   name: 'auth',
@@ -56,6 +63,9 @@ const authSlice = createSlice({
               break;
             case currentUser:
               currentFulfilled(state, action);
+              break;
+            case updateUser:
+              updateUserFulfilled(state, action);
               break;
             default:
               break;

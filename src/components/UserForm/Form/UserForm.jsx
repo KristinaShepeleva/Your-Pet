@@ -12,13 +12,15 @@ import { userSchema } from 'schemas';
 import { UserInput } from '../UserInput/UserInput';
 import css from './UserForm.module.css';
 import { LogoutUser } from 'components/UserForm/LogoutUser';
+import { useDispatch } from 'react-redux';
+import { updateUser } from 'redux/auth/authOperations';
 
 export const UserForm = () => {
   const { user } = useAuth();
   const [avatarURL, setAvatarURL] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
-  console.log(confirmAvatar);
+const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       avatarURL: '',
@@ -38,6 +40,8 @@ export const UserForm = () => {
       formData.append('city', values.city);
       setIsActive(!isActive);
       setConfirmAvatar(false);
+      console.log(values);
+      dispatch(updateUser(values))
       actions.resetForm();
     },
     validationSchema: userSchema,

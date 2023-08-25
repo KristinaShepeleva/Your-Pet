@@ -86,3 +86,21 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     });
   }
 });
+// cat5@cat.com
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (credentials, thunkAPI) => {
+    try {
+      console.log(credentials, 'credentials');
+      const { data } = await axios.patch('api/update', credentials);
+      // token.set(data.token);
+      console.log(data, 'data');
+      return data;
+    } catch (e) {
+      console.log('e', e);
+      const res = e.response;
+      console.log('res.data.message', res.data.message);
+      return thunkAPI.rejectWithValue('////');
+    }
+  }
+);
