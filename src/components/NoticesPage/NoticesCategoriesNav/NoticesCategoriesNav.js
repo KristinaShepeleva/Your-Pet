@@ -1,10 +1,22 @@
 import { NavLink } from 'react-router-dom';
-import css from './NoticesCategoriesNav.module.css';
-// import { useAuth } from 'hooks';
+import { useDispatch } from 'react-redux';
 
-const NoticesCategoriesNav = () => {
-  // const { isLoggedIn } = useAuth();
-  const isLoggedIn = true;
+import css from './NoticesCategoriesNav.module.css';
+import { favoriteList, myNotices } from 'redux/notices/operation';
+import { useAuth } from 'hooks';
+
+const NoticesCategoriesNav = ({ setCategory }) => {
+  const dispatch = useDispatch();
+
+  const handelFavorite = () => {
+    dispatch(favoriteList());
+  };
+
+  const handelOwn = () => {
+    dispatch(myNotices());
+  };
+  const { isLoggedIn } = useAuth();
+
   return (
     <ul className={css.wpapperCategoryList}>
       <li>
@@ -13,6 +25,7 @@ const NoticesCategoriesNav = () => {
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
+          onClick={() => setCategory('sell')}
         >
           sell
         </NavLink>
@@ -23,6 +36,7 @@ const NoticesCategoriesNav = () => {
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
+          onClick={() => setCategory('lost found')}
         >
           lost/found
         </NavLink>
@@ -33,6 +47,7 @@ const NoticesCategoriesNav = () => {
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
+          onClick={() => setCategory('in good hands')}
         >
           in good hands
         </NavLink>
@@ -46,6 +61,7 @@ const NoticesCategoriesNav = () => {
               className={({ isActive }) =>
                 isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
               }
+              onClick={handelFavorite}
             >
               favorite
             </NavLink>
@@ -56,6 +72,7 @@ const NoticesCategoriesNav = () => {
               className={({ isActive }) =>
                 isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
               }
+              onClick={handelOwn}
             >
               my ads
             </NavLink>

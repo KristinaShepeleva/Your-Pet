@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 
 import { authReducer } from './auth/authSlise';
+import { noticesReduder } from './notices/slice';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -30,6 +31,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
+    notices: noticesReduder,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
