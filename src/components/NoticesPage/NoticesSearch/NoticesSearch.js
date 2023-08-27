@@ -1,11 +1,12 @@
-import css from './NoticesSearch.module.css';
-
-import { SearchIcon, CrossBigIcon } from '../../../helpers/icons';
 import { Field, Form, Formik } from 'formik';
 
-const NoticesSearch = () => {
+import css from './NoticesSearch.module.css';
+import { SearchIcon, CrossBigIcon } from '../../../helpers/icons';
+
+const NoticesSearch = ({ setSearch }) => {
   const onSubmit = value => {
-    console.log(value);
+    const { search } = value;
+    setSearch(search);
   };
 
   return (
@@ -32,7 +33,10 @@ const NoticesSearch = () => {
                 <button
                   className={css.clearBtn}
                   type="button"
-                  onClick={() => resetForm()}
+                  onClick={() => {
+                    // setSearch('');
+                    resetForm();
+                  }}
                 >
                   <CrossBigIcon className={css.icon} />
                 </button>

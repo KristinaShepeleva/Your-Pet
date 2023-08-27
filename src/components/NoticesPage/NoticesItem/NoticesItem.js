@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+
 import css from './NoticesItem.module.css';
 import {
   DeleteIcon,
@@ -7,25 +10,52 @@ import {
   MaleIcon,
   FamileIcon,
 } from '../../../helpers/icons';
+
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
-import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
 import ModalPetsContainer from 'components/Modals/ModalContainer/ModalPetsContaine';
 import PetsModal from 'components/Modals/PetsModal/PetsModal';
-import { useAuth } from 'hooks';
+import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
+import AtentionModal from 'components/Modals/AtentionModal/AtentionModal';
 
-const NoticesItem = ({
-  toggleDeleteModal,
-  togglePetsModal,
-  pet,
-  petInfo,
-  isPetsModalOpen,
-  isDeleteModalOpen,
-}) => {
+import { useAuth, useNotices } from 'hooks';
+import { getOneNotices, updateFavorite } from 'redux/notices/operation';
+
+const NoticesItem = ({ pet }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPetsModalOpen, setIsPetsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
+  const { noticeById } = useNotices();
 
-  const handelFavorite = () => {
-    console.log('clik to heart');
+  // delete notice /////////////
+  const toggleDeleteModal = () => {
+    setIsDeleteModalOpen(!isDeleteModalOpen);
   };
+
+  // ///////////////////
+  // btn favorite /////////////
+  const handelFavorite = pet => {
+    const id = pet._id;
+    if (!isLoggedIn) {
+      return setIsModalOpen(!isModalOpen);
+    }
+    dispatch(updateFavorite(id));
+  };
+  //////////////////////
+
+  // button learnMore ///////////
+  const togglePetsModal = () => {
+    setIsPetsModalOpen(!isPetsModalOpen);
+  };
+
+  const handelLearnMore = pet => {
+    const id = pet._id;
+    togglePetsModal();
+    dispatch(getOneNotices(id));
+  };
+  // //////////////////////
 
   return (
     <li className={css.listItem}>
@@ -35,7 +65,7 @@ const NoticesItem = ({
         <button
           className={css.favoritBtn}
           type="button"
-          onClick={handelFavorite}
+          onClick={() => handelFavorite(pet)}
         >
           <HeartFillIcon
             className={pet.favorite ? css.fillIcon : css.fullIcon}
@@ -44,7 +74,7 @@ const NoticesItem = ({
         {isLoggedIn && (
           <button
             className={css.deleteBtn}
-            onClick={() => toggleDeleteModal(pet)}
+            onClick={toggleDeleteModal}
             type="button"
           >
             <DeleteIcon style={{ stroke: 'var(--blue-color)' }} />
@@ -72,20 +102,25 @@ const NoticesItem = ({
           className={css.button}
           type="button"
           text="Learn more"
-          onClick={() => togglePetsModal(pet)}
+          onClick={() => handelLearnMore(pet)}
         >
           Learn more
         </button>
       </div>
       {isDeleteModalOpen && (
         <ModalContainer toggleModal={toggleDeleteModal}>
-          <DeleteModal pet={petInfo} toggleDeleteModal={toggleDeleteModal} />
+          <DeleteModal pet={pet} toggleDeleteModal={toggleDeleteModal} />
         </ModalContainer>
       )}
       {isPetsModalOpen && (
         <ModalPetsContainer toggleModal={togglePetsModal}>
-          <PetsModal pet={petInfo} togglePetsModal={togglePetsModal} />
+          <PetsModal pet={noticeById} togglePetsModal={togglePetsModal} />
         </ModalPetsContainer>
+      )}
+      {isModalOpen && (
+        <ModalContainer toggleModal={() => setIsModalOpen(!isModalOpen)}>
+          <AtentionModal />
+        </ModalContainer>
       )}
     </li>
   );

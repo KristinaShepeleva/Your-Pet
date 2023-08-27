@@ -1,12 +1,15 @@
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import css from './DeleteModal.module.css';
 import { DeleteIcon } from 'helpers/icons';
+import { deletePet } from 'redux/notices/operation';
 
 const DeleteModal = ({ pet, toggleDeleteModal }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const deletePet = () => {
-    // dispatch(deletePet(pet._id));
+  const deleteNotice = () => {
+    const id = pet._id;
+    dispatch(deletePet(id));
     toggleDeleteModal();
   };
 
@@ -28,7 +31,7 @@ const DeleteModal = ({ pet, toggleDeleteModal }) => {
         >
           Cancel
         </button>
-        <button className={css.btnYes} onClick={deletePet}>
+        <button className={css.btnYes} onClick={deleteNotice}>
           Yes
           <DeleteIcon className={css.icon} />
         </button>
