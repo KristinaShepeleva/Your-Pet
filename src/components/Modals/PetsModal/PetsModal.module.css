@@ -179,6 +179,12 @@
     width: 129px;
   }
 }
+
+.btnRemove {
+  @media screen and (min-width: 768px) {
+    width: 150px;
+  }
+}
 .btnAddTo:hover,
 .btnAddTo:focus {
   box-shadow: var(--shadows-hover);
@@ -187,6 +193,7 @@
   fill: var(--bg-color);
   margin-left: 8px;
 }
+
 .icon {
   stroke: var(--bg-color);
   margin-left: 8px;

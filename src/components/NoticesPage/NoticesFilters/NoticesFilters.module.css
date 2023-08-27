@@ -15,8 +15,13 @@
     background: inherit;
     border: 2px solid var(--blue-color);
   }
-}
 
+  transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.filterBtn:hover,
+.filterBtn:focus {
+  box-shadow: var(--shadows-hover);
+}
 .filtertext {
   display: none;
   color: var(--blue-color);

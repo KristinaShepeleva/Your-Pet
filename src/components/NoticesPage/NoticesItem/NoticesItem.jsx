@@ -26,8 +26,15 @@ const NoticesItem = ({ pet }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const dispatch = useDispatch();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, userId } = useAuth();
   const { noticeById } = useNotices();
+
+  function getCurrentAge(date) {
+    return (
+      ((new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000)) |
+      0
+    );
+  }
 
   // delete notice /////////////
   const toggleDeleteModal = () => {
@@ -43,6 +50,8 @@ const NoticesItem = ({ pet }) => {
     }
     dispatch(updateFavorite(id));
   };
+
+  const fav = pet.favorite.some(id => id === userId);
   //////////////////////
 
   // button learnMore ///////////
@@ -65,19 +74,19 @@ const NoticesItem = ({ pet }) => {
         <button
           className={css.favoritBtn}
           type="button"
-          onClick={() => handelFavorite(pet)}
+          onClick={() => {
+            handelFavorite(pet);
+          }}
         >
-          <HeartFillIcon
-            className={pet.favorite ? css.fillIcon : css.fullIcon}
-          />
+          <HeartFillIcon className={fav ? css.fullIcon : css.fillIcon} />
         </button>
-        {isLoggedIn && (
+        {pet.owner === userId && (
           <button
             className={css.deleteBtn}
             onClick={toggleDeleteModal}
             type="button"
           >
-            <DeleteIcon style={{ stroke: 'var(--blue-color)' }} />
+            <DeleteIcon className={css.deleteIcon} />
           </button>
         )}
         <ul className={css.infoWrapper}>
@@ -87,7 +96,7 @@ const NoticesItem = ({ pet }) => {
           </li>
           <li className={css.info}>
             <ClockIcon />
-            <p>{pet.age}</p>
+            <p>{getCurrentAge(pet.birthday)}</p>
           </li>
           <li className={css.info}>
             {pet.sex === 'male' ? <MaleIcon /> : <FamileIcon />}
@@ -99,7 +108,7 @@ const NoticesItem = ({ pet }) => {
       <div className={css.buttonCard}>
         <h3 className={css.titleCard}>{pet.title}</h3>
         <button
-          className={css.button}
+          className={css.buttonLearnMore}
           type="button"
           text="Learn more"
           onClick={() => handelLearnMore(pet)}
@@ -114,7 +123,11 @@ const NoticesItem = ({ pet }) => {
       )}
       {isPetsModalOpen && (
         <ModalPetsContainer toggleModal={togglePetsModal}>
-          <PetsModal pet={noticeById} togglePetsModal={togglePetsModal} />
+          <PetsModal
+            pet={noticeById}
+            togglePetsModal={togglePetsModal}
+            fav={fav}
+          />
         </ModalPetsContainer>
       )}
       {isModalOpen && (
