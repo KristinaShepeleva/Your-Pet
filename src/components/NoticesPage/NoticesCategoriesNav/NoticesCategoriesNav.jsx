@@ -20,7 +20,7 @@ const NoticesCategoriesNav = () => {
       </li>
       <li>
         <NavLink
-          to="lost found"
+          to="lost-found"
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
@@ -30,7 +30,7 @@ const NoticesCategoriesNav = () => {
       </li>
       <li>
         <NavLink
-          to="in good hands"
+          to="in-good-hands"
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
