@@ -1,5 +1,6 @@
 .listItem {
   height: 456px;
+
   border-radius: 0px 0px 40px 40px;
   box-shadow: var(--shadows-default);
 }
@@ -11,6 +12,7 @@
 
 .img {
   height: 288px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -46,19 +48,18 @@
   border-radius: 50%;
 }
 
-.fillIcon {
-  stroke: #54adff;
+.icon {
+  stroke: var(--blue-color);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.fillIcon:hover,
-.fillIcon:focus {
-  fill: #54adff;
+.icon:hover,
+.icon:focus {
+  fill: var(--blue-color);
+}
+.iconFill {
+  fill: var(--blue-color);
 }
 
-.fullIcon {
-  fill: #54adff;
-}
 .deleteBtn {
   position: absolute;
   top: 68px;

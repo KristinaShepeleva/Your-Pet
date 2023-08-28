@@ -2,14 +2,36 @@ import { useDispatch } from 'react-redux';
 
 import css from './DeleteModal.module.css';
 import { DeleteIcon } from 'helpers/icons';
-import { deletePet } from 'redux/notices/operation';
+import {
+  allNoties,
+  deletePet,
+  favoriteList,
+  myNotices,
+} from 'redux/notices/operation';
+import { useLocation } from 'react-router-dom';
 
 const DeleteModal = ({ pet, toggleDeleteModal }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const pathSegments = location.pathname
+    .split('/')
+    .filter(segment => segment !== '');
+  const category = pathSegments[1];
 
-  const deleteNotice = () => {
+  const deleteNotice = async () => {
     const id = pet._id;
-    dispatch(deletePet(id));
+    await dispatch(deletePet(id));
+    if (category === 'favorite') {
+      await dispatch(favoriteList());
+    } else if (category === 'own') {
+      await dispatch(myNotices());
+    } else {
+      const request = {
+        category,
+        search: '',
+      };
+      await dispatch(allNoties(request));
+    }
     toggleDeleteModal();
   };
 

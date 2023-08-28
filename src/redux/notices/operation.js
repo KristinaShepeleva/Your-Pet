@@ -108,12 +108,12 @@ export const updateFavorite = createAsyncThunk(
 //   sex: 'male',
 //   birthday: '13.09.2021',
 //   type: 'red cat',
-//   // imgURL:
-//   //   'https://pixabay.com/photos/dalmatian-dog-lick-tongue-pet-1020790/',
+//   imgUrl:
+//     'https://pixabay.com/photos/dalmatian-dog-lick-tongue-pet-1020790/',
 //   location: 'Kyiv',
 //   price: '10$',
 //   comments: 'Found cat',
-//   category: 'lost found',// sell // in good hands
+//   category: 'lost-found', // sell // in-good-hands
 // };
 export const addNotice = createAsyncThunk(
   'notices/addNotice',

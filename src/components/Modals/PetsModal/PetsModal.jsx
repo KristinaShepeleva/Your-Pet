@@ -1,12 +1,14 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { HeartFillIcon, HeartIcon } from 'helpers/icons';
 import css from './PetsModal.module.css';
-import { useState } from 'react';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import ContactsModal from '../ContactsModal/ContactsModal';
 import AtentionModal from '../AtentionModal/AtentionModal';
 import { useAuth } from 'hooks';
-import { useDispatch } from 'react-redux';
-import { updateFavorite } from 'redux/notices/operation';
+import { favoriteList, updateFavorite } from 'redux/notices/operation';
+import { useLocation } from 'react-router-dom';
 
 const PetsModal = ({ pet, fav }) => {
   const [isContactsModal, setIsContactsModal] = useState(false);
@@ -14,17 +16,25 @@ const PetsModal = ({ pet, fav }) => {
 
   const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const pathSegments = location.pathname
+    .split('/')
+    .filter(segment => segment !== '');
+  const category = pathSegments[1];
 
   const toggleContactsModal = () => {
     setIsContactsModal(!isContactsModal);
   };
 
-  const handelFavorite = pet => {
+  const handelFavorite = async pet => {
     const id = pet._id;
     if (!isLoggedIn) {
       return setIsAtentionModal(!isAtentionModal);
     }
-    dispatch(updateFavorite(id));
+    await dispatch(updateFavorite(id));
+    if (category === 'favorite') {
+      await dispatch(favoriteList());
+    }
   };
 
   return (
