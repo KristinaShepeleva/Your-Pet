@@ -39,6 +39,7 @@ export const logoutFulfilled = state => {
 export const currentFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.userId = payload._id;
+  state.user = payload;
 };
 export const logoutReject = state => {
   state.isLoading = false;
