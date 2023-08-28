@@ -34,17 +34,27 @@ export const UserForm = () => {
       city: 'Kyiv',
     },
     onSubmit: (values, actions) => {
-      const formData = new FormData();
-      formData.append('avatarURL', values.avatarURL);
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('birthday', values.birthday);
-      formData.append('phone', values.phone);
-      formData.append('city', values.city);
+      const avatarURL = new FormData();
+      avatarURL.append('avatarURL', values.avatarURL);
+     
+      const formData = {
+        name: values.name,
+        email: values.email,
+        birthday: values.birthday,
+        phone: values.phone,
+          city: values.city,
+
+      }
+       console.log(formData);
+      // formData.append('name', values.name);
+      // formData.append('email', values.email);
+      // formData.append('birthday', values.birthday);
+      // formData.append('phone', values.phone);
+      // formData.append('city', values.city);
       setIsActive(!isActive);
       setConfirmAvatar(false);
       console.log(values);
-      dispatch(updateUser(values));
+      dispatch(updateUser(formData));
       actions.resetForm();
     },
     validationSchema: userSchema,

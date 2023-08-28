@@ -92,7 +92,7 @@ export const updateUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       console.log(credentials, 'credentials');
-      const { data } = await axios.patch('api/update', credentials);
+      const { data } = await axios.patch('api/user/update', credentials);
       // token.set(data.token);
       console.log(data, 'data');
       return data;

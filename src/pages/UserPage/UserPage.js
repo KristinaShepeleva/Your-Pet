@@ -3,7 +3,6 @@ import CongratsModal from 'components/Modals/CongratsModal/CongratsModal';
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
 import { PetsData } from 'components/PetsData/PetsData';
 import { UserData } from 'components/UserData/UserData';
-// import { UserForm } from 'components/UserForm/Form/UserForm';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectNewUser } from 'redux/auth/authSelectors';
@@ -14,7 +13,6 @@ const User = () => {
 
   const [isShowModal, setIsShowModal] = useState(true);
   const [newUser, setNewUser] = useState(isNewUser);
-  console.log(isNewUser, 'new');
 
   const toggleModal = () => {
     setNewUser(!newUser);
