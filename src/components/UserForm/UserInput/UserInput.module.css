@@ -3,8 +3,18 @@
     display: flex;
     align-items: center;
     width: 100%;
+    @media screen and (min-width: 768px) {
+            width: 355px;
+        }
 }
+/* 
+ @media screen and (min-width: 768px) {
+   width: 703px;
+ }
 
+ @media screen and (min-width: 1280px) {
+   width: 821px;
+ } */
 .labelText {
     display: inline-block;
     width:92px;
@@ -12,6 +22,11 @@
     font-family: 'Manrope-SemiBold';
     font-weight: 600;
     letter-spacing: 0.56px;
+    @media screen and (min-width: 768px) {
+            width: 84px;
+            font-size: 18px;
+            letter-spacing: 0.72px;
+        }
 }
 
 .input {
@@ -27,12 +42,26 @@
     font-weight: 400;
     letter-spacing: 0.48px;
     font-size: 12px;
+
+   
+     @media screen and (min-width: 768px) {
+       width: 255px;
+    margin-left: 16px;
+
+    font-size: 16px;
+    letter-spacing: 0.64px;
+     }
 }
 
 .errorText {
-    margin-left: 12px;
+    position: relative;
+    margin-left: 86px;
   color: var(--red-color);  
   font-size: 11px;
   font-family: 'Manrope-Regular';
   font-weight: 400;
+
+ @media screen and (min-width: 768px) {
+   margin-left: 112px;
+ }
 }

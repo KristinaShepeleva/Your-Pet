@@ -1,7 +1,6 @@
 import { useFormik } from 'formik';
 import {
   CameraIcon,
-  CheckIcon,
   CrossBigIcon,
   EditIcon,
   PhotoDefault,
@@ -11,16 +10,20 @@ import { useState } from 'react';
 import { userSchema } from 'schemas';
 import { UserInput } from '../UserInput/UserInput';
 import css from './UserForm.module.css';
-import { LogoutUser } from 'components/UserForm/LogoutUser';
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/auth/authOperations';
+import { AvatarConfirmButtons } from '../AvatarConfirmButtons/AvatarConfirmButtons';
+import { LogoutUser } from '../LogoutUser/LogoutUser';
+import { FormActivationToggleButton } from '../FormActivationToggleButton/FormActivationToggleButton';
 
 export const UserForm = () => {
   const { user } = useAuth();
   const [avatarURL, setAvatarURL] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
-const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       avatarURL: '',
@@ -41,16 +44,34 @@ const dispatch = useDispatch()
       setIsActive(!isActive);
       setConfirmAvatar(false);
       console.log(values);
-      dispatch(updateUser(values))
+      dispatch(updateUser(values));
       actions.resetForm();
     },
     validationSchema: userSchema,
   });
+
+  const rejectAvatar = () => {
+    setConfirmAvatar(false);
+    formik.setFieldValue('avatarURL', '');
+    setAvatarURL(null);
+  };
+
+  const disableForm = () => {
+    formik.resetForm();
+    setIsActive(!isActive);
+    setAvatarURL(null);
+    setConfirmAvatar(false);
+  };
+
   return (
     <div className={css.wrapper}>
-      <form  onSubmit={formik.handleSubmit}>
-        
-        <div className={isActive ? css.boxAvatar : `${css.boxAvatar} ${css.formActiv}`}>
+      <form className={css.form} onSubmit={formik.handleSubmit}>
+        <div className={css.avatarGroup}>
+        <div
+          className={
+            isActive ? css.boxAvatar : `${css.boxAvatar} ${css.formActive}`
+          }
+        >
           {avatarURL ? (
             <img
               className={css.imgAvatar}
@@ -63,29 +84,12 @@ const dispatch = useDispatch()
             <PhotoDefault />
           )}
         </div>
+
         {!isActive && confirmAvatar && (
-          <div className={css.confirmBtBox}>
-            <button
-              className={css.confirmBt}
-              type="button"
-              onClick={() => setConfirmAvatar(false)}
-            >
-              {' '}
-              <CheckIcon style={{ stroke:"#54ADFF",}}/>
-            </button>
-            <span className={css.textConfirm}>Confirm</span>
-            <button className={css.confirmBt}
-              type="button"
-              onClick={() => {
-                setConfirmAvatar(false);
-                formik.setFieldValue('avatarURL', '');
-                setAvatarURL(null);
-              }}
-            >
-              {' '}
-              <CrossBigIcon style={{ stroke:"#F43F5E",}} />
-            </button>
-          </div>
+          <AvatarConfirmButtons
+            acceptAvatar={() => setConfirmAvatar(false)}
+            rejectAvatar={rejectAvatar}
+          />
         )}
         <label className={css.labelInputFale}>
           {!isActive && !confirmAvatar && (
@@ -109,6 +113,8 @@ const dispatch = useDispatch()
             accept="image/*,.png,.jpg,.gif,.web"
           />
         </label>
+        </div>
+        <div className={css.box}>
         <div className={css.formGroup}>
           <UserInput
             text="Name"
@@ -161,31 +167,23 @@ const dispatch = useDispatch()
             helperText={formik.errors.city}
           />
         </div>
-        {!isActive && (<div className={css.saveBtBox}><button className={css.saveBt} type="submit">Save</button></div>)}
+        {!isActive && (
+          <div className={css.saveBtBox}>
+            <button className={css.saveBt} type="submit">
+              Save
+            </button>
+          </div>
+          )}
+          </div>
       </form>
-      {isActive ? (
-        <button
-          className={css.EditCloseBt}
-          type="button"
-          onClick={() => setIsActive(!isActive)}
-        >
-          <EditIcon />
-        </button>
+
+        {isActive ? (
+        <FormActivationToggleButton iconComponent={EditIcon} type="reset" toggle={() => setIsActive(!isActive)} />
       ) : (
-        <button
-          className={css.EditCloseBt}
-          type="reset"
-          onClick={() => {
-            formik.resetForm();
-            setIsActive(!isActive);
-            setAvatarURL(null);
-            setConfirmAvatar(false);
-          }}
-        >
-          <CrossBigIcon className={css.iconPhoto} />
-        </button>
+          <FormActivationToggleButton iconComponent={CrossBigIcon}type="button" toggle={disableForm} />
       )}
-      {isActive && (<LogoutUser />)}
+    
+      {isActive && <LogoutUser />}
     </div>
   );
 };

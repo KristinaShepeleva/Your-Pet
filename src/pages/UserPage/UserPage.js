@@ -26,7 +26,6 @@ const User = () => {
       <Container>
         <div className={css.box}>
           <UserData />
-
           <PetsData />
         </div>
       </Container>
