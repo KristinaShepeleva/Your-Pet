@@ -8,7 +8,7 @@ import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { updateFavorite } from 'redux/notices/operation';
 
-const PetsModal = ({ pet }) => {
+const PetsModal = ({ pet, fav }) => {
   const [isContactsModal, setIsContactsModal] = useState(false);
   const [isAtentionModal, setIsAtentionModal] = useState(false);
 
@@ -19,11 +19,12 @@ const PetsModal = ({ pet }) => {
     setIsContactsModal(!isContactsModal);
   };
 
-  const handelFavorite = () => {
+  const handelFavorite = pet => {
+    const id = pet._id;
     if (!isLoggedIn) {
       return setIsAtentionModal(!isAtentionModal);
     }
-    dispatch(updateFavorite());
+    dispatch(updateFavorite(id));
   };
 
   return (
@@ -80,14 +81,19 @@ const PetsModal = ({ pet }) => {
           </button>
           <button
             type="button"
-            className={css.btnAddTo}
-            onClick={handelFavorite}
+            className={fav ? `${css.btnAddTo} ${css.btnRemove}` : css.btnAddTo}
+            onClick={() => handelFavorite(pet)}
           >
-            Add to
-            {pet.favorite ? (
-              <HeartFillIcon className={css.iconFill} />
+            {fav ? (
+              <>
+                <span>Remove to</span>
+                <HeartFillIcon className={css.iconFill} />
+              </>
             ) : (
-              <HeartIcon className={css.icon} />
+              <>
+                <span>Add to </span>
+                <HeartIcon className={css.icon} />
+              </>
             )}
           </button>
         </div>

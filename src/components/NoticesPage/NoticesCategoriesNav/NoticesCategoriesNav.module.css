@@ -21,10 +21,21 @@
 
   border-radius: 40px;
   background-color: var(--blue-light-color);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.categoryBtn:hover,
+.categoryBtn:focus {
+  color: var(--bg-color);
+  background-color: var(--blue-color);
+  box-shadow: var(--shadows-hover);
 }
 .active {
   color: var(--bg-color);
   background-color: var(--blue-color);
+  box-shadow: var(--shadows-hover);
 }
 
 @media screen and (min-width: 768px) {

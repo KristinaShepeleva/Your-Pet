@@ -4,6 +4,7 @@ import { useNotices } from 'hooks';
 
 const NoticesCategoriesList = () => {
   const { notices } = useNotices();
+
   // console.log(notices);
   return (
     <div className={css.listCardContainer}>

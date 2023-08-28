@@ -34,14 +34,11 @@ export const logoutFulfilled = state => {
   state.user = {};
   state.token = null;
   state.error = { message: '', status: null };
+  state.userId = '';
 };
 export const currentFulfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.isLoggedIn = true;
-  state.isRefreshing = true;
-  state.user = payload;
-  state.error = { message: '', status: null };
-  state.isNewUser = false;
+  state.userId = payload._id;
 };
 export const logoutReject = state => {
   state.isLoading = false;

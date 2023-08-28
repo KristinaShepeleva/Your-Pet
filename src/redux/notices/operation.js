@@ -50,7 +50,6 @@ export const favoriteList = createAsyncThunk(
       const { data } = await axios.get(
         '/api/notices/favorites?limit=12&page=1'
       );
-      console.log(data);
       return data;
     } catch (e) {
       const res = e.response;
@@ -86,10 +85,9 @@ export const updateFavorite = createAsyncThunk(
   'notices/updateFavorite',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(
+      const { data } = await axios.patch(
         `/api/notices/${credentials}/favorites`
       );
-      console.log(data);
       return data;
     } catch (e) {
       const res = e.response;

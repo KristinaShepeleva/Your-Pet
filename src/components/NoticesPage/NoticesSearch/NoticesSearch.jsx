@@ -21,6 +21,7 @@ const NoticesSearch = ({ setSearch }) => {
           return (
             <Form className={css.form}>
               <Field
+                autoComplete="off"
                 type="text"
                 name="search"
                 placeholder="Search"
@@ -34,7 +35,7 @@ const NoticesSearch = ({ setSearch }) => {
                   className={css.clearBtn}
                   type="button"
                   onClick={() => {
-                    // setSearch('');
+                    setSearch('');
                     resetForm();
                   }}
                 >
