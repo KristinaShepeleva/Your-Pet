@@ -20,10 +20,10 @@ const {
 } = require('./functions');
 
 const initialState = {
+  isLoading: false,
   notices: [],
   oneNotice: {},
   error: { message: '', status: null },
-  isLoading: false,
 };
 
 const arrayThunks = [

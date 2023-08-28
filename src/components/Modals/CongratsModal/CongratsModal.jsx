@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { PawprintIcon } from 'helpers/icons';
 import css from './CongratsModal.module.css';
 
@@ -12,6 +14,10 @@ const CongratsModal = ({ toggleModal }) => {
       </button>
     </div>
   );
+};
+
+CongratsModal.propTypes = {
+  toggleModal: PropTypes.func,
 };
 
 export default CongratsModal;

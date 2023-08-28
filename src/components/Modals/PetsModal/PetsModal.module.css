@@ -50,6 +50,10 @@
     left: 0;
   }
 }
+.price {
+  top: 66px;
+  padding: 11px 17px;
+}
 .title {
   color: #000;
   font-size: 24px;

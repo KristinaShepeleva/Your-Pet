@@ -1,4 +1,5 @@
 import { Field, Form, Formik } from 'formik';
+import PropTypes from 'prop-types';
 
 import css from './NoticesSearch.module.css';
 import { SearchIcon, CrossBigIcon } from '../../../helpers/icons';
@@ -49,5 +50,7 @@ const NoticesSearch = ({ setSearch }) => {
     </div>
   );
 };
-
+NoticesSearch.propTypes = {
+  setSearch: PropTypes.func.isRequired,
+};
 export default NoticesSearch;

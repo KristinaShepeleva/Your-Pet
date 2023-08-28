@@ -32,7 +32,9 @@
   background-color: var(--blue-light-color);
   border-radius: 0px 16px 16px 0px;
 }
-
+.price {
+  top: 66px;
+}
 .favoritBtn {
   position: absolute;
   top: 12px;
