@@ -3,14 +3,15 @@ import CongratsModal from 'components/Modals/CongratsModal/CongratsModal';
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
 import { PetsData } from 'components/PetsData/PetsData';
 import { UserData } from 'components/UserData/UserData';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectNewUser } from 'redux/auth/authSelectors';
 import css from './UserPage.module.css';
+import { getCurrent } from 'redux/auth/authOperations';
 
 const User = () => {
   const isNewUser = useSelector(selectNewUser);
-
+  const dispatch = useDispatch();
   const [isShowModal, setIsShowModal] = useState(true);
   const [newUser, setNewUser] = useState(isNewUser);
 
@@ -18,7 +19,10 @@ const User = () => {
     setNewUser(!newUser);
     setIsShowModal(!isShowModal);
   };
-
+  useEffect(() => {
+    dispatch(getCurrent());
+    console.log('це я');
+  }, [dispatch]);
   return (
     <>
       <Container>

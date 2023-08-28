@@ -94,10 +94,10 @@ export const updateUser = createAsyncThunk(
       console.log(credentials, 'credentials');
       const { data } = await axios.patch('api/user/update', credentials);
       // token.set(data.token);
-      console.log(data, 'data');
+      // console.log(data, 'data');
       return data;
     } catch (e) {
-      console.log('e', e);
+      // console.log('e', e);
       const res = e.response;
       console.log('res.data.message', res.data.message);
       return thunkAPI.rejectWithValue('////');
@@ -112,7 +112,7 @@ export const getCurrent = createAsyncThunk(
       return data;
     } catch (e) {
       const res = e.response;
-      console.log(res.data.message);
+      // console.log(res.data.message);
       return thunkAPI.rejectWithValue(res.status);
     }
   }

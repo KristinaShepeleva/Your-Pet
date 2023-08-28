@@ -22,17 +22,25 @@ export const UserForm = () => {
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
 
+  
+  // let date = new Date(user.birthday); 
+//   console.log(date);
+//   console.log(user.birthday);
+//   console.log(user.name);
+// let formattedDate = date.toISOString().split("T")[0]  
+//  console.log(formattedDate);
   const dispatch = useDispatch();
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      avatarURL: '',
+      avatarURL: user.avatarURL,
       name: user.name,
       email: user.email,
-      birthday: '2018-04-28',
-      phone: '+3809745353530',
-      city: 'Kyiv',
-    },
+      // birthday: formattedDate ? formattedDate : '',
+      phone: user.phone,
+      city: user.city,
+  },
     onSubmit: (values, actions) => {
       const avatarURL = new FormData();
       avatarURL.append('avatarURL', values.avatarURL);
