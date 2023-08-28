@@ -14,11 +14,7 @@ export const handelFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = { message: '', status: null };
 };
-// export const selfFulffiled = (state, { payload }) => {
-//   state.notices = payload;
-//   state.isLoading = false;
-//   state.error = { message: '', status: null };
-// };
+
 export const getByIdFulfilled = (state, { payload }) => {
   state.oneNotice = payload;
   state.isLoading = false;
@@ -34,6 +30,14 @@ export const addNoticeFulfilled = (state, { payload }) => {
 export const deleteFulfilled = (state, { payload }) => {
   console.log(payload);
 };
+
 export const updateFulfilled = (state, { payload }) => {
   console.log(payload);
+  state.isLoading = false;
+  const noticeIndex = state.notices.findIndex(
+    notice => notice._id === payload._id
+  );
+  if (noticeIndex !== -1) {
+    state.notices[noticeIndex] = payload;
+  }
 };

@@ -9,6 +9,7 @@ import {
   ClockIcon,
   MaleIcon,
   FamileIcon,
+  HeartIcon,
 } from '../../../helpers/icons';
 
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
@@ -18,7 +19,12 @@ import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
 import AtentionModal from 'components/Modals/AtentionModal/AtentionModal';
 
 import { useAuth, useNotices } from 'hooks';
-import { getOneNotices, updateFavorite } from 'redux/notices/operation';
+import {
+  favoriteList,
+  getOneNotices,
+  updateFavorite,
+} from 'redux/notices/operation';
+import { useLocation } from 'react-router-dom';
 
 const NoticesItem = ({ pet }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +34,12 @@ const NoticesItem = ({ pet }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, userId } = useAuth();
   const { noticeById } = useNotices();
+
+  const location = useLocation();
+  const pathSegments = location.pathname
+    .split('/')
+    .filter(segment => segment !== '');
+  const category = pathSegments[1];
 
   function getCurrentAge(date) {
     return (
@@ -43,12 +55,15 @@ const NoticesItem = ({ pet }) => {
 
   // ///////////////////
   // btn favorite /////////////
-  const handelFavorite = pet => {
+  const handelFavorite = async pet => {
     const id = pet._id;
     if (!isLoggedIn) {
       return setIsModalOpen(!isModalOpen);
     }
-    dispatch(updateFavorite(id));
+    await dispatch(updateFavorite(id));
+    if (category === 'favorite') {
+      await dispatch(favoriteList());
+    }
   };
 
   const fav = pet.favorite.some(id => id === userId);
@@ -78,7 +93,11 @@ const NoticesItem = ({ pet }) => {
             handelFavorite(pet);
           }}
         >
-          <HeartFillIcon className={fav ? css.fullIcon : css.fillIcon} />
+          {fav ? (
+            <HeartFillIcon className={css.iconFill} />
+          ) : (
+            <HeartIcon className={css.icon} />
+          )}
         </button>
         {pet.owner === userId && (
           <button
