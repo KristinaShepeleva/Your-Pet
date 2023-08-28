@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 4px;
+  margin-top: 24px;
   gap: 12px;
   margin-left: 2px;
 
@@ -11,4 +13,13 @@
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.64px;
+
+  @media screen and (min-width: 768px) {
+      margin-top: 14px;
+      margin-bottom: 3px;
+    }
+         @media screen and (min-width: 1280px) {
+           margin-top: 22px;
+           margin-bottom: 0;
+         }
 }
