@@ -9,6 +9,15 @@
 }
 .loader {
   position: absolute;
-  right: 45.2%;
   bottom: 40%;
+  right: 26%;
+  @media screen and (min-width: 480px) {
+    right: 33%;
+  }
+  @media screen and (min-width: 768px) {
+    right: 40%;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 44.5%;
+  }
 }
