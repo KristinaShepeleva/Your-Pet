@@ -59,12 +59,18 @@ function AddPetPage() {
   };
 
   const getStepTitle = () => {
+    const titleOptions = {
+      'your-pet': 'Add pet',
+      sell: 'Add pet for sell',
+      'lost-found': 'Add lost pet',
+      'in-good-hands': 'Add pet in good hands',
+    };
+
     if (state.step === 1) {
       return 'Add pet';
     } else {
-      return state.selectedOption
-        ? `Add pet ${state.selectedOption}`
-        : 'Text';
+      const selectedTitle = titleOptions[state.selectedOption] || 'Text';
+      return selectedTitle;
     }
   };
 
