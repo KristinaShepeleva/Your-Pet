@@ -1,6 +1,10 @@
 export const formattedDates = date => {
-  if (date === null) {
-    return '';
+  try {
+    if (date === null) {
+      return '';
+    }
+    return new Date(date).toISOString().split('T')[0];
+  } catch (e) {
+    console.log(e);
   }
-  return new Date(date).toISOString().split('T')[0];
 };

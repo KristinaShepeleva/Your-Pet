@@ -1,14 +1,14 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://yourpet-app-backend.onrender.com';
+import instance from '../instance';
+// axios.defaults.baseURL = 'https://yourpet-app-backend.onrender.com';
 
 // список всіх нотісів
 export const allNoties = createAsyncThunk(
   'notie/getAll',
   async ({ category, search }, thunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await instance.get(
         `/api/notices?category=${category}&search=${search}&limit=12&page=1`
       );
       // console.log(data);
@@ -29,7 +29,7 @@ export const getOneNotices = createAsyncThunk(
   'notices/getOne',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/${credentials}`);
+      const { data } = await instance.get(`/api/notices/${credentials}`);
       return data;
     } catch (e) {
       const res = e.response;
@@ -41,13 +41,12 @@ export const getOneNotices = createAsyncThunk(
     }
   }
 );
-
 // список улюблених
 export const favoriteList = createAsyncThunk(
   'notices/favList',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await instance.get(
         '/api/notices/favorites?limit=12&page=1'
       );
       return data;
@@ -67,7 +66,7 @@ export const myNotices = createAsyncThunk(
   'notices/myNotices',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/notices/self?limit=12&page=1');
+      const { data } = await instance.get('/api/notices/self?limit=12&page=1');
       return data;
     } catch (e) {
       const res = e.response;
@@ -85,7 +84,7 @@ export const updateFavorite = createAsyncThunk(
   'notices/updateFavorite',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.patch(
+      const { data } = await instance.patch(
         `/api/notices/${credentials}/favorites`
       );
       return data;
@@ -119,7 +118,7 @@ export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('api/notices', credentials);
+      const { data } = await instance.post('/api/notices', credentials);
       return data;
     } catch (e) {
       const res = e.response;
@@ -137,7 +136,7 @@ export const deletePet = createAsyncThunk(
   async (credentials, thunkAPI) => {
     console.log(credentials);
     try {
-      const { data } = await axios.delete(`/api/notices/${credentials}`);
+      const { data } = await instance.delete(`/api/notices/${credentials}`);
       return data;
     } catch (e) {
       const res = e.response;

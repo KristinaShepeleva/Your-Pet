@@ -9,14 +9,14 @@ const NoticesCategoriesList = () => {
   // console.log(notices);
   return (
     <div className={css.listCardContainer}>
-      {notices.length === 0 ? (
-        <Empty />
-      ) : (
+      {notices.length !== 0 ? (
         <ul className={css.listContainer}>
           {notices.map(pet => (
             <NoticesItem key={pet._id} pet={pet} />
           ))}
         </ul>
+      ) : (
+        <Empty />
       )}
     </div>
   );
