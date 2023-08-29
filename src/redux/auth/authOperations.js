@@ -110,7 +110,7 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
-export const getCurrent = createAsyncThunk(
+export const getCurrentUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
     try {
@@ -120,6 +120,23 @@ export const getCurrent = createAsyncThunk(
       const res = e.response;
       console.log(res.data.message);
       return thunkAPI.rejectWithValue(res.status);
+    }
+  }
+);
+
+export const updateUserAvatar = createAsyncThunk(
+  'auth/updateUserAvatar',
+  async (credentials, thunkAPI) => {
+    try {
+      console.log(credentials, 'credentials');
+      const { data } = await axios.patch('api/user/update/avatar', credentials);
+      console.log(data, 'data');
+      return data;
+    } catch (e) {
+      console.log('e', e);
+      const res = e.response;
+      console.log('res.data.message', res.data.message);
+      return thunkAPI.rejectWithValue('////');
     }
   }
 );

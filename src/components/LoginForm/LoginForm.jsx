@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 import { NavLink } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -111,7 +111,7 @@ const LoginForm = () => {
           );
         }}
       </Formik>
-      <ToastContainer autoClose={3000} />
+      {/* <ToastContainer autoClose={3000} /> */}
     </div>
   );
 };

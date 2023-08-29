@@ -13,6 +13,7 @@ import {
 
 import { authReducer } from './auth/authSlise';
 import { noticesReduder } from './notices/slice';
+import { petsReducer } from './pets/petsSlice';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -32,6 +33,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
     notices: noticesReduder,
+    pets: petsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

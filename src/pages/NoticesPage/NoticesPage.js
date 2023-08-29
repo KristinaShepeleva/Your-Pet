@@ -14,6 +14,9 @@ import NoticesFilters from 'components/NoticesPage/NoticesFilters/NoticesFilters
 import AddPetButton from 'components/NoticesPage/AddPetButton/AddPetButton';
 import NoticesCategoriesList from 'components/NoticesPage/NoticesCategoriesList/NoticesCategoriesList';
 
+// import { currentUser, getCurrent, updateUser } from 'redux/auth/authOperations';
+
+
 const Notices = () => {
   const [search, setSearch] = useState('');
 
@@ -35,6 +38,7 @@ const Notices = () => {
         search,
       };
       dispatch(allNoties(request));
+
     }
   }, [dispatch, category, search]);
 

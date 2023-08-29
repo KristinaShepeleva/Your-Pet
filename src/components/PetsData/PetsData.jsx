@@ -1,4 +1,4 @@
-import { PetsList } from 'components/PetsList/PetsList';
+import { PetsList } from 'components/PetsData/PetsList/PetsList';
 import css from './PetsData.module.css';
 import AddPetButton from 'components/NoticesPage/AddPetButton/AddPetButton';
 

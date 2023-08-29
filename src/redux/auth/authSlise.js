@@ -3,9 +3,10 @@ const {
   createUser,
   login,
   logout,
+  getCurrentUser,
   fetchCurrentUser,
-  getCurrent,
   updateUser,
+  updateUserAvatar,
 } = require('./authOperations');
 const {
   handelPending,
@@ -16,8 +17,10 @@ const {
   loginFulfilled,
   logoutReject,
   updateUserFulfilled,
+  updateUserAvatarFulfilled,
   rejectedRefresh,
   fulfilledRefresh,
+
 } = require('./authFunctions');
 
 const initialState = {
@@ -37,9 +40,11 @@ const arrayThunks = [
   createUser,
   login,
   logout,
-  getCurrent,
+  getCurrentUser,
   updateUser,
+  updateUserAvatar,
   fetchCurrentUser,
+
 ];
 
 const authSlice = createSlice({
@@ -53,7 +58,7 @@ const authSlice = createSlice({
           switch (fetch) {
             case createUser:
             case login:
-            case getCurrent:
+            case getCurrentUser:
               handelRejected(state, action);
               break;
             case logout:
@@ -77,11 +82,14 @@ const authSlice = createSlice({
             case logout:
               logoutFulfilled(state, action);
               break;
-            case getCurrent:
+            case getCurrentUser:
               currentFulfilled(state, action);
               break;
             case updateUser:
               updateUserFulfilled(state, action);
+              break;
+            case updateUserAvatar:
+              updateUserAvatarFulfilled(state, action);
               break;
             case fetchCurrentUser:
               fulfilledRefresh(state, action);

@@ -19,7 +19,9 @@ export const registerFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
   state.user = payload.user;
   state.accessToken = payload.accessToken;
+
   state.refreshToken = payload.refreshToken;
+
   state.error = { message: '', status: null };
 };
 export const loginFulfilled = (state, { payload }) => {
@@ -74,6 +76,16 @@ export const updateUserFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = true;
   state.user = payload;
+  state.error = { message: '', status: null };
+  state.isNewUser = false;
+};
+
+export const updateUserAvatarFulfilled = (state, { payload }) => {
+  console.log('payload', payload);
+  state.isLoading = false;
+  state.isLoggedIn = true;
+  state.isRefreshing = true;
+  state.user.avatarURL = payload;
   state.error = { message: '', status: null };
   state.isNewUser = false;
 };
