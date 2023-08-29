@@ -55,6 +55,7 @@
 
 .errorText {
     position: relative;
+    display: inline-block;
     margin-left: 86px;
   color: var(--red-color);  
   font-size: 11px;
@@ -63,5 +64,6 @@
 
  @media screen and (min-width: 768px) {
    margin-left: 112px;
+   width: 231px;
  }
 }

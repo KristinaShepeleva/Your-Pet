@@ -11,7 +11,7 @@ import { userSchema } from 'schemas';
 import { UserInput } from '../UserInput/UserInput';
 import css from './UserForm.module.css';
 import { useDispatch } from 'react-redux';
-import { updateUser } from 'redux/auth/authOperations';
+import { updateUser, updateUserAvatar } from 'redux/auth/authOperations';
 import { AvatarConfirmButtons } from '../AvatarConfirmButtons/AvatarConfirmButtons';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
 import { FormActivationToggleButton } from '../FormActivationToggleButton/FormActivationToggleButton';
@@ -21,14 +21,22 @@ export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
-
   
-  // let date = new Date(user.birthday); 
-//   console.log(date);
-//   console.log(user.birthday);
-//   console.log(user.name);
+  const formattedDates = (date) => {
+ console.log("date", date);
+    if (date === null) { return "" }
+    let formatteBirthday = new Date(date).toISOString().split("T")[0] ; 
+    console.log(formatteBirthday);
+   
+    return formatteBirthday
+}
+  
+//   let date = new Date(user.birthday); 
+//   console.log("date", date);
+//   console.log('user.birthday',user.birthday);
+// //   console.log(user.name);
 // let formattedDate = date.toISOString().split("T")[0]  
-//  console.log(formattedDate);
+//  console.log('formattedDate',formattedDate);
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -37,7 +45,7 @@ export const UserForm = () => {
       avatarURL: user.avatarURL,
       name: user.name,
       email: user.email,
-      // birthday: formattedDate ? formattedDate : '',
+      birthday: formattedDates(user.birthday),
       phone: user.phone,
       city: user.city,
   },
@@ -53,16 +61,14 @@ export const UserForm = () => {
           city: values.city,
 
       }
-       console.log(formData);
-      // formData.append('name', values.name);
-      // formData.append('email', values.email);
-      // formData.append('birthday', values.birthday);
-      // formData.append('phone', values.phone);
-      // formData.append('city', values.city);
+      console.log('avatarURL', avatarURL);
+       console.log("formData", formData);
+    
       setIsActive(!isActive);
       setConfirmAvatar(false);
       console.log(values);
       dispatch(updateUser(formData));
+      dispatch(updateUserAvatar(avatarURL))
       actions.resetForm();
     },
     validationSchema: userSchema,
@@ -109,7 +115,8 @@ export const UserForm = () => {
             rejectAvatar={rejectAvatar}
           />
         )}
-        <label className={css.labelInputFale}>
+          <label className={css.labelInputFale}>
+            
           {!isActive && !confirmAvatar && (
             <button
               className={css.editAvatarBt}
@@ -117,8 +124,9 @@ export const UserForm = () => {
               onClick={() => setConfirmAvatar(true)}
             >
               <CameraIcon className={css.editAvatarIcon} /> Edit photo
-            </button>
-          )}
+              </button>
+                          )}
+
           <input
             className={css.inputFile}
             name="avatarURL"
@@ -128,9 +136,11 @@ export const UserForm = () => {
               formik.setFieldValue('avatarURL', e);
               setAvatarURL(e.target.files[0]);
             }}
-            accept="image/*,.png,.jpg,.gif,.web"
-          />
-        </label>
+            accept="image/*,.png,.jpg"
+            />
+                      {formik.touched.avatarURL && formik.errors.avatarURL && (<span className={css.errorText}>{ formik.errors.avatarURL}</span>)}
+
+          </label>
         </div>
         <div className={css.box}>
         <div className={css.formGroup}>
