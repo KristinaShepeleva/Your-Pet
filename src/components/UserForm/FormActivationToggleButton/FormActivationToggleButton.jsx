@@ -13,7 +13,7 @@ export const FormActivationToggleButton = ({ toggle, type, iconComponent: Compon
 
 FormActivationToggleButton.propTypes = {
 
-  iconComponent: PropTypes.node.isRequired,
+  iconComponent: PropTypes.elementType.isRequired,
   type: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
 };
