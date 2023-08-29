@@ -13,6 +13,7 @@ import {
 
 import { authReducer } from './auth/authSlise';
 import { noticesReduder } from './notices/slice';
+import { petsReducer } from './pets/petsSlice';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -25,13 +26,14 @@ const middleware = getDefaultMiddleware => [
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['refreshToken'],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
     notices: noticesReduder,
+    pets: petsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

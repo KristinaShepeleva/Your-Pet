@@ -107,6 +107,23 @@
   padding: 0;
   margin: 0;
 }
+
+.errorText {
+
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  margin-left: 86px;
+  color: var(--red-color);
+  font-size: 11px;
+  font-family: 'Manrope-Regular';
+  font-weight: 400;
+
+  @media screen and (min-width: 768px) {
+    /* margin-left: 112px; */
+    max-width: 255px;
+  }
+}
 .formGroup {
   display: flex;
   flex-direction: column;

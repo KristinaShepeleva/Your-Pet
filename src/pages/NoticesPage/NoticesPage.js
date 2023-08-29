@@ -13,7 +13,7 @@ import NoticesCategoriesNav from 'components/NoticesPage/NoticesCategoriesNav/No
 import NoticesFilters from 'components/NoticesPage/NoticesFilters/NoticesFilters';
 import AddPetButton from 'components/NoticesPage/AddPetButton/AddPetButton';
 import NoticesCategoriesList from 'components/NoticesPage/NoticesCategoriesList/NoticesCategoriesList';
-import { getCurrent } from 'redux/auth/authOperations';
+import { getCurrentUser } from 'redux/auth/authOperations';
 // import { currentUser, getCurrent, updateUser } from 'redux/auth/authOperations';
 
 const Notices = () => {
@@ -50,7 +50,7 @@ const Notices = () => {
         search,
       };
       dispatch(allNoties(request));
-      dispatch(getCurrent());
+      dispatch(getCurrentUser());
     }
   }, [dispatch, category, search]);
 

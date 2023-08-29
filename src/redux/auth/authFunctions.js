@@ -14,13 +14,13 @@ export const registerFulfilled = (state, { payload }) => {
   state.isNewUser = true;
   state.isLoggedIn = true;
   state.user = payload.user;
-  state.token = payload.token;
+  state.accessToken = payload.accessToken;
   state.error = { message: '', status: null };
 };
 export const loginFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.user = payload.user;
-  state.token = payload.token;
+  state.accessToken = payload.accessToken;
   state.isLoggedIn = true;
   state.error = { message: '', status: null };
   state.isNewUser = false;
@@ -32,7 +32,7 @@ export const logoutFulfilled = state => {
   state.isNewUser = false;
   state.isLoggedIn = false;
   state.user = {};
-  state.token = null;
+  state.accessToken = null;
   state.error = { message: '', status: null };
   state.userId = '';
 };
@@ -47,7 +47,7 @@ export const logoutReject = state => {
   state.isNewUser = false;
   state.isLoggedIn = false;
   state.user = {};
-  state.token = null;
+  state.accessToken = null;
   state.error = { message: '', status: null };
 };
 

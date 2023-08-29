@@ -3,9 +3,9 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://yourpet-app-backend.onrender.com';
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+const accessToken = {
+  set(accessToken) {
+    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   },
   unset() {
     axios.defaults.headers.common.Authorization = '';
@@ -21,7 +21,7 @@ export const currentUser = createAsyncThunk(
     if (!persistToken) {
       return thunkAPI.rejectWithValue();
     }
-    token.set(persistToken);
+    accessToken.set(persistToken);
     try {
       const { data } = axios.get('/api/auth/current');
       return data;
@@ -41,7 +41,7 @@ export const createUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('api/auth/register', credentials);
-      token.set(data.token);
+      accessToken.set(data.accessToken);
       return data;
     } catch (e) {
       const res = e.response;
@@ -59,7 +59,7 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('api/auth/login', credentials);
-      token.set(data.token);
+      accessToken.set(data.accessToken);
       return data;
     } catch (e) {
       const res = e.response;
@@ -75,7 +75,7 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const { data } = await axios.post('api/auth/logout');
-    token.unset();
+    accessToken.unset();
     return data;
   } catch (e) {
     const res = e.response;
@@ -104,7 +104,7 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
-export const getCurrent = createAsyncThunk(
+export const getCurrentUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
     try {
@@ -119,7 +119,7 @@ export const getCurrent = createAsyncThunk(
 );
 
 export const updateUserAvatar = createAsyncThunk(
-  'auth/updateUser',
+  'auth/updateUserAvatar',
   async (credentials, thunkAPI) => {
     try {
       console.log(credentials, 'credentials');

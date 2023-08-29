@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNewUser } from 'redux/auth/authSelectors';
 import css from './UserPage.module.css';
-import { getCurrent } from 'redux/auth/authOperations';
+import { getCurrentUser } from 'redux/auth/authOperations';
+import { fetchPets } from 'redux/pets/petsOperations';
 
 const User = () => {
   const isNewUser = useSelector(selectNewUser);
@@ -20,8 +21,11 @@ const User = () => {
     setIsShowModal(!isShowModal);
   };
   useEffect(() => {
-    dispatch(getCurrent());
+    dispatch(getCurrentUser());
     console.log('це я');
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchPets());
   }, [dispatch]);
   return (
     <>
