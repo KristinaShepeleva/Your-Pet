@@ -39,6 +39,7 @@ export const logoutFulfilled = state => {
   state.isLoggedIn = false;
   state.user = {};
   state.accessToken = null;
+  state.refreshToken = null;
   state.error = { message: '', status: null };
   state.userId = '';
 };
@@ -55,6 +56,8 @@ export const logoutReject = state => {
 export const fulfilledRefresh = (state, { payload }) => {
   console.log(payload);
   state.isLoading = false;
+  state.accessToken = payload.data.accessToken;
+  state.refreshToken = payload.data.refreshToken;
   // state.isLoggedIn = true;
   // state.isRefreshingToken = true;
   // state.user = payload;

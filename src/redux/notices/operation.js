@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://yourpet-app-backend.onrender.com';
+axios.defaults.baseURL = 'https://yourpet-app-backend.onrender.com/api';
 
 // список всіх нотісів
 export const allNoties = createAsyncThunk(
@@ -9,7 +9,7 @@ export const allNoties = createAsyncThunk(
   async ({ category, search }, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/api/notices?category=${category}&search=${search}&limit=12&page=1`
+        `/notices?category=${category}&search=${search}&limit=12&page=1`
       );
       // console.log(data);
       return data;
@@ -29,7 +29,7 @@ export const getOneNotices = createAsyncThunk(
   'notices/getOne',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/${credentials}`);
+      const { data } = await axios.get(`/notices/${credentials}`);
       return data;
     } catch (e) {
       const res = e.response;
@@ -47,9 +47,7 @@ export const favoriteList = createAsyncThunk(
   'notices/favList',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        '/api/notices/favorites?limit=12&page=1'
-      );
+      const { data } = await axios.get('/notices/favorites?limit=12&page=1');
       return data;
     } catch (e) {
       const res = e.response;
@@ -67,7 +65,7 @@ export const myNotices = createAsyncThunk(
   'notices/myNotices',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/notices/self?limit=12&page=1');
+      const { data } = await axios.get('/notices/self?limit=12&page=1');
       return data;
     } catch (e) {
       const res = e.response;
@@ -85,9 +83,7 @@ export const updateFavorite = createAsyncThunk(
   'notices/updateFavorite',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.patch(
-        `/api/notices/${credentials}/favorites`
-      );
+      const { data } = await axios.patch(`/notices/${credentials}/favorites`);
       return data;
     } catch (e) {
       const res = e.response;
@@ -137,7 +133,7 @@ export const deletePet = createAsyncThunk(
   async (credentials, thunkAPI) => {
     console.log(credentials);
     try {
-      const { data } = await axios.delete(`/api/notices/${credentials}`);
+      const { data } = await axios.delete(`/notices/${credentials}`);
       return data;
     } catch (e) {
       const res = e.response;

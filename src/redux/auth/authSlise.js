@@ -3,7 +3,7 @@ const {
   createUser,
   login,
   logout,
-  fetchCurrentUser,
+  refreshUser,
   getCurrent,
   updateUser,
 } = require('./authOperations');
@@ -39,7 +39,7 @@ const arrayThunks = [
   logout,
   getCurrent,
   updateUser,
-  fetchCurrentUser,
+  refreshUser,
 ];
 
 const authSlice = createSlice({
@@ -59,7 +59,7 @@ const authSlice = createSlice({
             case logout:
               logoutReject(state, action);
               break;
-            case fetchCurrentUser:
+            case refreshUser:
               rejectedRefresh(state, action);
               break;
             default:
@@ -83,7 +83,7 @@ const authSlice = createSlice({
             case updateUser:
               updateUserFulfilled(state, action);
               break;
-            case fetchCurrentUser:
+            case refreshUser:
               fulfilledRefresh(state, action);
               break;
             default:

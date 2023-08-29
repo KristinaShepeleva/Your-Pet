@@ -34,7 +34,7 @@ const LoginForm = () => {
     dispatch(login(value)).then(data => {
       const error = data.payload;
       if (error.status === 401) {
-        return toast.error(`${error.data.message}`);
+        return toast.error(`${error.message}`);
       } else if (error.status === 400) {
         return toast.error('Invalid Email');
       }
