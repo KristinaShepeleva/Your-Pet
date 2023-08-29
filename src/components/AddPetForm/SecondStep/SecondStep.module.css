@@ -121,3 +121,15 @@
     margin-top: 27px;
   }
 }
+
+.ErrorMessage {
+  color: #F43F5E;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.InputError {
+  border: 1px solid #F43F5E;
+}
