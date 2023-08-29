@@ -36,6 +36,6 @@ UserInput.propTypes = {
   isActive: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
-  helperText: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  helperText: PropTypes.string,
 };

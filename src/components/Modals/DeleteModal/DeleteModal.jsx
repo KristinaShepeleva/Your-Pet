@@ -66,7 +66,7 @@ const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
 
 DeleteModal.propTypes = {
   nameModal: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   title: PropTypes.string.isRequired,
   toggleDeleteModal: PropTypes.func.isRequired,
 };

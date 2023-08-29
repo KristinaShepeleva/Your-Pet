@@ -69,7 +69,7 @@ export const PetsItem = ({
 };
 PetsItem.propTypes = {
   petName: PropTypes.string.isRequired,
-  petId: PropTypes.string.isRequired,
+  petId: PropTypes.string,
   birthday: PropTypes.string.isRequired,
   breed: PropTypes.string.isRequired,
   comments: PropTypes.string.isRequired,
