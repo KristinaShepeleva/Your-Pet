@@ -22,8 +22,8 @@ const User = () => {
   };
   useEffect(() => {
     dispatch(getCurrentUser());
-    console.log('це я');
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(fetchPets());
   }, [dispatch]);

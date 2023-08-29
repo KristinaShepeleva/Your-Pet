@@ -23,20 +23,13 @@ export const UserForm = () => {
   const [confirmAvatar, setConfirmAvatar] = useState(false);
   
   const formattedDates = (date) => {
- console.log("date", date);
     if (date === null) { return "" }
     let formatteBirthday = new Date(date).toISOString().split("T")[0] ; 
-    console.log(formatteBirthday);
    
     return formatteBirthday
 }
   
-//   let date = new Date(user.birthday); 
-//   console.log("date", date);
-//   console.log('user.birthday',user.birthday);
-// //   console.log(user.name);
-// let formattedDate = date.toISOString().split("T")[0]  
-//  console.log('formattedDate',formattedDate);
+
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -61,12 +54,12 @@ export const UserForm = () => {
           city: values.city,
 
       }
-      console.log('avatarURL', avatarURL);
-       console.log("formData", formData);
+      // console.log('avatarURL', avatarURL);
+      //  console.log("formData", formData);
     
       setIsActive(!isActive);
       setConfirmAvatar(false);
-      console.log(values);
+      // console.log(values);
       dispatch(updateUser(formData));
       dispatch(updateUserAvatar(avatarURL))
       actions.resetForm();

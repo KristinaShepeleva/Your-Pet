@@ -5,7 +5,7 @@ import bg2 from '../../../images/404-dsc-2x.png';
 // import { useSelector } from 'react-redux';
 const pets = [
   {
-    petId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    petId: '3fa85f64-5717-4562-b3fc-2c963f66afa67',
     name: 'Bruno',
     birthday: '00.00.0000',
     type: 'Spitz',
