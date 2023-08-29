@@ -9,6 +9,12 @@ const modalContainer = document.getElementById('modal-root');
 
 const ModalPetsContainer = ({ toggleModal, children }) => {
   useEffect(() => {
+    if (toggleModal) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [toggleModal]);
+
+  useEffect(() => {
     const onKeyDown = event => {
       if (event.code === 'Escape') {
         toggleModal();
@@ -19,6 +25,7 @@ const ModalPetsContainer = ({ toggleModal, children }) => {
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = 'auto';
     };
   }, [toggleModal]);
 

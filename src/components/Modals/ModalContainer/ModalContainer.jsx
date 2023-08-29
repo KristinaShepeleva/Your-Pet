@@ -10,6 +10,12 @@ const modalContainer = document.getElementById('modal-root');
 
 const ModalContainer = ({ toggleModal, children }) => {
   useEffect(() => {
+    if (toggleModal) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [toggleModal]);
+
+  useEffect(() => {
     const onKeyDown = event => {
       if (event.code === 'Escape') {
         toggleModal();
@@ -20,6 +26,7 @@ const ModalContainer = ({ toggleModal, children }) => {
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = 'auto';
     };
   }, [toggleModal]);
 
