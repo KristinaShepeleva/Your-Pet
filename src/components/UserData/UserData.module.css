@@ -1,18 +1,18 @@
 .box {
-    margin-bottom: 46px;
-    @media screen and (min-width: 768px) {
-            margin-bottom: 40px;
-        }
-                  @media screen and (min-width: 1280px) {
-                      margin-bottom: 0;
-                  }
+  margin-bottom: 46px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 0;
+  }
 }
 .title {
-    font-weight: 500;
-    font-size: 20px;
-    margin-bottom: 18px;
-    @media screen and (min-width: 768px) {
-        margin-bottom: 24px;
-        font-size: 28px;
-        }
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 18px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
 }

@@ -10,8 +10,9 @@ import {
   myNotices,
 } from 'redux/notices/operation';
 import { useLocation } from 'react-router-dom';
+import { deleteUserPet } from 'redux/pets/petsOperations';
 
-const DeleteModal = ({ title, id, toggleDeleteModal }) => {
+const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const pathSegments = location.pathname
@@ -25,6 +26,8 @@ const DeleteModal = ({ title, id, toggleDeleteModal }) => {
       await dispatch(favoriteList());
     } else if (category === 'own') {
       await dispatch(myNotices());
+    } else if (category === 'user') { 
+ await dispatch(deleteUserPet(id));
     } else {
       const request = {
         category,
@@ -34,14 +37,13 @@ const DeleteModal = ({ title, id, toggleDeleteModal }) => {
     }
     toggleDeleteModal();
   };
-
   return (
     <div className={css.delete}>
-      <h2 className={css.titleDelete}>Delete adverstiment?</h2>
+      <h2 className={css.titleDelete}>{nameModal}</h2>
       <div className={css.content}>
         <p className={css.textDelete}>
           Are you sure you want to delete
-          <span className={css.span}>“{title}”?</span>
+          <span className={css.span}>{title}?</span>
         </p>
         <p className={css.textDelete}> You can`t undo this action.</p>
       </div>
@@ -63,6 +65,7 @@ const DeleteModal = ({ title, id, toggleDeleteModal }) => {
 };
 
 DeleteModal.propTypes = {
+  nameModal: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   toggleDeleteModal: PropTypes.func.isRequired,

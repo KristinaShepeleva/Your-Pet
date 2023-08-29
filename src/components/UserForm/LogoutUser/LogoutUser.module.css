@@ -15,11 +15,11 @@
   letter-spacing: 0.64px;
 
   @media screen and (min-width: 768px) {
-      margin-top: 14px;
-      margin-bottom: 3px;
-    }
-         @media screen and (min-width: 1280px) {
-           margin-top: 22px;
-           margin-bottom: 0;
-         }
+    margin-top: 14px;
+    margin-bottom: 3px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 22px;
+    margin-bottom: 0;
+  }
 }

@@ -20,7 +20,6 @@ const {
   updateUserAvatarFulfilled,
   rejectedRefresh,
   fulfilledRefresh,
-
 } = require('./authFunctions');
 
 const initialState = {
@@ -44,7 +43,6 @@ const arrayThunks = [
   updateUser,
   updateUserAvatar,
   fetchCurrentUser,
-
 ];
 
 const authSlice = createSlice({
@@ -59,6 +57,8 @@ const authSlice = createSlice({
             case createUser:
             case login:
             case getCurrentUser:
+            case updateUser:
+            case updateUserAvatar:
               handelRejected(state, action);
               break;
             case logout:

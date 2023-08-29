@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://yourpet-app-backend.onrender.com';
 
@@ -92,21 +93,17 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     });
   }
 });
-// cat5@cat.com
+
 export const updateUser = createAsyncThunk(
   'auth/updateUser',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials, 'credentials');
-      const { data } = await axios.patch('api/update', credentials);
-      // accessToken.set(data.accessToken);
-      console.log(data, 'data');
+      const { data } = await axios.patch('api/user/update', credentials);
       return data;
     } catch (e) {
-      console.log('e', e);
-      const res = e.response;
-      console.log('res.data.message', res.data.message);
-      return thunkAPI.rejectWithValue('////');
+      return thunkAPI.rejectWithValue(
+        toast.error('The info was not updated. Try later')
+      );
     }
   }
 );
@@ -118,7 +115,6 @@ export const getCurrentUser = createAsyncThunk(
       return data;
     } catch (e) {
       const res = e.response;
-      console.log(res.data.message);
       return thunkAPI.rejectWithValue(res.status);
     }
   }
@@ -128,15 +124,12 @@ export const updateUserAvatar = createAsyncThunk(
   'auth/updateUserAvatar',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials, 'credentials');
       const { data } = await axios.patch('api/user/update/avatar', credentials);
-      console.log(data, 'data');
       return data;
     } catch (e) {
-      console.log('e', e);
-      const res = e.response;
-      console.log('res.data.message', res.data.message);
-      return thunkAPI.rejectWithValue('////');
+      return thunkAPI.rejectWithValue(
+        toast.error('The avatar was not updated. Try later')
+      );
     }
   }
 );

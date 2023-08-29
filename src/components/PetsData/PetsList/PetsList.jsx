@@ -3,9 +3,11 @@ import { Empty } from 'components/Empty/Empty';
 import bg2 from '../../../images/404-dsc-2x.png';
 // import { selectPets } from 'redux/pets/selectors';
 // import { useSelector } from 'react-redux';
+// import { selectError } from 'redux/pets/selectors';
+// import { ErrorText } from 'components/ErrorText/ErrorText';
 const pets = [
   {
-    petId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    petId: '3fa85f64-5717-4562-b3fc-2c963f66afa67',
     name: 'Bruno',
     birthday: '00.00.0000',
     type: 'Spitz',
@@ -26,9 +28,13 @@ const pets = [
 ];
 export const PetsList = () => {
   // const ownPets = useSelector(selectPets);
+  // const error = useSelector(selectError)
   return (
-    <>
-      {pets.length === 0 ? (
+
+      <>
+      {/* error ? (<ErrorText />): */}
+      { pets.length === 0 ? (
+
         <Empty text='You don`t have any pets. You can add them. Click on the button "Add pet"' />
       ) : (
         <ul>

@@ -1,21 +1,20 @@
 .confirmBtBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 10px;
-    font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 0;
 }
 
 .textConfirm {
-    font-family: 'Manrope-Regular';
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.83;
-    letter-spacing: 0.48px;
-    
+  font-family: 'Manrope-Regular';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.83;
+  letter-spacing: 0.48px;
 }
 
 .confirmBt {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
