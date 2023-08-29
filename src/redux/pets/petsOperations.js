@@ -7,14 +7,14 @@ export const fetchPets = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/api/pets/users/pets');
-      console.log(response);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.config.method);
     }
   }
 );
-
+// cat5@cat.com
 export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
   try {
     const response = await axios.post('/api/pets/users/addPet', pet);
