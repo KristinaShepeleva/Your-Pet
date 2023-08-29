@@ -1,0 +1,11 @@
+.empty {
+  width: 100%;
+  height: 280px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('../../images/nothing.png');
+  @media screen and (min-width: 768px) {
+    height: 350px;
+  }
+}

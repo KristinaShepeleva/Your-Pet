@@ -37,9 +37,9 @@ const PetsModal = ({ pet, owner, fav }) => {
       await dispatch(favoriteList());
     }
   };
-  // const yers = pet.birthday.slice(0, 4);
-  // const mouth = pet.birthday.slice(5, 7);
-  // const day = pet.birthday.slice(8, 10);
+  const yers = pet.birthday.slice(0, 4);
+  const mouth = pet.birthday.slice(5, 7);
+  const day = pet.birthday.slice(8, 10);
 
   return (
     <>
@@ -67,8 +67,7 @@ const PetsModal = ({ pet, owner, fav }) => {
               <ul className={css.list1}>
                 <li className={css.infoItem}>{pet.name}</li>
                 <li className={css.infoItem}>
-                  {/* {day}.{mouth}.{yers} */}
-                  {pet.birthday}
+                  {day}.{mouth}.{yers}
                 </li>
                 <li className={css.infoItem}>{pet.type}</li>
                 <li className={css.infoItem}>{pet.location}</li>
