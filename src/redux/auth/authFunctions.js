@@ -71,7 +71,6 @@ export const currentFulfilled = (state, { payload }) => {
 };
 
 export const updateUserFulfilled = (state, { payload }) => {
-  // console.log(payload);
   state.isLoading = false;
   state.isLoggedIn = true;
   state.isRefreshing = true;

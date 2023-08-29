@@ -18,7 +18,6 @@ export const fetchPets = createAsyncThunk(
 export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
   try {
     const response = await axios.post('/api/pets/users/addPet', pet);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(

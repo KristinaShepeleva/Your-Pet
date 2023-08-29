@@ -1,15 +1,15 @@
 .bt {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    border: none;
-    background-color: transparent;
-@media screen and (min-width: 768px) {
-        top: 18px;
-            right: 18px;
-    }
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  background-color: transparent;
+  @media screen and (min-width: 768px) {
+    top: 18px;
+    right: 18px;
+  }
 }
 
 .icon {
-    stroke: var(--blue-color);
+  stroke: var(--blue-color);
 }
