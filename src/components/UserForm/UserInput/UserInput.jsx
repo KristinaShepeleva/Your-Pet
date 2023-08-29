@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import css from './UserInput.module.css';
 
 export const UserInput = ({
@@ -26,4 +28,14 @@ export const UserInput = ({
       {error ? <span className={css.errorText}>{helperText}</span> : null}
     </div>
   );
+};
+
+UserInput.propTypes = {
+  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired,
+  helperText: PropTypes.string.isRequired,
 };

@@ -144,7 +144,8 @@ const NoticesItem = ({ pet }) => {
       {isDeleteModalOpen && (
         <ModalContainer toggleModal={toggleDeleteModal}>
           <DeleteModal
-            title={pet.title}
+            nameModal='Delete adverstiment?'
+            title={`${pet.title}`}
             id={pet._id}
             toggleDeleteModal={toggleDeleteModal}
           />

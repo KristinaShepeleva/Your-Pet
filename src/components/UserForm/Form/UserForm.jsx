@@ -15,6 +15,7 @@ import { updateUser, updateUserAvatar } from 'redux/auth/authOperations';
 import { AvatarConfirmButtons } from '../AvatarConfirmButtons/AvatarConfirmButtons';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
 import { FormActivationToggleButton } from '../FormActivationToggleButton/FormActivationToggleButton';
+import { formattedDates } from 'helpers/formattedDates';
 
 export const UserForm = () => {
   const { user } = useAuth();
@@ -22,14 +23,14 @@ export const UserForm = () => {
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
 
-  const formattedDates = date => {
-    if (date === null) {
-      return '';
-    }
-    let formatteBirthday = new Date(date).toISOString().split('T')[0];
+  // const formattedDates = date => {
+  //   if (date === null) {
+  //     return '';
+  //   }
+  //   let formatteBirthday = new Date(date).toISOString().split('T')[0];
 
-    return formatteBirthday;
-  };
+  //   return formatteBirthday;
+  // };
 
   const dispatch = useDispatch();
 

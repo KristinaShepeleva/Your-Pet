@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPets, deletePet, addPet } from './petsOperations';
+import { fetchPets, deleteUserPet, addPet } from './petsOperations';
 
 const petsInitialState = {
   items: [],
@@ -22,10 +22,10 @@ export const petsSlice = createSlice({
     builder
       .addCase(fetchPets.pending, handlePending)
       .addCase(addPet.pending, handlePending)
-      .addCase(deletePet.pending, handlePending)
+      .addCase(deleteUserPet.pending, handlePending)
       .addCase(fetchPets.rejected, handleRejected)
       .addCase(addPet.rejected, handleRejected)
-      .addCase(deletePet.rejected, handleRejected)
+      .addCase(deleteUserPet.rejected, handleRejected)
 
       .addCase(fetchPets.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -37,7 +37,7 @@ export const petsSlice = createSlice({
         state.error = null;
         state.items.push(action.payload);
       })
-      .addCase(deletePet.fulfilled, (state, action) => {
+      .addCase(deleteUserPet.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
 

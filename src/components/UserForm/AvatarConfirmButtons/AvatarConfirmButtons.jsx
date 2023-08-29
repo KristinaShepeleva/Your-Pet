@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import { CheckIcon, CrossBigIcon } from 'helpers/icons';
 import css from './AvatarConfirmButtons.module.css';
+
 export const AvatarConfirmButtons = ({ acceptAvatar, rejectAvatar }) => {
   return (
     <div className={css.confirmBtBox}>
@@ -14,4 +16,10 @@ export const AvatarConfirmButtons = ({ acceptAvatar, rejectAvatar }) => {
       </button>
     </div>
   );
+};
+
+AvatarConfirmButtons.propTypes = {
+
+  acceptAvatar: PropTypes.func.isRequired,
+  rejectAvatar: PropTypes.func.isRequired,
 };

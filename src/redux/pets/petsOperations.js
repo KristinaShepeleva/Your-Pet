@@ -26,7 +26,7 @@ export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
   }
 });
 
-export const deletePet = createAsyncThunk(
+export const deleteUserPet = createAsyncThunk(
   'pets/deletePet',
   async (petId, thunkAPI) => {
     try {
