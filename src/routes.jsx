@@ -3,8 +3,9 @@ import RegistretedRoute from 'components/RegistretedRoute';
 
 import { SharedLayout } from 'components/Sharedlayout';
 import { TemporaryComponent } from 'components/TemporaryComponent';
+import { useAuth } from 'hooks';
 import { lazy } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 
 const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 const LogInPage = lazy(() => import('./pages/LoginPage/LoginPage'));
@@ -19,6 +20,8 @@ const OurFriendsPage = lazy(() =>
 );
 
 export const Routes = () => {
+  const { isLoggedIn } = useAuth();
+
   let element = useRoutes([
     {
       path: '/',
@@ -29,7 +32,7 @@ export const Routes = () => {
         RegisterRoute,
         UserRoute,
         AddPetRoute,
-        NoticesRoute,
+        generateNoticesRoute(isLoggedIn),
         NewsRoute,
         OurFriendsRoute,
         { path: '*', element: <NotFoundPage /> },
@@ -59,20 +62,35 @@ export const AddPetRoute = {
   element: <AddPetPage />,
 };
 
-export const NoticesRoute = {
-  path: '/notices',
-  element: <NoticesPage />,
-  children: [
+const generateNoticesRoute = isLoggedIn => {
+  const noticesChildren = [
     { path: 'sell', element: <TemporaryComponent /> },
     { path: 'lost-found', element: <TemporaryComponent /> },
     {
       path: 'in-good-hands',
       element: <TemporaryComponent />,
     },
-    { path: 'favorite', element: <TemporaryComponent /> },
-    { path: 'own', element: <TemporaryComponent /> },
-  ],
+  ];
+
+  if (!isLoggedIn) {
+    noticesChildren.push(
+      { path: 'favorite', element: <Navigate to="/notices/sell" /> },
+      { path: 'own', element: <Navigate to="/notices/sell" /> }
+    );
+  } else {
+    noticesChildren.push(
+      { path: 'favorite', element: <TemporaryComponent /> },
+      { path: 'own', element: <TemporaryComponent /> }
+    );
+  }
+
+  return {
+    path: '/notices',
+    element: <NoticesPage />,
+    children: noticesChildren,
+  };
 };
+
 export const NewsRoute = {
   path: '/news',
   element: <NewsPage />,

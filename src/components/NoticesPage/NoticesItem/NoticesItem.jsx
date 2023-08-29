@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import css from './NoticesItem.module.css';
 import {
@@ -34,6 +35,8 @@ const NoticesItem = ({ pet }) => {
   const dispatch = useDispatch();
   const { isLoggedIn, userId } = useAuth();
   const { noticeById } = useNotices();
+
+  // console.log(pet);
 
   const location = useLocation();
   const pathSegments = location.pathname
@@ -86,6 +89,9 @@ const NoticesItem = ({ pet }) => {
       <div className={css.imgContainer}>
         <img className={css.img} src={pet.imgUrl} alt="Animals" />
         <p className={css.category}>{pet.category}</p>
+        {pet.category === 'sell' && (
+          <p className={`${css.category} ${css.price}`}>{pet.price}</p>
+        )}
         <button
           className={css.favoritBtn}
           type="button"
@@ -115,7 +121,7 @@ const NoticesItem = ({ pet }) => {
           </li>
           <li className={css.info}>
             <ClockIcon />
-            <p>{getCurrentAge(pet.birthday)}</p>
+            <p>{getCurrentAge(pet.birthday)} yers</p>
           </li>
           <li className={css.info}>
             {pet.sex === 'male' ? <MaleIcon /> : <FamileIcon />}
@@ -137,13 +143,18 @@ const NoticesItem = ({ pet }) => {
       </div>
       {isDeleteModalOpen && (
         <ModalContainer toggleModal={toggleDeleteModal}>
-          <DeleteModal pet={pet} toggleDeleteModal={toggleDeleteModal} />
+          <DeleteModal
+            title={pet.title}
+            id={pet._id}
+            toggleDeleteModal={toggleDeleteModal}
+          />
         </ModalContainer>
       )}
       {isPetsModalOpen && (
         <ModalPetsContainer toggleModal={togglePetsModal}>
           <PetsModal
-            pet={noticeById}
+            pet={pet}
+            owner={noticeById.owner}
             togglePetsModal={togglePetsModal}
             fav={fav}
           />
@@ -158,4 +169,22 @@ const NoticesItem = ({ pet }) => {
   );
 };
 
+NoticesItem.propTypes = {
+  pet: PropTypes.shape({
+    birthday: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    comments: PropTypes.string.isRequired,
+    favorite: PropTypes.arrayOf(PropTypes.string),
+    imgUrl: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    sex: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }),
+  fav: PropTypes.bool,
+};
 export default NoticesItem;

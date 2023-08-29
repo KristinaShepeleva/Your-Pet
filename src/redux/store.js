@@ -25,7 +25,7 @@ const middleware = getDefaultMiddleware => [
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['refreshToken'],
 };
 
 export const store = configureStore({
