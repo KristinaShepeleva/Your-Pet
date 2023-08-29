@@ -7,6 +7,7 @@ const {
   // fetchCurrentUser,
   updateUser,
   updateUserAvatar,
+  fetchRefreshToken,
 } = require('./authOperations');
 const {
   handelPending,
@@ -18,7 +19,7 @@ const {
   logoutReject,
   updateUserFulfilled,
   updateUserAvatarFulfilled,
-  // rejectedRefresh,
+  rejectedRefresh,
   // fulfilledRefresh,
 } = require('./authFunctions');
 
@@ -42,9 +43,12 @@ const arrayThunks = [
   getCurrentUser,
   updateUser,
   updateUserAvatar,
+  fetchRefreshToken,
   // fetchCurrentUser,
 ];
-
+const refreshFulfilled = (state, action) => {
+  state.refreshToken = action.payload.refreshToken;
+};
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
@@ -64,15 +68,18 @@ const authSlice = createSlice({
             case logout:
               logoutReject(state, action);
               break;
-            // case fetchCurrentUser:
-            //   rejectedRefresh(state, action);
-            //   break;
+            case fetchRefreshToken:
+              rejectedRefresh(state, action);
+              break;
             default:
               break;
           }
         })
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
+            case fetchRefreshToken:
+              refreshFulfilled(state, action);
+              break;
             case createUser:
               registerFulfilled(state, action);
               break;
@@ -103,3 +110,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { setRefreshToken } = authSlice.actions;

@@ -1,7 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import instance from '../instance';
-// import { useAuth } from 'hooks';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const token = {
   set(token) {
@@ -18,29 +17,48 @@ instance.interceptors.response.use(
     if (error.response.status === 401) {
       console.log(error, 'error');
       const state = thunkAPI.getState();
-      // const { refreshToken } = useAuth();
       const refreshToken = state.auth.refreshToken;
-
-      console.log(state, 'state');
-      const { data } = await instance.post('/api/auth/refresh', {
-        refreshToken,
-      });
-      console.log(data);
+      thunkAPI.dispatch(fetchRefreshToken({ refreshToken }));
       return instance(error.config);
     }
   }
 );
 
-// export const fetchCurrentUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (credentials, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistToken = state.auth.accessToken;
+export const fetchRefreshToken = createAsyncThunk(
+  'auth/refreshToken',
+  async (_, thunkAPI) => {
+    try {
+      const response = await instance.post('/api/auth/refresh', {
+        refreshToken: thunkAPI.getState().auth.refreshToken,
+      });
 
-//     if (!persistToken) {
-//       return thunkAPI.rejectWithValue();
+      const newAccessToken = response.data.accessToken;
+      console.log(newAccessToken);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+// instance.interceptors.response.use(
+//   response => response,
+//   async (error, thunkAPI) => {
+//     if (error.response.status === 401) {
+//       console.log(error, 'error');
+//       // const state = thunkAPI.getState();
+//       // const { refreshToken } = useAuth();
+//       // const refreshToken = state.auth.refreshToken;
+//       const refreshToken = useSelector(state => state.auth.refreshToken);
+//       // console.log(state, 'state');
+//       const { data } = await instance.post('/api/auth/refresh', {
+//         refreshToken,
+//       });
+//       token.set(data.accessToken);
+//       console.log(data);
+//       return instance(error.config);
 //     }
-//     accessToken.set(persistToken);
+//   }
+// );
 
 export const createUser = createAsyncThunk(
   'auth/createUser',
