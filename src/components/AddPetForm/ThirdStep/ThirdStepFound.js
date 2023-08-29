@@ -13,9 +13,64 @@ const ThirdStepFound = ({ handleNext, handlePreviousStep, formData }) => {
   const [comments, setComments] = useState(formData.comments || '');
   const [place, setPlace] = useState(formData.place || '');
 
-  const handleFileChange = e => {
-    setPhoto(e.target.files[0]);
+  const [sex, setSex] = useState(formData.sex || '');
+  const [photoError, setPhotoError] = useState('');
+  const [sexError, setSexError] = useState('');
+  const [locationError, setLocationError] = useState('');
+
+  const handleSexChange = (selectedSex, value) => {
+    setSex(selectedSex);
   };
+
+  const handleFileChange = e => {
+    const selectedPhoto = e.target.files[0];
+    if (selectedPhoto && selectedPhoto.size > 3 * 1024 * 1024) {
+      setPhotoError('Photo size should be up to 3MB');
+    } else {
+      setPhotoError('');
+      setPhoto(selectedPhoto);
+    }
+  };
+
+  const handleValidation = () => {
+    let isValid = true;
+
+    if (!photo) {
+      setPhotoError('Photo is required');
+      isValid = false;
+    } else {
+      setPhotoError('');
+    }
+
+    if (!sex) {
+      setSexError('The sex is not selected');
+      isValid = false;
+    } else {
+      setSexError('');
+    }
+
+    if (!place) {
+      setLocationError('Location is required');
+      isValid = false;
+    } else {
+      const locationRegex = /^[A-Z][a-z]+$/;
+      if (!locationRegex.test(place)) {
+        setLocationError('Invalid location format');
+        isValid = false;
+      } else {
+        setLocationError('');
+      }
+    }
+
+    return isValid;
+  };
+
+  const handleDoneWithValidation = () => {
+    if (handleValidation()) {
+      handleNext();
+    }
+  };
+
 
   return (
     <>
@@ -24,18 +79,29 @@ const ThirdStepFound = ({ handleNext, handlePreviousStep, formData }) => {
           <div className={css.SexText}>The Sex</div>
           <ul className={css.SexOption}>
             <li>
-              <button className={css.SexElement}>
+              <button
+                className={`${css.SexElement} ${
+                  sex === 'female' ? css.SelectedSex : ''
+                }`}
+                onClick={() => handleSexChange('female', 1)}
+              >
                 <img src={female} alt="female" />
                 Female
               </button>
             </li>
             <li>
-              <button className={css.SexElement}>
+              <button
+                className={`${css.SexElement} ${
+                  sex === 'male' ? css.SelectedSex : ''
+                }`}
+                onClick={() => handleSexChange('male', 2)}
+              >
                 <img src={male} alt="male" />
                 Male
               </button>
             </li>
           </ul>
+          {sexError && <span className={css.ErrorMessage}>{sexError}</span>}
           <div className={css.WrapperAddPhoto}>
             <label className={css.LabelAddText}>Load the pet’s image:</label>
             <input
@@ -44,7 +110,10 @@ const ThirdStepFound = ({ handleNext, handlePreviousStep, formData }) => {
               onChange={handleFileChange}
               style={{ display: 'none' }}
             />
-            <label htmlFor="photo">
+            <label
+              htmlFor="photo"
+              className={`${css.LabelAdd} ${photoError && css.InputError}`}
+            >
               <div className={css.LabelAdd}>
                 {photo && (
                   <img
@@ -56,6 +125,11 @@ const ThirdStepFound = ({ handleNext, handlePreviousStep, formData }) => {
                 <img className={css.IconAdd} src={PetAdd} alt="add" />
               </div>
             </label>
+            {photoError && (
+              <span className={`${css.ErrorMessage} ${css.ErrorMessageLeft}`}>
+                {photoError}
+              </span>
+            )}
           </div>
         </div>
         <div className={css.WrapperFormSellInputs}>
@@ -64,22 +138,28 @@ const ThirdStepFound = ({ handleNext, handlePreviousStep, formData }) => {
               Location
             </label>
             <input
-              className={css.Input}
+              className={`${css.Input} ${locationError ? css.InputError : ''}`}
               type="text"
               id="place"
               value={place}
               onChange={e => setPlace(e.target.value)}
               placeholder="Type location"
             />
+            {locationError && (
+              <span className={css.ErrorMessage}>{locationError}</span>
+            )}
           </div>
           <div className={css.WrapperTextarea}>
-            <label className={css.TextareaText}>Comments</label>
+            <label className={css.TextareaText} htmlFor="comments">
+              Comments
+            </label>
             <textarea
               className={css.TextareaAdd}
               id="comments"
               value={comments}
               placeholder="Type your comment"
               onChange={e => setComments(e.target.value)}
+              maxLength={120}
             />
           </div>
         </div>
@@ -97,7 +177,7 @@ const ThirdStepFound = ({ handleNext, handlePreviousStep, formData }) => {
           </button>
         </li>
         <li>
-          <button className={css.ButtonNext} onClick={handleNext}>
+          <button className={css.ButtonNext} onClick={handleDoneWithValidation}>
             <div className={css.ButtonEl}>
               <span>Done </span>
               <img src={nextIcon} alt="Next" />

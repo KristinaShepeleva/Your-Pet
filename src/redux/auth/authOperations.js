@@ -12,26 +12,31 @@ const accessToken = {
   },
 };
 
-export const currentUser = createAsyncThunk(
+export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
-  async (_, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistToken = state.auth.token;
+    const persistToken = state.auth.accessToken;
 
     if (!persistToken) {
       return thunkAPI.rejectWithValue();
     }
     accessToken.set(persistToken);
+
     try {
-      const { data } = axios.get('/api/auth/current');
+      const { data } = axios.post('/api/auth/refresh', credentials);
+
       return data;
     } catch (e) {
-      const res = e.response;
-      console.log(res.data.message);
-      return thunkAPI.rejectWithValue({
-        message: res.data.message,
-        status: res.status,
-      });
+      // const res = e.response;
+      console.log(e);
+      return thunkAPI.rejectWithValue(
+        e.message
+        // {
+        // message: res.data.message,
+        // status: res.status,
+        // }
+      );
     }
   }
 );
@@ -62,6 +67,7 @@ export const login = createAsyncThunk(
       accessToken.set(data.accessToken);
       return data;
     } catch (e) {
+      console.log(e);
       const res = e.response;
       console.log(res.data.message);
       return thunkAPI.rejectWithValue({
@@ -92,12 +98,12 @@ export const updateUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       console.log(credentials, 'credentials');
-      const { data } = await axios.patch('api/user/update', credentials);
-      // token.set(data.token);
-      // console.log(data, 'data');
+      const { data } = await axios.patch('api/update', credentials);
+      // accessToken.set(data.accessToken);
+      console.log(data, 'data');
       return data;
     } catch (e) {
-      // console.log('e', e);
+      console.log('e', e);
       const res = e.response;
       console.log('res.data.message', res.data.message);
       return thunkAPI.rejectWithValue('////');
@@ -112,7 +118,7 @@ export const getCurrentUser = createAsyncThunk(
       return data;
     } catch (e) {
       const res = e.response;
-      // console.log(res.data.message);
+      console.log(res.data.message);
       return thunkAPI.rejectWithValue(res.status);
     }
   }

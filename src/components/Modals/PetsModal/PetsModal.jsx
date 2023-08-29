@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { HeartFillIcon, HeartIcon } from 'helpers/icons';
 import css from './PetsModal.module.css';
@@ -10,7 +11,7 @@ import { useAuth } from 'hooks';
 import { favoriteList, updateFavorite } from 'redux/notices/operation';
 import { useLocation } from 'react-router-dom';
 
-const PetsModal = ({ pet, fav }) => {
+const PetsModal = ({ pet, owner, fav }) => {
   const [isContactsModal, setIsContactsModal] = useState(false);
   const [isAtentionModal, setIsAtentionModal] = useState(false);
 
@@ -36,6 +37,9 @@ const PetsModal = ({ pet, fav }) => {
       await dispatch(favoriteList());
     }
   };
+  // const yers = pet.birthday.slice(0, 4);
+  // const mouth = pet.birthday.slice(5, 7);
+  // const day = pet.birthday.slice(8, 10);
 
   return (
     <>
@@ -44,6 +48,9 @@ const PetsModal = ({ pet, fav }) => {
           <div className={css.imgContainer}>
             <img className={css.img} src={pet.imgUrl} alt="Animals" />
             <p className={css.category}>{pet.category}</p>
+            {pet.category === 'sell' && (
+              <p className={`${css.category} ${css.price}`}>{pet.price}</p>
+            )}
           </div>
           <div className={css.infoContainer}>
             <h2 className={css.title}>Сute dog looking for a home</h2>
@@ -59,19 +66,20 @@ const PetsModal = ({ pet, fav }) => {
               </ul>
               <ul className={css.list1}>
                 <li className={css.infoItem}>{pet.name}</li>
-                <li className={css.infoItem}>{pet.birthday}</li>
+                <li className={css.infoItem}>
+                  {/* {day}.{mouth}.{yers} */}
+                  {pet.birthday}
+                </li>
                 <li className={css.infoItem}>{pet.type}</li>
                 <li className={css.infoItem}>{pet.location}</li>
                 <li className={css.infoItem}>{pet.sex}</li>
-                {pet.owner && (
+                {owner && (
                   <>
                     <li className={`${css.contacts} ${css.infoItem}`}>
-                      <a href={`mailto:${pet.owner.email}`}>
-                        {pet.owner.email}
-                      </a>
+                      <a href={`mailto:${owner.email}`}>{owner.email}</a>
                     </li>
                     <li className={`${css.contacts} ${css.infoItem}`}>
-                      <a href={`tel:${pet.owner.phone}`}>{pet.owner.phone}</a>
+                      <a href={`tel:${owner.phone}`}>{owner.phone}</a>
                     </li>
                   </>
                 )}
@@ -109,7 +117,7 @@ const PetsModal = ({ pet, fav }) => {
         </div>
         {isContactsModal && (
           <ModalContainer toggleModal={toggleContactsModal}>
-            <ContactsModal pet={pet} />
+            <ContactsModal contacts={owner} />
           </ModalContainer>
         )}
         {isAtentionModal && (
@@ -122,6 +130,30 @@ const PetsModal = ({ pet, fav }) => {
       </div>
     </>
   );
+};
+
+PetsModal.propTypes = {
+  pet: PropTypes.shape({
+    birthday: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    comments: PropTypes.string.isRequired,
+    favorite: PropTypes.arrayOf(PropTypes.string),
+    imgUrl: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    sex: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }),
+  owner: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+  fav: PropTypes.bool.isRequired,
 };
 
 export default PetsModal;

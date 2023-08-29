@@ -1,23 +1,23 @@
+import PropTypes from 'prop-types';
 import css from './ContactsModal.module.css';
 
-const ContactsModal = ({ pet }) => {
-  const contact = pet.owner;
+const ContactsModal = ({ contacts }) => {
   return (
     <div className={css.container}>
       <h2 className={css.title}>Contact by:</h2>
       <ul className={css.list}>
-        {contact && (
+        {contacts && (
           <>
-            {contact.phone && (
+            {contacts.phone && (
               <li className={css.item}>
-                <a href={`tel:${contact.phone}`} className={css.link}>
-                  {contact.phone}
+                <a href={`tel:${contacts.phone}`} className={css.link}>
+                  {contacts.phone}
                 </a>
               </li>
             )}
             <li className={css.item}>
-              <a href={`mailto:${contact.email}`} className={css.link}>
-                {contact.email}
+              <a href={`mailto:${contacts.email}`} className={css.link}>
+                {contacts.email}
               </a>
             </li>
           </>
@@ -25,6 +25,13 @@ const ContactsModal = ({ pet }) => {
       </ul>
     </div>
   );
+};
+
+ContactsModal.propTypes = {
+  contacts: PropTypes.shape({
+    phone: PropTypes.string,
+    email: PropTypes.string,
+  }),
 };
 
 export default ContactsModal;

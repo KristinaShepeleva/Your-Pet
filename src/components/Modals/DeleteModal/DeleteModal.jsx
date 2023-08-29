@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import css from './DeleteModal.module.css';
 import { DeleteIcon } from 'helpers/icons';
@@ -10,7 +11,7 @@ import {
 } from 'redux/notices/operation';
 import { useLocation } from 'react-router-dom';
 
-const DeleteModal = ({ pet, toggleDeleteModal }) => {
+const DeleteModal = ({ title, id, toggleDeleteModal }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const pathSegments = location.pathname
@@ -19,7 +20,6 @@ const DeleteModal = ({ pet, toggleDeleteModal }) => {
   const category = pathSegments[1];
 
   const deleteNotice = async () => {
-    const id = pet._id;
     await dispatch(deletePet(id));
     if (category === 'favorite') {
       await dispatch(favoriteList());
@@ -41,7 +41,7 @@ const DeleteModal = ({ pet, toggleDeleteModal }) => {
       <div className={css.content}>
         <p className={css.textDelete}>
           Are you sure you want to delete
-          <span className={css.span}>“{pet.title}”?</span>
+          <span className={css.span}>“{title}”?</span>
         </p>
         <p className={css.textDelete}> You can`t undo this action.</p>
       </div>
@@ -60,6 +60,12 @@ const DeleteModal = ({ pet, toggleDeleteModal }) => {
       </div>
     </div>
   );
+};
+
+DeleteModal.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  toggleDeleteModal: PropTypes.func.isRequired,
 };
 
 export default DeleteModal;

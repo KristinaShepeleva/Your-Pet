@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { LogoutIcon } from 'helpers/icons';
 import css from './LogoutModal.module.css';
 
@@ -16,6 +18,10 @@ const LogoutModal = ({ toggleLogoutModal, logout }) => {
       </div>
     </div>
   );
+};
+LogoutModal.propTypes = {
+  toggleLogoutModal: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default LogoutModal;

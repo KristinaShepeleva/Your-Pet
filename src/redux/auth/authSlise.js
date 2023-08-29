@@ -3,8 +3,8 @@ const {
   createUser,
   login,
   logout,
-  // currentUser,
   getCurrentUser,
+  fetchCurrentUser,
   updateUser,
   updateUserAvatar,
 } = require('./authOperations');
@@ -18,6 +18,9 @@ const {
   logoutReject,
   updateUserFulfilled,
   updateUserAvatarFulfilled,
+  rejectedRefresh,
+  fulfilledRefresh,
+
 } = require('./authFunctions');
 
 const initialState = {
@@ -29,6 +32,8 @@ const initialState = {
   isRefreshing: false,
   isNewUser: false,
   userId: '',
+  isRefreshingToken: false,
+  refreshToken: null,
 };
 
 const arrayThunks = [
@@ -38,6 +43,8 @@ const arrayThunks = [
   getCurrentUser,
   updateUser,
   updateUserAvatar,
+  fetchCurrentUser,
+
 ];
 
 const authSlice = createSlice({
@@ -56,6 +63,9 @@ const authSlice = createSlice({
               break;
             case logout:
               logoutReject(state, action);
+              break;
+            case fetchCurrentUser:
+              rejectedRefresh(state, action);
               break;
             default:
               break;
@@ -80,6 +90,9 @@ const authSlice = createSlice({
               break;
             case updateUserAvatar:
               updateUserAvatarFulfilled(state, action);
+              break;
+            case fetchCurrentUser:
+              fulfilledRefresh(state, action);
               break;
             default:
               break;

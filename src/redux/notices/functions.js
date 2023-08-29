@@ -27,12 +27,11 @@ export const addNoticeFulfilled = (state, { payload }) => {
   state.error = { message: '', status: null };
 };
 
-export const deleteFulfilled = (state, { payload }) => {
+export const deleteFulfilled = (_, { payload }) => {
   console.log(payload);
 };
 
 export const updateFulfilled = (state, { payload }) => {
-  console.log(payload);
   state.isLoading = false;
   const noticeIndex = state.notices.findIndex(
     notice => notice._id === payload._id
