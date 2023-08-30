@@ -4,7 +4,6 @@ const {
   login,
   logout,
   getCurrentUser,
-  // fetchCurrentUser,
   updateUser,
   updateUserAvatar,
   fetchRefreshToken,
@@ -20,7 +19,7 @@ const {
   updateUserFulfilled,
   updateUserAvatarFulfilled,
   rejectedRefresh,
-  // fulfilledRefresh,
+  refreshFulfilled,
 } = require('./authFunctions');
 
 const initialState = {
@@ -29,11 +28,11 @@ const initialState = {
   isLoading: false,
   error: { message: '', status: null },
   accessToken: null,
+  refreshToken: null,
   isRefreshing: false,
   isNewUser: false,
   userId: '',
   isRefreshingToken: false,
-  refreshToken: null,
 };
 
 const arrayThunks = [
@@ -44,11 +43,8 @@ const arrayThunks = [
   updateUser,
   updateUserAvatar,
   fetchRefreshToken,
-  // fetchCurrentUser,
 ];
-const refreshFulfilled = (state, action) => {
-  state.refreshToken = action.payload.refreshToken;
-};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
@@ -77,9 +73,6 @@ const authSlice = createSlice({
         })
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
-            case fetchRefreshToken:
-              refreshFulfilled(state, action);
-              break;
             case createUser:
               registerFulfilled(state, action);
               break;
@@ -88,6 +81,9 @@ const authSlice = createSlice({
               break;
             case logout:
               logoutFulfilled(state, action);
+              break;
+            case fetchRefreshToken:
+              refreshFulfilled(state, action);
               break;
             case getCurrentUser:
               currentFulfilled(state, action);
@@ -98,9 +94,6 @@ const authSlice = createSlice({
             case updateUserAvatar:
               updateUserAvatarFulfilled(state, action);
               break;
-            // case fetchCurrentUser:
-            //   fulfilledRefresh(state, action);
-            //   break;
             default:
               break;
           }
