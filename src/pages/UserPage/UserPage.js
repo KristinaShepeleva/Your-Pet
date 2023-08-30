@@ -28,7 +28,7 @@ const User = () => {
       <Container>
         <div className={css.box}>
           <UserData />
-          <div className={css.boxPetData}>
+          <div className={css.wrapperPetData}>
             <PetsData />
           </div>
         </div>
