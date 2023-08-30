@@ -1,6 +1,9 @@
 export const handelPending = state => {
   state.isLoading = true;
 };
+
+/////////////////rejected////////////////////////////
+
 export const handelRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = {
@@ -8,22 +11,39 @@ export const handelRejected = (state, { payload }) => {
     status: payload.status,
   };
 };
+
+export const logoutReject = state => {
+  state.isLoading = false;
+  state.isRefreshing = false;
+  state.isRefreshingToken = false;
+  state.isNewUser = false;
+  state.isLoggedIn = false;
+  state.user = {};
+  state.accessToken = null;
+  state.refreshToken = null;
+  state.error = { message: '', status: null };
+};
+
 export const rejectedRefresh = (state, { payload }) => {
   state.isLoading = false;
-  console.log('rejected refresh', payload);
+  state.error = {
+    message: payload.message,
+    status: payload.status,
+  };
 };
+
+//////////////////fulfilled////////////////////////
+
 export const registerFulfilled = (state, { payload }) => {
-  console.log(payload);
   state.isLoading = false;
   state.isNewUser = true;
   state.isLoggedIn = true;
   state.user = payload.user;
   state.accessToken = payload.accessToken;
-
   state.refreshToken = payload.refreshToken;
-
   state.error = { message: '', status: null };
 };
+
 export const loginFulfilled = (state, { payload }) => {
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
@@ -37,37 +57,31 @@ export const loginFulfilled = (state, { payload }) => {
 export const logoutFulfilled = state => {
   state.isLoading = false;
   state.isRefreshing = false;
+  state.isRefreshingToken = false;
   state.isNewUser = false;
   state.isLoggedIn = false;
   state.user = {};
   state.accessToken = null;
+  state.refreshToken = null;
   state.error = { message: '', status: null };
   state.userId = '';
 };
-export const logoutReject = state => {
+
+export const refreshFulfilled = (state, { payload }) => {
   state.isLoading = false;
-  state.isRefreshing = false;
-  state.isNewUser = false;
-  state.isLoggedIn = false;
-  state.user = {};
-  state.accessToken = null;
-  state.error = { message: '', status: null };
+  state.isLoggedIn = true;
+  state.isRefreshingToken = true;
+  state.accessToken = payload.accessToken;
+  state.refreshToken = payload.refreshToken;
 };
 
-export const fulfilledRefresh = (state, { payload }) => {
-  console.log(payload);
-  state.isLoading = false;
-  // state.isLoggedIn = true;
-  // state.isRefreshingToken = true;
-  // state.user = payload;
-  // state.error = { message: '', status: null };
-  // state.isNewUser = false;
-  // state.isRefreshing = false;
-};
+//////////////////// fulfilled User////////////////
 
 export const currentFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.userId = payload._id;
+  state.isLoggedIn = true;
+  state.user = payload;
 };
 
 export const updateUserFulfilled = (state, { payload }) => {
