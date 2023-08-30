@@ -11,18 +11,19 @@ const token = {
   },
 };
 
-instance.interceptors.response.use(
-  response => response,
-  async (error, thunkAPI) => {
-    if (error.response.status === 401) {
-      console.log(error, 'error');
-      const state = thunkAPI.getState();
-      const refreshToken = state.auth.refreshToken;
-      thunkAPI.dispatch(fetchRefreshToken({ refreshToken }));
-      return instance(error.config);
-    }
-  }
-);
+// instance.interceptors.response.use(
+//   response => response,
+//   async (error, thunkAPI) => {
+//     if (error.response.status === 401) {
+//       console.log(error, 'error');
+//       const state = thunkAPI.getState();
+//       const refreshToken = state.auth.refreshToken;
+//       thunkAPI.dispatch(fetchRefreshToken({ refreshToken }));
+//       return instance(error.config);
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 export const fetchRefreshToken = createAsyncThunk(
   'auth/refreshToken',
