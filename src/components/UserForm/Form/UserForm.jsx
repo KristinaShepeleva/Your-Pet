@@ -15,66 +15,47 @@ import { updateUser, updateUserAvatar } from 'redux/auth/authOperations';
 import { AvatarConfirmButtons } from '../AvatarConfirmButtons/AvatarConfirmButtons';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
 import { FormActivationToggleButton } from '../FormActivationToggleButton/FormActivationToggleButton';
-// import { formattedDates } from 'helpers/formattedDates';
 
 export const UserForm = () => {
   const { user } = useAuth();
   const [avatarURL, setAvatarURL] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
- const dispatch = useDispatch();
-  let phone;
-  let city;
+  const dispatch = useDispatch();
 
- 
-  if (user.phone === undefined) {
-    phone = '+380';
-  } else {
-    phone = user.phone;
-  }
-
-   if (user.city === undefined) {
-    city = '';
-  } else {
-    city = user.city;
-  }
- 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
       avatarURL: user.avatarURL,
       name: user.name,
       email: user.email,
-      birthday: user.birthday,
-      phone: phone,
-      city: city,
+      birthday: user?.birthday || '',
+      phone: user?.phone || '+380',
+      city: user?.city || '',
     },
     onSubmit: (values, actions) => {
-       let formData;
+      let formData;
       const avatar = new FormData();
       avatar.append('avatarURL', avatarURL);
-     
 
       if (values.email !== user.email) {
-    formData = {
-        name: values.name,
-        email: values.email,
-        birthday: values.birthday,
-        phone: values.phone,
-        city: values.city,
+        formData = {
+          name: values.name,
+          email: values.email,
+          birthday: values.birthday,
+          phone: values.phone,
+          city: values.city,
+        };
       }
+      if (values.email === user.email) {
+        formData = {
+          name: values.name,
+          birthday: values.birthday,
+          phone: values.phone,
+          city: values.city,
+        };
       }
-       if (values.email === user.email) {
-    formData = {
-        name: values.name,
-        birthday: values.birthday,
-        phone: values.phone,
-        city: values.city,
-      }
-}
-      
-     
-console.log('formData', formData);
+
       setIsActive(!isActive);
       setConfirmAvatar(false);
       setAvatarURL(null);

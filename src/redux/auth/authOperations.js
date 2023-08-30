@@ -107,7 +107,7 @@ export const updateUser = createAsyncThunk(
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(
-        toast.error('The info was not updated. Try later')
+        toast.error('The info was not updated. Try later', { draggable: false })
       );
     }
   }
@@ -143,7 +143,9 @@ export const updateUserAvatar = createAsyncThunk(
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(
-        toast.error('The avatar was not updated. Try later')
+        toast.error('The avatar was not updated. Try later', {
+          draggable: false,
+        })
       );
     }
   }
