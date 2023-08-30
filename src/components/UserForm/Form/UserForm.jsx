@@ -73,9 +73,7 @@ export const UserForm = () => {
       }
 }
       
-     
-console.log('formData', formData);
-      setIsActive(!isActive);
+           setIsActive(!isActive);
       setConfirmAvatar(false);
       setAvatarURL(null);
       dispatch(updateUser(formData));

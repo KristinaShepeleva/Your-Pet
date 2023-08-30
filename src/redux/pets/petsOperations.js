@@ -13,14 +13,13 @@ export const fetchPets = createAsyncThunk(
     }
   }
 );
-// cat5@cat.com
 export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
   try {
     const response = await instance.post('/api/pets/users/addPet', pet);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(
-      toast.error('The pet was not added. Try later')
+      toast.error('The pet was not added. Try later', { draggable: false })
     );
   }
 });
@@ -33,7 +32,7 @@ export const deleteUserPet = createAsyncThunk(
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        toast.error('The pet was not deleted. Try later')
+        toast.error('The pet was not deleted. Try later', { draggable: false })
       );
     }
   }
