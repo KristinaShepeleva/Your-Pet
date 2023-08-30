@@ -1,12 +1,10 @@
-
 import React, { useState } from 'react';
 import css from './ThirdStep.module.css';
 
-import nextIcon from '../../../images/icons/pawprint.svg';
 import backIcon from '../../../images/icons/arrow-left.svg';
-import PetAdd from '../../../images/icons/plus-big.svg';
+import { PawprintIcon, PlusBigIcon } from 'helpers/icons';
 
-const ThirdStep = ({ handleNext, handlePreviousStep, formData }) => {
+const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
   const [photo, setPhoto] = useState(null);
   const [comments, setComments] = useState('');
   const [photoError, setPhotoError] = useState('');
@@ -32,7 +30,9 @@ const ThirdStep = ({ handleNext, handlePreviousStep, formData }) => {
 
   const handleDoneWithValidation = () => {
     if (handleValidation()) {
-      handleNext();
+      // handleNext();
+      const noticeStep3 = { photo, comments };
+      doneSubmit3(noticeStep3);
     }
   };
 
@@ -52,7 +52,7 @@ const ThirdStep = ({ handleNext, handlePreviousStep, formData }) => {
                 alt="Upload img"
               />
             )}
-            <img className={css.IconAdd} src={PetAdd} alt="add" />
+            {!photo && <PlusBigIcon className={css.IconAdd} />}
           </label>
           {photoError && (
             <span className={`${css.ErrorMessage} ${css.ErrorMessageRight}`}>
@@ -94,7 +94,7 @@ const ThirdStep = ({ handleNext, handlePreviousStep, formData }) => {
           <button className={css.ButtonNext} onClick={handleDoneWithValidation}>
             <div className={css.ButtonEl}>
               <span>Done</span>
-              <img src={nextIcon} alt="Done" />
+              <PawprintIcon style={{ fill: 'var(--bg-color)' }} />
             </div>
           </button>
         </li>

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import css from './SecondStep.module.css';
 
-import nextIcon from '../../../images/icons/pawprint.svg';
 import backIcon from '../../../images/icons/arrow-left.svg';
+import { PawprintIcon } from 'helpers/icons';
 
-const SecondStep = ({ handleNext, handlePreviousStep, formData }) => {
+const SecondStep = ({
+  handleNext,
+  handlePreviousStep,
+  formData,
+  doneSubmit2,
+}) => {
   const [name, setName] = useState(formData.name || '');
   const [birthday, setBirthday] = useState(formData.birthday || '');
   const [breed, setBreed] = useState(formData.breed || '');
@@ -14,15 +19,15 @@ const SecondStep = ({ handleNext, handlePreviousStep, formData }) => {
   const [breedError, setBreedError] = useState('');
 
   const validateName = () => {
-        const regex = /^[A-Za-z\s]+$/;
-      if (!name || name.length < 2 || name.length > 16 || !regex.test(name)) {
-        setNameError(css.InputError);
-        return false;
-      }
-      setNameError('');
-      return true;
+    const regex = /^[A-Za-z\s]+$/;
+    if (!name || name.length < 2 || name.length > 16 || !regex.test(name)) {
+      setNameError(css.InputError);
+      return false;
+    }
+    setNameError('');
+    return true;
   };
-  
+
   const validateBirthday = () => {
     if (!birthday) {
       setBirthdayError(css.InputError);
@@ -31,32 +36,36 @@ const SecondStep = ({ handleNext, handlePreviousStep, formData }) => {
     setBirthdayError('');
     return true;
   };
-
-
   const validateBreed = () => {
-      const regex = /^[A-Za-z\s]+$/;
+    const regex = /^[A-Za-z\s]+$/;
     if (!breed || breed.length < 2 || breed.length > 16 || !regex.test(breed)) {
       setBreedError(css.InputError);
       return false;
     }
-      setBreedError('');
-      return true;
-    };
-
-    const handleValidation = () => {
-      const isNameValid = validateName();
-      const isBirthdayValid = validateBirthday();
-      const isBreedValid = validateBreed();
-
-      return isNameValid && isBirthdayValid && isBreedValid;
-    };
-
-    const handleNextWithValidation = () => {
-      if (handleValidation()) {
-        handleNext();
-      }
+    setBreedError('');
+    return true;
   };
-  
+
+  const handleValidation = () => {
+    const isNameValid = validateName();
+    const isBirthdayValid = validateBirthday();
+    const isBreedValid = validateBreed();
+
+    return isNameValid && isBirthdayValid && isBreedValid;
+  };
+
+  const handleNextWithValidation = () => {
+    if (handleValidation()) {
+      handleNext();
+      const noticeStep2 = {
+        name,
+        birthday,
+        breed,
+      };
+      doneSubmit2(noticeStep2);
+    }
+  };
+
   return (
     <div className={css.FormWrapper}>
       <div className={css.WrapperLabelInput}>
@@ -132,7 +141,7 @@ const SecondStep = ({ handleNext, handlePreviousStep, formData }) => {
           <button className={css.ButtonNext} onClick={handleNextWithValidation}>
             <div className={css.ButtonEl}>
               <span>Next</span>
-              <img src={nextIcon} alt="Next" />
+              <PawprintIcon style={{ fill: 'var(--bg-color)' }} />
             </div>
           </button>
         </li>

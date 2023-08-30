@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
+import { addNotice } from 'redux/notices/operation';
+import { addPet } from 'redux/pets/petsOperations';
 import CurrentStep from './CurrentStep';
 import FirstStep from './FirstStep/FirstStep';
 import SecondStepRender from './SecondStep/SecondStepRender';
@@ -18,6 +22,8 @@ function AddPetPage() {
     showModal: false,
     formData: {},
   });
+  const [notice, setNotice] = useState({});
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -74,6 +80,70 @@ function AddPetPage() {
     }
   };
 
+  // //////////////////////
+  const doneSubmit2 = step2 => {
+    setNotice(step2);
+  };
+  const doneSubmit3 = step3 => {
+    setNotice(prevState => ({ ...prevState, ...step3 }));
+  };
+
+  useEffect(() => {
+    if (
+      state.formData.category === 'your-pet' &&
+      notice.photo &&
+      notice.comments &&
+      notice.name &&
+      notice.birthday
+    ) {
+      const newNotice = new FormData();
+      newNotice.append('imgUrl', notice.photo);
+      newNotice.append('birthday', notice.birthday);
+      newNotice.append('type', notice.breed);
+      newNotice.append('comments', notice.comments);
+      newNotice.append('name', notice.name);
+      newNotice.append('category', state.formData.category);
+
+      dispatch(addPet(newNotice)).then(data => {
+        if (data.type === '/') {
+          toast.success('Pet is added');
+          navigate('/user');
+        }
+      });
+      setNotice({});
+    }
+
+    if (
+      notice.photo &&
+      notice.comments &&
+      state.formData.category &&
+      notice.name &&
+      notice.birthday &&
+      notice.breed &&
+      state.formData.category !== 'your-pet'
+    ) {
+      const newNotice = new FormData();
+      newNotice.append('imgUrl', notice.photo);
+      newNotice.append('birthday', notice.birthday);
+      newNotice.append('type', notice.breed);
+      newNotice.append('comments', notice.comments);
+      newNotice.append('name', notice.name);
+      newNotice.append('location', notice.place);
+      newNotice.append('price', notice.price);
+      newNotice.append('sex', notice.sex);
+      newNotice.append('title', notice.title);
+      newNotice.append('category', state.formData.category);
+
+      dispatch(addNotice(newNotice)).then(data => {
+        if (data.type === 'notices/addNotice/fulfilled') {
+          toast.success('Pet is added');
+          navigate(`/notices/${state.formData.category}`);
+        }
+      });
+      setNotice({});
+    }
+  }, [dispatch, navigate, notice, state]);
+
   return (
     <>
       <div
@@ -114,14 +184,15 @@ function AddPetPage() {
             handleNext={() => handleStepChange(1, state.formData)}
             handlePreviousStep={() => handleStepChange(-1, state.formData)}
             formData={state.formData}
+            doneSubmit2={doneSubmit2}
           />
         )}
         {state.step === 3 && (
           <ThirdStepRender
             selectedOption={state.selectedOption}
-            handleNext={() => handleStepChange(1, state.formData)}
             handlePreviousStep={() => handleStepChange(-1, state.formData)}
             formData={state.formData}
+            doneSubmit3={doneSubmit3}
           />
         )}
       </div>

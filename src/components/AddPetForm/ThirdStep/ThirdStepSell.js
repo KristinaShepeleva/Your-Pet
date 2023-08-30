@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 
-import nextIcon from '../../../images/icons/pawprint.svg';
 import backIcon from '../../../images/icons/arrow-left.svg';
-import PetAdd from '../../../images/icons/plus-big.svg';
 
 import female from '../../../images/icons/female.svg';
 import male from '../../../images/icons/male.svg';
 
 import css from './ThirdStep.module.css';
+import { PawprintIcon, PlusBigIcon } from 'helpers/icons';
 
-const ThirdStepSell = ({ handleNext, handlePreviousStep, formData }) => {
+const ThirdStepSell = ({ handlePreviousStep, formData, doneSubmit3 }) => {
   const [photo, setPhoto] = useState(formData.url || '');
   const [comments, setComments] = useState(formData.comments || '');
   const [place, setPlace] = useState(formData.place || '');
@@ -77,7 +76,8 @@ const ThirdStepSell = ({ handleNext, handlePreviousStep, formData }) => {
 
   const handleDoneWithValidation = () => {
     if (handleValidation()) {
-      handleNext();
+      const noticeStep3 = { photo, comments, place, price, sex };
+      doneSubmit3(noticeStep3);
     }
   };
 
@@ -131,7 +131,7 @@ const ThirdStepSell = ({ handleNext, handlePreviousStep, formData }) => {
                     alt="Selected img"
                   />
                 )}
-                <img className={css.IconAdd} src={PetAdd} alt="add" />
+                {!photo && <PlusBigIcon className={css.IconAdd} />}
               </div>
             </label>
             {photoError && (
@@ -205,7 +205,7 @@ const ThirdStepSell = ({ handleNext, handlePreviousStep, formData }) => {
           <button className={css.ButtonNext} onClick={handleDoneWithValidation}>
             <div className={css.ButtonEl}>
               <span>Done</span>
-              <img src={nextIcon} alt="Next" />
+              <PawprintIcon style={{ fill: 'var(--bg-color)' }} />
             </div>
           </button>
         </li>
