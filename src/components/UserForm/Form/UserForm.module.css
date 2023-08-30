@@ -30,17 +30,6 @@
   }
 }
 
-.EditCloseBt {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  border: none;
-  background-color: transparent;
-}
-.iconPhoto {
-  stroke: var(--blue-color);
-}
-
 .boxAvatar {
   position: relative;
   margin-left: auto;
@@ -93,8 +82,8 @@
   align-items: center;
   margin-bottom: 21px;
   @media screen and (min-width: 1280px) {
-      margin-bottom: 25px;
-    }
+    margin-bottom: 25px;
+  }
 }
 
 .inputFile {
@@ -109,7 +98,6 @@
 }
 
 .errorText {
-
   position: absolute;
   bottom: -15px;
   left: 0;
@@ -121,6 +109,10 @@
 
   @media screen and (min-width: 768px) {
     max-width: 255px;
+    margin-left: 67px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 160px;
   }
 }
 .formGroup {
@@ -141,7 +133,7 @@
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 21px;
-  
+
   @media screen and (min-width: 768px) {
     margin-top: 10px;
     margin-left: auto;
@@ -175,8 +167,8 @@
     letter-spacing: 0.64px;
     font-weight: 700;
   }
-    @media screen and (min-width: 1280px) {
-      padding-top: 6px;
-        padding-bottom: 6px;
-    }
+  @media screen and (min-width: 1280px) {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
 }
