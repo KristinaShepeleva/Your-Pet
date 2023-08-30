@@ -20,24 +20,21 @@
   @media screen and (min-width: 768px) {
     .mobileMenu {
       padding: 32px 32px;
+     
     }
   }
   @media screen and (min-width: 1280px) {
     .mobileMenu {
-      width: 1280px;
-      padding: 20px 16px;
+      display: none;
     }
   }
-  
   .head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 28px;
   }
-  
   .closeButton {
     cursor: pointer;
     stroke: #ffc107;
-    margin-right: 10px;
   }
