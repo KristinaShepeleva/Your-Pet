@@ -3,8 +3,8 @@ import { Empty } from 'components/Empty/Empty';
 // import bg2 from '../../../images/404-dsc-2x.png';
 import { selectPets } from 'redux/pets/selectors';
 import { useSelector } from 'react-redux';
-// import { selectError } from 'redux/pets/selectors';
-// import { ErrorText } from 'components/ErrorText/ErrorText';
+import { selectError } from 'redux/pets/selectors';
+import { ErrorText } from 'components/ErrorText/ErrorText';
 // const pets = [
 //   {
 //     petId: '3fa85f64-5717-4562-b3fc-2c963f66afa67',
@@ -28,26 +28,25 @@ import { useSelector } from 'react-redux';
 // ];
 export const PetsList = () => {
   const ownPets = useSelector(selectPets);
-  console.log(ownPets);
-  // const error = useSelector(selectError)
+  const error = useSelector(selectError)
   return (
 
       <>
-      {/* error ? (<ErrorText />): */}
-      { ownPets.length === 0 ? (
+    
+      { error ? (<ErrorText />) : ownPets.length === 0 ? (
 
         <Empty text='You don`t have any pets. You can add them. Click on the button "Add pet"' />
       ) : (
         <ul>
-          {ownPets.map(({ petId, name, birthday, type, comments, image }) => (
+          {ownPets.map(({ _id, name, birthday, type, comments, photoURL }) => (
             <PetsItem
-              key={petId}
-              id={petId}
+              key={_id}
+              id={_id}
               petName={name}
               birthday={birthday}
               breed={type}
               comments={comments}
-              image={image}
+              image={photoURL}
             />
           ))}
         </ul>

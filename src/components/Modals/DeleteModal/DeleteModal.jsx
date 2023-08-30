@@ -20,15 +20,19 @@ const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
     .filter(segment => segment !== '');
   const category = pathSegments[1];
 
+  const deleteMyPet = async () => {
+    await dispatch(deleteUserPet(id));
+     toggleDeleteModal();
+  }
   const deleteNotice = async () => {
-    await dispatch(deletePet(id));
+   
+  await dispatch(deletePet(id));
+    
     if (category === 'favorite') {
       await dispatch(favoriteList());
     } else if (category === 'own') {
       await dispatch(myNotices());
-    } else if (category === 'user') { 
- await dispatch(deleteUserPet(id));
-    } else {
+    }  else {
       const request = {
         category,
         search: '',
@@ -55,7 +59,7 @@ const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
         >
           Cancel
         </button>
-        <button className={css.btnYes} onClick={deleteNotice}>
+        <button className={css.btnYes} onClick={ pathSegments[0] === 'user' ? deleteMyPet : deleteNotice}>
           Yes
           <DeleteIcon className={css.icon} />
         </button>

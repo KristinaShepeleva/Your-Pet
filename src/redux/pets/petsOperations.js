@@ -7,7 +7,6 @@ export const fetchPets = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await instance.get('/api/pets/users/pets');
-      // console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.config.method);

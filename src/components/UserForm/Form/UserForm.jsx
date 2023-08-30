@@ -22,18 +22,23 @@ export const UserForm = () => {
   const [avatarURL, setAvatarURL] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
+ const dispatch = useDispatch();
+  let phone;
+  let city;
 
-  // const formattedDates = date => {
-  //   if (date === null) {
-  //     return '';
-  //   }
-  //   let formatteBirthday = new Date(date).toISOString().split('T')[0];
+ 
+  if (user.phone === undefined) {
+    phone = '+380';
+  } else {
+    phone = user.phone;
+  }
 
-  //   return formatteBirthday;
-  // };
-
-  const dispatch = useDispatch();
-
+   if (user.city === undefined) {
+    city = '';
+  } else {
+    city = user.city;
+  }
+ 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -41,28 +46,40 @@ export const UserForm = () => {
       name: user.name,
       email: user.email,
       birthday: user.birthday,
-      phone: user.phone,
-      city: user.city,
+      phone: phone,
+      city: city,
     },
     onSubmit: (values, actions) => {
-      const avatarURL = new FormData();
-      avatarURL.append('avatarURL', values.avatarURL);
+       let formData;
+      const avatar = new FormData();
+      avatar.append('avatarURL', avatarURL);
+     
 
-      const formData = {
+      if (values.email !== user.email) {
+    formData = {
         name: values.name,
         email: values.email,
         birthday: values.birthday,
         phone: values.phone,
         city: values.city,
-      };
-      // console.log('avatarURL', avatarURL);
-      //  console.log("formData", formData);
-
+      }
+      }
+       if (values.email === user.email) {
+    formData = {
+        name: values.name,
+        birthday: values.birthday,
+        phone: values.phone,
+        city: values.city,
+      }
+}
+      
+     
+console.log('formData', formData);
       setIsActive(!isActive);
       setConfirmAvatar(false);
       setAvatarURL(null);
       dispatch(updateUser(formData));
-      dispatch(updateUserAvatar(avatarURL));
+      dispatch(updateUserAvatar(avatar));
       actions.resetForm();
     },
     validationSchema: userSchema,
@@ -99,7 +116,7 @@ export const UserForm = () => {
             ) : user?.avatarURL ? (
               <img
                 className={css.imgAvatar}
-                src={user.avatarURL}
+                src={`https://cdn.pixabay.com/${user.avatarURL}`}
                 alt="avatar"
               />
             ) : (
