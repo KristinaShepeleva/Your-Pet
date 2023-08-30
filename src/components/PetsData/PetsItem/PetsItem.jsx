@@ -1,21 +1,19 @@
 import { DeleteIcon } from 'helpers/icons';
 import { useState } from 'react';
 import css from './PetsItem.module.css';
-// import { useDispatch } from 'react-redux';
-// import { deleteUserPet } from 'redux/pets/petsOperations';
+
 import ModalContainer from 'components/Modals/ModalContainer/ModalContainer';
 import DeleteModal from 'components/Modals/DeleteModal/DeleteModal';
 import PropTypes from 'prop-types';
 
 export const PetsItem = ({
-  petId,
+  id,
   petName,
   birthday,
   breed,
   comments,
   image,
 }) => {
-  // const dispatch = useDispatch();
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
  const toggleDeleteModal = () => {
     setIsDeleteModalOpen(!isDeleteModalOpen);
@@ -59,7 +57,7 @@ export const PetsItem = ({
           <DeleteModal
             nameModal='Delete it?'
             title={`this pet (${petName})`}
-            id={petId}
+            id={id}
             toggleDeleteModal={toggleDeleteModal}
           />
         </ModalContainer>
