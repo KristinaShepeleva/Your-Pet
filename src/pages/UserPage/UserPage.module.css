@@ -6,12 +6,3 @@
     
 }
 
-.wrapperPetData {
-    @media screen and (min-width: 768px) {
-        width: 703px;
-    }
-        @media screen and (min-width: 1280px) {
-            width: 821px;
-        }
-
-}
