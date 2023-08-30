@@ -59,7 +59,7 @@ export const UserRoute = {
 
 export const AddPetRoute = {
   path: '/add-pet',
-  element: <AddPetPage />,
+  element:  <PrivateRoute component={AddPetPage} redirectTo="/login" />,
 };
 
 const generateNoticesRoute = isLoggedIn => {

@@ -25,11 +25,11 @@ export const registerFulfilled = (state, { payload }) => {
   state.error = { message: '', status: null };
 };
 export const loginFulfilled = (state, { payload }) => {
-  state.isLoading = false;
-  state.user = payload.user;
   state.accessToken = payload.accessToken;
   state.refreshToken = payload.refreshToken;
   state.isLoggedIn = true;
+  state.isLoading = false;
+  state.user = payload.user;
   state.error = { message: '', status: null };
   state.isNewUser = false;
 };

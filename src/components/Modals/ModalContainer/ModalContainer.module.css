@@ -1,7 +1,6 @@
 .modalBackdrop {
   position: fixed;
   z-index: 400;
-  overflow-y: scroll;
   top: 0;
   left: 0;
   width: 100vw;

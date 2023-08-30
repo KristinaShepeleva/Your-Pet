@@ -1,12 +1,12 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import instance from 'redux/instance';
 
 export const fetchPets = createAsyncThunk(
   'pets/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/api/pets/users/pets');
+      const response = await instance.get('/api/pets/users/pets');
       // console.log(response.data);
       return response.data;
     } catch (error) {
@@ -17,7 +17,7 @@ export const fetchPets = createAsyncThunk(
 // cat5@cat.com
 export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
   try {
-    const response = await axios.post('/api/pets/users/addPet', pet);
+    const response = await instance.post('/api/pets/users/addPet', pet);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(
@@ -30,7 +30,7 @@ export const deleteUserPet = createAsyncThunk(
   'pets/deletePet',
   async (petId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/api/pets/users/${petId}`);
+      const response = await instance.delete(`/api/pets/users/${petId}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

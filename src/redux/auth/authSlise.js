@@ -4,9 +4,10 @@ const {
   login,
   logout,
   getCurrentUser,
-  fetchCurrentUser,
+  // fetchCurrentUser,
   updateUser,
   updateUserAvatar,
+  fetchRefreshToken,
 } = require('./authOperations');
 const {
   handelPending,
@@ -19,7 +20,7 @@ const {
   updateUserFulfilled,
   updateUserAvatarFulfilled,
   rejectedRefresh,
-  fulfilledRefresh,
+  // fulfilledRefresh,
 } = require('./authFunctions');
 
 const initialState = {
@@ -42,9 +43,12 @@ const arrayThunks = [
   getCurrentUser,
   updateUser,
   updateUserAvatar,
-  fetchCurrentUser,
+  fetchRefreshToken,
+  // fetchCurrentUser,
 ];
-
+const refreshFulfilled = (state, action) => {
+  state.refreshToken = action.payload.refreshToken;
+};
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
@@ -64,7 +68,7 @@ const authSlice = createSlice({
             case logout:
               logoutReject(state, action);
               break;
-            case fetchCurrentUser:
+            case fetchRefreshToken:
               rejectedRefresh(state, action);
               break;
             default:
@@ -73,6 +77,9 @@ const authSlice = createSlice({
         })
         .addCase(fetch.fulfilled, (state, action) => {
           switch (fetch) {
+            case fetchRefreshToken:
+              refreshFulfilled(state, action);
+              break;
             case createUser:
               registerFulfilled(state, action);
               break;
@@ -91,9 +98,9 @@ const authSlice = createSlice({
             case updateUserAvatar:
               updateUserAvatarFulfilled(state, action);
               break;
-            case fetchCurrentUser:
-              fulfilledRefresh(state, action);
-              break;
+            // case fetchCurrentUser:
+            //   fulfilledRefresh(state, action);
+            //   break;
             default:
               break;
           }
@@ -103,3 +110,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const { setRefreshToken } = authSlice.actions;

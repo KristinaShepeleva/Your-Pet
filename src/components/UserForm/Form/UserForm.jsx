@@ -15,7 +15,7 @@ import { updateUser, updateUserAvatar } from 'redux/auth/authOperations';
 import { AvatarConfirmButtons } from '../AvatarConfirmButtons/AvatarConfirmButtons';
 import { LogoutUser } from '../LogoutUser/LogoutUser';
 import { FormActivationToggleButton } from '../FormActivationToggleButton/FormActivationToggleButton';
-import { formattedDates } from 'helpers/formattedDates';
+// import { formattedDates } from 'helpers/formattedDates';
 
 export const UserForm = () => {
   const { user } = useAuth();
@@ -40,7 +40,7 @@ export const UserForm = () => {
       avatarURL: user.avatarURL,
       name: user.name,
       email: user.email,
-      birthday: formattedDates(user.birthday),
+      birthday: user.birthday,
       phone: user.phone,
       city: user.city,
     },
