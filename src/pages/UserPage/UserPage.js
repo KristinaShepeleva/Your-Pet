@@ -28,7 +28,9 @@ const User = () => {
       <Container>
         <div className={css.box}>
           <UserData />
-          <PetsData />
+          <div className={css.boxPetData}>
+            <PetsData />
+          </div>
         </div>
       </Container>
       {newUser && (
