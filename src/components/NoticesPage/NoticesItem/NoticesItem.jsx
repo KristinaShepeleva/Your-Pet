@@ -119,7 +119,7 @@ const NoticesItem = ({ pet }) => {
           </li>
           <li className={css.info}>
             <ClockIcon />
-            <p>{getCurrentAge(pet.birthday)} yers</p>
+            <p>{getCurrentAge(pet.birthday)} years</p>
           </li>
           <li className={css.info}>
             {pet.sex === 'male' ? <MaleIcon /> : <FamileIcon />}
