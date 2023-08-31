@@ -94,16 +94,15 @@ function AddPetPage() {
       notice.birthday
     ) {
       const newNotice = new FormData();
-      newNotice.append('imgUrl', notice.photo);
+      newNotice.append('photoURL', notice.photo);
       newNotice.append('birthday', notice.birthday);
       newNotice.append('type', notice.breed);
       newNotice.append('comments', notice.comments);
       newNotice.append('name', notice.name);
-      newNotice.append('category', state.formData.category);
 
       dispatch(addPet(newNotice)).then(data => {
-        if (data.type === '/') {
-          toast.success('Pet is added');
+        if (data.type === 'pets/addPet/fulfilled') {
+          toast.success('The pet was added.');
           navigate('/user');
         }
       });
@@ -133,7 +132,7 @@ function AddPetPage() {
 
       dispatch(addNotice(newNotice)).then(data => {
         if (data.type === 'notices/addNotice/fulfilled') {
-          toast.success('Pet is added');
+          toast.success('The pet was added.');
           navigate(`/notices/${state.formData.category}`);
         }
       });
