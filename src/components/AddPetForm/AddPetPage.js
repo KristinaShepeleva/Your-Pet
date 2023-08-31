@@ -35,7 +35,7 @@ function AddPetPage() {
 
   const handleOptionChange = (option, number) => {
     updateState({
-      formData: { ...state.formData, category: option },
+      formData: {},
       selectedOption: option,
       activeButton: number,
     });
@@ -82,6 +82,15 @@ function AddPetPage() {
     setNotice(step2);
   };
   const doneSubmit3 = step3 => {
+    updateState({
+      formData: {
+        ...state.formData,
+        step3: {
+          ...state.formData.step3,
+          ...step3,
+        },
+      },
+    });
     setNotice(prevState => ({ ...prevState, ...step3 }));
   };
 
@@ -107,6 +116,9 @@ function AddPetPage() {
         }
       });
       setNotice({});
+      updateState({
+        formData: {},
+      });
     }
 
     if (
@@ -137,6 +149,9 @@ function AddPetPage() {
         }
       });
       setNotice({});
+      updateState({
+        formData: {},
+      });
     }
   }, [dispatch, navigate, notice, state]);
 
@@ -172,13 +187,14 @@ function AddPetPage() {
             handleCancel={handleCancel}
             handleOptionChange={handleOptionChange}
             activeButton={state.activeButton}
+            updateState={updateState}
           />
         )}
         {state.step === 2 && (
           <SecondStepRender
             selectedOption={state.selectedOption}
-            handleNext={() => handleStepChange(1, state.formData)}
-            handlePreviousStep={() => handleStepChange(-1, state.formData)}
+            handleNext={handleStepChange}
+            handlePreviousStep={handleStepChange}
             formData={state.formData}
             doneSubmit2={doneSubmit2}
           />
@@ -186,7 +202,7 @@ function AddPetPage() {
         {state.step === 3 && (
           <ThirdStepRender
             selectedOption={state.selectedOption}
-            handlePreviousStep={() => handleStepChange(-1, state.formData)}
+            handlePreviousStep={handleStepChange}
             formData={state.formData}
             doneSubmit3={doneSubmit3}
           />

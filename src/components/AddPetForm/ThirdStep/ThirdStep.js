@@ -4,8 +4,8 @@ import css from './ThirdStep.module.css';
 import { ArrowLeftIcon, PawprintIcon, PlusBigIcon } from 'helpers/icons';
 
 const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
-  const [photo, setPhoto] = useState(null);
-  const [comments, setComments] = useState('');
+  const [photo, setPhoto] = useState(formData.photo || null);
+  const [comments, setComments] = useState(formData.comments || '');
   const [photoError, setPhotoError] = useState('');
 
   const handleFileChange = e => {
@@ -81,7 +81,7 @@ const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
         <li>
           <button
             className={css.LinkAddPetCancel}
-            onClick={() => handlePreviousStep(formData)}
+            onClick={() => handlePreviousStep(-1, { photo, comments })}
           >
             <div className={css.ButtonEl}>
               <ArrowLeftIcon style={{ stroke: 'var(--blue-color)' }} />

@@ -21,7 +21,6 @@ const Notices = () => {
 
   const { isLoggedIn } = useAuth();
   const { totalPages } = useNotices();
-  // console.log(totalPages);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -63,7 +62,7 @@ const Notices = () => {
             </Link>
           </div>
         </div>
-        <NoticesCategoriesList />
+        <NoticesCategoriesList currentPage={currentPage} />
         {totalPages > 1 && (
           <Paginagion
             handlePageChange={handlePageChange}

@@ -12,7 +12,13 @@ import {
 import { useLocation } from 'react-router-dom';
 import { deleteUserPet } from 'redux/pets/petsOperations';
 
-const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
+const DeleteModal = ({
+  nameModal,
+  title,
+  id,
+  toggleDeleteModal,
+  currentPage,
+}) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const pathSegments = location.pathname
@@ -22,20 +28,20 @@ const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
 
   const deleteMyPet = async () => {
     await dispatch(deleteUserPet(id));
-     toggleDeleteModal();
-  }
+    toggleDeleteModal();
+  };
   const deleteNotice = async () => {
-   
-  await dispatch(deletePet(id));
-    
+    await dispatch(deletePet(id));
+
     if (category === 'favorite') {
-      await dispatch(favoriteList());
+      await dispatch(favoriteList(currentPage));
     } else if (category === 'own') {
-      await dispatch(myNotices());
-    }  else {
+      await dispatch(myNotices(currentPage));
+    } else {
       const request = {
         category,
         search: '',
+        currentPage,
       };
       await dispatch(allNoties(request));
     }
@@ -59,7 +65,10 @@ const DeleteModal = ({ nameModal, title, id, toggleDeleteModal }) => {
         >
           Cancel
         </button>
-        <button className={css.btnYes} onClick={ pathSegments[0] === 'user' ? deleteMyPet : deleteNotice}>
+        <button
+          className={css.btnYes}
+          onClick={pathSegments[0] === 'user' ? deleteMyPet : deleteNotice}
+        >
           Yes
           <DeleteIcon className={css.icon} />
         </button>
@@ -73,6 +82,7 @@ DeleteModal.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string.isRequired,
   toggleDeleteModal: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default DeleteModal;

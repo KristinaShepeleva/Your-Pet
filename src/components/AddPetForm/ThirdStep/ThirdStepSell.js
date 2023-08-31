@@ -7,7 +7,7 @@ import css from './ThirdStep.module.css';
 import { ArrowLeftIcon, PawprintIcon, PlusBigIcon } from 'helpers/icons';
 
 const ThirdStepSell = ({ handlePreviousStep, formData, doneSubmit3 }) => {
-  const [photo, setPhoto] = useState(formData.url || '');
+  const [photo, setPhoto] = useState(formData.photo || '');
   const [comments, setComments] = useState(formData.comments || '');
   const [place, setPlace] = useState(formData.place || '');
   const [price, setPrice] = useState(formData.price || '');
@@ -191,7 +191,9 @@ const ThirdStepSell = ({ handlePreviousStep, formData, doneSubmit3 }) => {
         <li>
           <button
             className={css.LinkAddPetCancel}
-            onClick={() => handlePreviousStep(formData)}
+            onClick={() =>
+              handlePreviousStep(-1, { photo, comments, place, price, sex })
+            }
           >
             <div className={css.ButtonEl}>
               <ArrowLeftIcon style={{ stroke: 'var(--blue-color)' }} />
