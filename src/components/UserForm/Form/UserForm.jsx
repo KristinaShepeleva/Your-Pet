@@ -97,7 +97,7 @@ export const UserForm = () => {
             ) : user?.avatarURL ? (
               <img
                 className={css.imgAvatar}
-                src={`https://cdn.pixabay.com/${user.avatarURL}`}
+                src={user.avatarURL}
                 alt="avatar"
               />
             ) : (
