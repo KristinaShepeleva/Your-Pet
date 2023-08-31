@@ -11,15 +11,7 @@
     margin-bottom: 24px;
   }
 }
-.wrapper {
-  @media screen and (min-width: 768px) {
-    width: 703px;
-  }
 
-  @media screen and (min-width: 1280px) {
-    width: 821px;
-  }
-}
 .title {
   font-weight: 500;
   font-size: 20px;
