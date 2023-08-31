@@ -105,7 +105,7 @@ function AddPetPage() {
 
       dispatch(addPet(newNotice)).then(data => {
         if (data.type === 'pets/addPet/fulfilled') {
-          toast.success('Pet is added');
+          toast.success('The pet was added.');
           navigate('/user');
         }
       });
@@ -135,7 +135,7 @@ function AddPetPage() {
 
       dispatch(addNotice(newNotice)).then(data => {
         if (data.type === 'notices/addNotice/fulfilled') {
-          toast.success('Pet is added');
+          toast.success('The pet was added.');
           navigate(`/notices/${state.formData.category}`);
         }
       });
