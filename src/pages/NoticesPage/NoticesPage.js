@@ -10,12 +10,11 @@ import { useAuth } from 'hooks';
 import Container from 'components/Container/Container';
 import NoticesSearch from 'components/NoticesPage/NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from 'components/NoticesPage/NoticesCategoriesNav/NoticesCategoriesNav';
-import NoticesFilters from 'components/NoticesPage/NoticesFilters/NoticesFilters';
+// import NoticesFilters from 'components/NoticesPage/NoticesFilters/NoticesFilters';
 import AddPetButton from 'components/NoticesPage/AddPetButton/AddPetButton';
 import NoticesCategoriesList from 'components/NoticesPage/NoticesCategoriesList/NoticesCategoriesList';
 
 // import { currentUser, getCurrent, updateUser } from 'redux/auth/authOperations';
-
 
 const Notices = () => {
   const [search, setSearch] = useState('');
@@ -38,7 +37,6 @@ const Notices = () => {
         search,
       };
       dispatch(allNoties(request));
-
     }
   }, [dispatch, category, search]);
 
@@ -51,7 +49,7 @@ const Notices = () => {
         <div className={css.wpapperFilter}>
           <NoticesCategoriesNav />
           <div className={css.filterWrap}>
-            <NoticesFilters />
+            {/* <NoticesFilters /> */}
             <Link to={isLoggedIn && '/add-pet'}>
               <AddPetButton />
             </Link>

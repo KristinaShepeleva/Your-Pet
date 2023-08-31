@@ -87,7 +87,7 @@ function AddPetPage() {
 
   useEffect(() => {
     if (
-      state.formData.category === 'your-pet' &&
+      state.selectedOption === 'your-pet' &&
       notice.photo &&
       notice.comments &&
       notice.name &&
@@ -112,11 +112,11 @@ function AddPetPage() {
     if (
       notice.photo &&
       notice.comments &&
-      state.formData.category &&
+      state.selectedOption &&
       notice.name &&
       notice.birthday &&
       notice.breed &&
-      state.formData.category !== 'your-pet'
+      state.selectedOption !== 'your-pet'
     ) {
       const newNotice = new FormData();
       newNotice.append('imgUrl', notice.photo);
@@ -128,12 +128,12 @@ function AddPetPage() {
       newNotice.append('price', notice.price);
       newNotice.append('sex', notice.sex);
       newNotice.append('title', notice.title);
-      newNotice.append('category', state.formData.category);
+      newNotice.append('category', state.selectedOption);
 
       dispatch(addNotice(newNotice)).then(data => {
         if (data.type === 'notices/addNotice/fulfilled') {
           toast.success('The pet was added.');
-          navigate(`/notices/${state.formData.category}`);
+          navigate(`/notices/${state.selectedOption}`);
         }
       });
       setNotice({});
