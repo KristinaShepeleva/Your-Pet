@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import css from './ThirdStep.module.css';
+import PropTypes from 'prop-types';
 
+import css from './ThirdStep.module.css';
 import { ArrowLeftIcon, PawprintIcon, PlusBigIcon } from 'helpers/icons';
 
 const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
@@ -103,3 +104,13 @@ const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
 };
 
 export default ThirdStep;
+ThirdStep.propTypes = {
+  handlePreviousStep: PropTypes.func.isRequired,
+  formData: PropTypes.shape({
+    name: PropTypes.string,
+    age: PropTypes.number,
+    breed: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  doneSubmit3: PropTypes.func.isRequired,
+};

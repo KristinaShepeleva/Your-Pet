@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import ThirdStep from './ThirdStep';
 import ThirdStepSell from './ThirdStepSell';
 import ThirdStepFound from './ThirdStepFound';
@@ -42,3 +44,14 @@ const ThirdStepRender = ({
 };
 
 export default ThirdStepRender;
+ThirdStepRender.propTypes = {
+  handlePreviousStep: PropTypes.func.isRequired,
+  formData: PropTypes.shape({
+    name: PropTypes.string,
+    age: PropTypes.number,
+    breed: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  doneSubmit3: PropTypes.func.isRequired,
+  selectedOption: PropTypes.string.isRequired,
+};

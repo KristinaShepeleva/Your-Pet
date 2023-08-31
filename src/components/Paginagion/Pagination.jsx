@@ -1,4 +1,6 @@
 import ReactPaginate from 'react-paginate';
+import PropTypes from 'prop-types';
+
 import css from './Pagination.module.css';
 import { ArrowLeftIcon, ArrowRightIcon } from 'helpers/icons';
 
@@ -39,4 +41,10 @@ export const Paginagion = ({ handlePageChange, total, currentPage }) => {
       forcePage={currentPage - 1}
     />
   );
+};
+
+Paginagion.propTypes = {
+  handlePageChange: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };

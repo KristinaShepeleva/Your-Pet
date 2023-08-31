@@ -1,4 +1,5 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+
 import css from '../AddPetPage.module.css';
 import { ArrowLeftIcon, PawprintIcon } from 'helpers/icons';
 
@@ -86,3 +87,10 @@ const FirstStep = ({
 };
 
 export default FirstStep;
+FirstStep.propTypes = {
+  handleNext: PropTypes.func.isRequired,
+  handleOptionChange: PropTypes.func.isRequired,
+  formData: PropTypes.shape(),
+  handleCancel: PropTypes.func.isRequired,
+  activeButton: PropTypes.number.isRequired,
+};

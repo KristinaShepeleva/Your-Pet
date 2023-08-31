@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import css from './SecondStep.module.css';
 
 import { ArrowLeftIcon, PawprintIcon } from 'helpers/icons';
@@ -150,3 +152,9 @@ const SecondStep = ({
 };
 
 export default SecondStep;
+SecondStep.propTypes = {
+  handleNext: PropTypes.func.isRequired,
+  handlePreviousStep: PropTypes.func.isRequired,
+  formData: PropTypes.shape(),
+  doneSubmit2: PropTypes.func.isRequired,
+};

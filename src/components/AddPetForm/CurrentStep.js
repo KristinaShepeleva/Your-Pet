@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 import css from './AddPetPage.module.css';
 
@@ -31,3 +31,7 @@ const CurrentStep = ({ currentStep }) => {
 };
 
 export default CurrentStep;
+
+CurrentStep.propTypes = {
+  currentStep: PropTypes.number.isRequired,
+};
