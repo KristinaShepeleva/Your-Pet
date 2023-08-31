@@ -45,7 +45,7 @@ export default function Navigation({ isDesktop, isTablet, isMobile }) {
           isMobile={isMobile}
           isTablet={isTablet}
         >
-          {isMobile &&
+          {isMobile && 
             (!isLoggedIn ? (
               <AuthNav onClick={toggleMobileMenu} />
             ) : (
@@ -55,7 +55,7 @@ export default function Navigation({ isDesktop, isTablet, isMobile }) {
               </div>
             ))}
           <MainNav onClick={toggleMobileMenu} />
-          {isMobile && <LogoutUserNav/>}
+          {isMobile && isLoggedIn && <LogoutUserNav/>}
         </BurgerMenu>
       )}
     </div>
