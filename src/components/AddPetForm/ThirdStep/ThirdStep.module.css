@@ -50,7 +50,6 @@
   gap: 24px;
 }
 
-
 .SexElement {
   display: flex;
   align-items: center;
@@ -71,11 +70,10 @@
 
 .SelectedSex {
   background-color: #54acff63;
-  border-color: #54ADFF;
+  border-color: #54adff;
   border-radius: 40px;
   color: #fff;
 }
-
 
 .WrapperLabelInput {
   display: flex;
@@ -166,6 +164,7 @@
 }
 
 .LabelAdd {
+  position: relative;
   width: 112px;
   height: 112px;
   background-color: #cce4fb;
@@ -188,14 +187,18 @@
 }
 
 .IconAdd {
-  width: 30px;
-  margin: 40px auto;
-}
-
-@media screen and (min-width: 768px) {
-  .IconAdd {
-    width: 48px;
-    margin: 65px auto;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  width: 44px;
+  height: 44px;
+  stroke-width: 2px;
+  stroke: var(--blue-color);
+  @media screen and (min-width: 768px) {
+    top: 61px;
+    left: 61px;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -286,7 +289,6 @@
   display: flex;
   gap: 11.43px;
 }
-
 .LinkAddPet {
   margin-left: 8px;
   display: flex;
@@ -353,6 +355,7 @@
 }
 
 .ErrorContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

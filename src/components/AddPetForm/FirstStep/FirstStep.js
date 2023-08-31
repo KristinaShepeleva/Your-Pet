@@ -1,10 +1,8 @@
 import React from 'react';
 import css from '../AddPetPage.module.css';
+import { ArrowLeftIcon, PawprintIcon } from 'helpers/icons';
 
-import nextIcon from '../../../images/icons/pawprint.svg';
-import cancelIcon from '../../../images/icons/arrow-left.svg';
-
-const PetButton = ({ isActive, label, onClick }) => {
+const PetButton = ({ isActive, label, onClick, doneSubmit }) => {
   const buttonClassName = isActive ? css.PetButtonActive : '';
 
   return (
@@ -27,7 +25,7 @@ const ControlButton = ({ label, icon, onClick, isPrimary, isNext }) => {
       <button className={buttonClass} onClick={onClick}>
         <div className={css.ButtonEl}>
           {isNext && <span>{label}</span>}
-          <img src={icon} alt={label} />
+          <>{icon}</>
           {!isNext && <span>{label}</span>}
         </div>
       </button>
@@ -72,12 +70,12 @@ const FirstStep = ({
       <ul className={css.LinkAddPet}>
         <ControlButton
           label="Cancel"
-          icon={cancelIcon}
+          icon={<ArrowLeftIcon />}
           onClick={handleCancel}
         />
         <ControlButton
           label="Next"
-          icon={nextIcon}
+          icon={<PawprintIcon style={{ fill: 'var(--bg-color)' }} />}
           onClick={handleSelectCategory}
           isPrimary
           isNext

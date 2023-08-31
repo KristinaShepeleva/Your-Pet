@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import css from './SecondStep.module.css';
 
-import nextIcon from '../../../images/icons/pawprint.svg';
 import backIcon from '../../../images/icons/arrow-left.svg';
+import { PawprintIcon } from 'helpers/icons';
 
-const SecondStepSell = ({ handleNext, handlePreviousStep, formData }) => {
+const SecondStepSell = ({
+  handleNext,
+  handlePreviousStep,
+  formData,
+  doneSubmit2,
+}) => {
   const [name, setName] = useState(formData.name || '');
   const [title, setTitle] = useState(formData.title || '');
   const [birthday, setBirthday] = useState(formData.birthday || '');
@@ -24,7 +29,7 @@ const SecondStepSell = ({ handleNext, handlePreviousStep, formData }) => {
     setTitleError('');
     return true;
   };
-  
+
   const validateName = () => {
     const regex = /^[A-Za-z\s]+$/;
     if (!name || name.length < 2 || name.length > 16 || !regex.test(name)) {
@@ -66,6 +71,13 @@ const SecondStepSell = ({ handleNext, handlePreviousStep, formData }) => {
   const handleNextWithValidation = () => {
     if (handleValidation()) {
       handleNext();
+      const noticeStep2 = {
+        name,
+        title,
+        birthday,
+        breed,
+      };
+      doneSubmit2(noticeStep2);
     }
   };
 
@@ -163,7 +175,7 @@ const SecondStepSell = ({ handleNext, handlePreviousStep, formData }) => {
           <button className={css.ButtonNext} onClick={handleNextWithValidation}>
             <div className={css.ButtonEl}>
               <span>Next</span>
-              <img src={nextIcon} alt="Next" />
+              <PawprintIcon style={{ fill: 'var(--bg-color)' }} />
             </div>
           </button>
         </li>

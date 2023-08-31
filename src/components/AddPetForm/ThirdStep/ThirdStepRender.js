@@ -1,39 +1,38 @@
-import React from 'react';
 import ThirdStep from './ThirdStep';
 import ThirdStepSell from './ThirdStepSell';
 import ThirdStepFound from './ThirdStepFound';
 
 const ThirdStepRender = ({
-  handleNext,
   handlePreviousStep,
   selectedOption,
   formData,
+  doneSubmit3,
 }) => {
   return (
     <>
       {selectedOption === 'your-pet' ? (
         <ThirdStep
-          handleNext={handleNext}
           handlePreviousStep={handlePreviousStep}
           formData={formData}
+          doneSubmit3={doneSubmit3}
         />
       ) : (
         ''
       )}
       {selectedOption === 'sell' ? (
         <ThirdStepSell
-          handleNext={handleNext}
           handlePreviousStep={handlePreviousStep}
           formData={formData}
+          doneSubmit3={doneSubmit3}
         />
       ) : (
         ''
       )}
       {selectedOption === 'lost-found' || selectedOption === 'in-good-hands' ? (
         <ThirdStepFound
-          handleNext={handleNext}
           handlePreviousStep={handlePreviousStep}
           formData={formData}
+          doneSubmit3={doneSubmit3}
         />
       ) : (
         ''

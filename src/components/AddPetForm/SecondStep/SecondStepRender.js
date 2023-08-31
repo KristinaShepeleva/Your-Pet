@@ -7,6 +7,7 @@ const SecondStepRender = ({
   handlePreviousStep,
   selectedOption,
   formData,
+  doneSubmit2,
 }) => {
   return (
     <>
@@ -15,6 +16,7 @@ const SecondStepRender = ({
           handleNext={handleNext}
           handlePreviousStep={handlePreviousStep}
           formData={formData}
+          doneSubmit2={doneSubmit2}
         />
       ) : (
         ''
@@ -26,6 +28,7 @@ const SecondStepRender = ({
           handleNext={handleNext}
           handlePreviousStep={handlePreviousStep}
           formData={formData}
+          doneSubmit2={doneSubmit2}
         />
       ) : (
         ''
