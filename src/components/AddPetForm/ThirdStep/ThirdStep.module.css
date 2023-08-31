@@ -33,7 +33,7 @@
 
 .SexOption {
   display: flex;
-  gap: 23px;
+  gap: 10px;
   margin-top: 8px;
 }
 
@@ -52,12 +52,14 @@
 
 .SexElement {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 8px 12px;
+  padding: 8px;
   background-color: inherit;
   border: 1px solid #fff;
   border-radius: 40px;
   margin-right: 10px;
+  min-width: 90px;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
 }
@@ -65,7 +67,7 @@
 .SexElement img {
   width: 20px;
   height: 20px;
-  margin-right: 12px;
+  margin-right: 5px;
 }
 
 .SelectedSex {
@@ -135,9 +137,9 @@
 .WrapperAddPhoto {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 16px;
-  gap: 12px;
+  gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -194,6 +196,7 @@
   height: 44px;
   stroke-width: 2px;
   stroke: var(--blue-color);
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     top: 61px;
     left: 61px;
@@ -276,7 +279,16 @@
   line-height: 22px;
   border: none;
   cursor: pointer;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
+
+.ButtonNext:hover,
+.ButtonNext:focus {
+  box-shadow: var(--shadows-hover);
+}
+
 
 @media screen and (min-width: 767px) {
   .ButtonNext {
@@ -307,6 +319,12 @@
   cursor: pointer;
   border: none;
   background-color: inherit;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+.LinkAddPetCancel:hover,
+.LinkAddPetCancel:focus {
+  box-shadow: var(--shadows-hover);
 }
 
 @media screen and (min-width: 767px) {
@@ -339,7 +357,7 @@
 
 .ErrorMessage {
   display: block;
-  text-align: right;
+  text-align: left;
   color: #f43f5e;
   font-size: 12px;
   font-style: normal;
@@ -347,8 +365,23 @@
 }
 
 .ErrorMessageLeft {
-  text-align: left;
+  
+  position:absolute;
+  margin-top: 112px;
+  margin-right: 168px;
 }
+
+  @media screen and (min-width: 768px) {
+  .ErrorMessageLeft {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: inherit;
+  margin-top: 0;
+  margin-right: 0;
+  }
+}
+
 
 .InputError {
   border: 1px solid #f43f5e;
