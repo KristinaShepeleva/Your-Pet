@@ -172,6 +172,18 @@
   font-size: 14px;
   line-height: 19px;
   color: #54adff;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.PetButton:hover,
+.PetButton:focus {
+  box-shadow: var(--shadows-hover);
+}
+
+.PetButton:hover {
+  box-shadow: var(--shadows-hover);
 }
 
 .PetButtonActive {
@@ -184,6 +196,18 @@
   line-height: 19px;
   background-color: #54adff;
   color: #fef9f9;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.PetButtonActive:hover,
+.PetButtonActive:focus {
+  box-shadow: var(--shadows-hover);
+}
+
+.PetButtonActive:focus {
+  box-shadow: var(--shadows-hover);
 }
 
 .ButtonNext {
@@ -198,6 +222,18 @@
   line-height: 22px;
   border: none;
   cursor: pointer;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.ButtonNext:hover,
+.ButtonNext:focus {
+  box-shadow: var(--shadows-hover);
+}
+
+.ButtonNext:focus {
+  box-shadow: var(--shadows-hover);
 }
 
 @media screen and (min-width: 767px) {
@@ -206,6 +242,8 @@
     margin-left: 30px;
   }
 }
+
+
 
 .ButtonEl {
   display: flex;
@@ -230,7 +268,15 @@
   cursor: pointer;
   border: none;
   background-color: inherit;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.LinkAddPetCancel:hover,
+.LinkAddPetCancel:focus {
+  box-shadow: var(--shadows-hover);
+}
+
 
 @media screen and (max-width: 767px) {
   .StepItemCurrent::after,

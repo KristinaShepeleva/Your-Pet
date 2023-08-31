@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import nextIcon from '../../../images/icons/pawprint.svg';
 import backIcon from '../../../images/icons/arrow-left.svg';
-import PetAdd from '../../../images/icons/plus-big.svg';
+import { PlusBigIcon } from '../../../helpers/icons';
 
 import female from '../../../images/icons/female.svg';
 import male from '../../../images/icons/male.svg';
@@ -131,7 +131,7 @@ const ThirdStepSell = ({ handleNext, handlePreviousStep, formData }) => {
                     alt="Selected img"
                   />
                 )}
-                <img className={css.IconAdd} src={PetAdd} alt="add" />
+                <PlusBigIcon className={css.addIconBig} />
               </div>
             </label>
             {photoError && (

@@ -12,10 +12,9 @@ function AddPetPage() {
   const [state, setState] = useState({
     step: 1,
     currentStep: 1,
-    selectedOption: '',
-    activeButton: null,
+    selectedOption: 'your-pet',
+    activeButton: 1,
     isLoading: false,
-    showModal: false,
     formData: {},
   });
 
@@ -47,9 +46,7 @@ function AddPetPage() {
         step: state.step + stepChange,
         currentStep: state.currentStep + stepChange,
       });
-    } else {
-      window.alert('Please select an option!');
-    }
+    } 
     updateState({ isLoading: false });
     updateState({ formData: { ...state.formData, ...stepData } });
   };
@@ -125,10 +122,6 @@ function AddPetPage() {
           />
         )}
       </div>
-      {state.showModal && (
-        // <Modal />
-        <div>Modal content</div>
-      )}
     </>
   );
 }
