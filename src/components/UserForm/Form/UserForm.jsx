@@ -22,6 +22,7 @@ export const UserForm = () => {
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
   const dispatch = useDispatch();
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -59,7 +60,8 @@ export const UserForm = () => {
       setConfirmAvatar(false);
       setAvatarURL(null);
       dispatch(updateUser(formData));
-      dispatch(updateUserAvatar(avatar));
+
+      if (avatarURL) { dispatch(updateUserAvatar(avatar)); }
       actions.resetForm();
     },
     validationSchema: userSchema,
