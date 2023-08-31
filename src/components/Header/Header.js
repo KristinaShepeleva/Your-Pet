@@ -22,7 +22,7 @@ export default function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
-    <div>
+    <>
       <header className={styles.container}>
         <Logo isMobile={isMobile} />
         <Navigation
@@ -31,6 +31,6 @@ export default function Header() {
           isMobile={isMobile}
         />
       </header>
-    </div>
+    </>
   );
 }

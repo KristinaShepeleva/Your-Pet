@@ -140,7 +140,7 @@ export const updateUserAvatar = createAsyncThunk(
         '/api/user/update/avatar',
         credentials
       );
-      return data;
+      return data.avatarURL;
     } catch (e) {
       return thunkAPI.rejectWithValue(
         toast.error('The avatar was not updated. Try later', {

@@ -29,6 +29,7 @@ export const deleteUserPet = createAsyncThunk(
   async (petId, thunkAPI) => {
     try {
       const response = await instance.delete(`/api/pets/users/${petId}`);
+      toast.success('The pet was deleted', { draggable: false });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

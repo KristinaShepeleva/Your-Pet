@@ -22,7 +22,6 @@ export const UserForm = () => {
   const [isActive, setIsActive] = useState(true);
   const [confirmAvatar, setConfirmAvatar] = useState(false);
   const dispatch = useDispatch();
-
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {

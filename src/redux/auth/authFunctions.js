@@ -94,7 +94,6 @@ export const updateUserFulfilled = (state, { payload }) => {
 };
 
 export const updateUserAvatarFulfilled = (state, { payload }) => {
-  console.log('payload', payload);
   state.isLoading = false;
   state.isLoggedIn = true;
   state.isRefreshing = true;

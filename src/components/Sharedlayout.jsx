@@ -11,11 +11,13 @@ export const SharedLayout = () => {
   const { isAuthLoading } = useAuth();
   const { isNotLoading } = useNotices();
   const isPetsLoading = useSelector(selectIsLoading);
+  
   const shouldLoading = isAuthLoading || isNotLoading || isPetsLoading;
   return (
     <>
-      <Suspense>
-        <Header />
+      <Header />
+      <Suspense fallback={<Loader />}>
+        
         <main>
           {shouldLoading && <Loader />}
           <Outlet />
