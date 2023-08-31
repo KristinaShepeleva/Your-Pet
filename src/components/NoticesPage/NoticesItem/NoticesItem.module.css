@@ -108,14 +108,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   font-family: 'Manrope-SemiBold';
   font-size: 12px;
   padding: 4px 8px;
   border: none;
   border-radius: 16px;
   background-color: var(--blue-light-color);
-  margin-left: 8px;
   stroke: var(--blue-color);
 }
 
