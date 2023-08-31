@@ -11,7 +11,7 @@ import { useAuth } from 'hooks';
 import { favoriteList, updateFavorite } from 'redux/notices/operation';
 import { useLocation } from 'react-router-dom';
 
-const PetsModal = ({ pet, owner, fav }) => {
+const PetsModal = ({ pet, owner, fav, currentPage }) => {
   const [isContactsModal, setIsContactsModal] = useState(false);
   const [isAtentionModal, setIsAtentionModal] = useState(false);
 
@@ -34,7 +34,7 @@ const PetsModal = ({ pet, owner, fav }) => {
     }
     await dispatch(updateFavorite(id));
     if (category === 'favorite') {
-      await dispatch(favoriteList());
+      await dispatch(favoriteList(currentPage));
     }
   };
   const yers = pet.birthday.slice(0, 4);
@@ -153,6 +153,7 @@ PetsModal.propTypes = {
     email: PropTypes.string.isRequired,
   }),
   fav: PropTypes.bool.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default PetsModal;

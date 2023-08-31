@@ -69,7 +69,7 @@ const SecondStepSell = ({
 
   const handleNextWithValidation = () => {
     if (handleValidation()) {
-      handleNext();
+      handleNext(1, { name, title, birthday, breed });
       const noticeStep2 = {
         name,
         title,
@@ -162,7 +162,9 @@ const SecondStepSell = ({
         <li>
           <button
             className={css.LinkAddPetCancel}
-            onClick={() => handlePreviousStep(formData)}
+            onClick={() =>
+              handlePreviousStep(-1, { name, birthday, breed, title })
+            }
           >
             <div className={css.ButtonEl}>
               <ArrowLeftIcon style={{ stroke: 'var(--blue-color)' }} />

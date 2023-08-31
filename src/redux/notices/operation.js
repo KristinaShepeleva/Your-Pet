@@ -122,7 +122,6 @@ export const addNotice = createAsyncThunk(
 export const deletePet = createAsyncThunk(
   'notices/delete',
   async (credentials, thunkAPI) => {
-    console.log(credentials);
     try {
       const { data } = await instance.delete(`/api/notices/${credentials}`);
       return data;

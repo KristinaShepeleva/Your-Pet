@@ -27,7 +27,7 @@ import {
 } from 'redux/notices/operation';
 import { useLocation } from 'react-router-dom';
 
-const NoticesItem = ({ pet }) => {
+const NoticesItem = ({ pet, currentPage }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPetsModalOpen, setIsPetsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -63,7 +63,7 @@ const NoticesItem = ({ pet }) => {
     }
     await dispatch(updateFavorite(id));
     if (category === 'favorite') {
-      await dispatch(favoriteList());
+      await dispatch(favoriteList(currentPage));
     }
   };
 
@@ -146,6 +146,7 @@ const NoticesItem = ({ pet }) => {
             title={`${pet.title}`}
             id={pet._id}
             toggleDeleteModal={toggleDeleteModal}
+            currentPage={currentPage}
           />
         </ModalContainer>
       )}
@@ -156,6 +157,7 @@ const NoticesItem = ({ pet }) => {
             owner={noticeById.owner}
             togglePetsModal={togglePetsModal}
             fav={fav}
+            currentPage={currentPage}
           />
         </ModalPetsContainer>
       )}
@@ -185,5 +187,6 @@ NoticesItem.propTypes = {
     _id: PropTypes.string.isRequired,
   }),
   fav: PropTypes.bool,
+  currentPage: PropTypes.number.isRequired,
 };
 export default NoticesItem;

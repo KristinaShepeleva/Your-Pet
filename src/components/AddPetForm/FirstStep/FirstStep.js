@@ -2,7 +2,7 @@ import React from 'react';
 import css from '../AddPetPage.module.css';
 import { ArrowLeftIcon, PawprintIcon } from 'helpers/icons';
 
-const PetButton = ({ isActive, label, onClick, doneSubmit }) => {
+const PetButton = ({ isActive, label, onClick }) => {
   const buttonClassName = isActive ? css.PetButtonActive : '';
 
   return (
