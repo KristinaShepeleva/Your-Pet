@@ -6,10 +6,10 @@ import instance from '../instance';
 // список всіх нотісів
 export const allNoties = createAsyncThunk(
   'notie/getAll',
-  async ({ category, search }, thunkAPI) => {
+  async ({ category, search, page }, thunkAPI) => {
     try {
       const { data } = await instance.get(
-        `/api/notices?category=${category}&search=${search}&limit=12&page=1`
+        `/api/notices?category=${category}&search=${search}&limit=12&page=${page}`
       );
       // console.log(data);
       return data;
@@ -44,10 +44,10 @@ export const getOneNotices = createAsyncThunk(
 // список улюблених
 export const favoriteList = createAsyncThunk(
   'notices/favList',
-  async (_, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
       const { data } = await instance.get(
-        '/api/notices/favorites?limit=12&page=1'
+        `/api/notices/favorites?limit=12&page=${credentials}`
       );
       return data;
     } catch (e) {
@@ -64,9 +64,11 @@ export const favoriteList = createAsyncThunk(
 // запит за особистими нотісами
 export const myNotices = createAsyncThunk(
   'notices/myNotices',
-  async (_, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const { data } = await instance.get('/api/notices/self?limit=12&page=1');
+      const { data } = await instance.get(
+        `/api/notices/self?limit=12&page=${credentials}`
+      );
       return data;
     } catch (e) {
       const res = e.response;
@@ -100,20 +102,6 @@ export const updateFavorite = createAsyncThunk(
 );
 
 // додавання нотісів //////////////////////
-// приклад credentials :
-// const newNotices = {
-//   name: 'Kit',
-//   title: 'Lovely cat',
-//   sex: 'male',
-//   birthday: '13.09.2021',
-//   type: 'red cat',
-//   imgUrl:
-//     'https://pixabay.com/photos/dalmatian-dog-lick-tongue-pet-1020790/',
-//   location: 'Kyiv',
-//   price: '10$',
-//   comments: 'Found cat',
-//   category: 'lost-found', // sell // in-good-hands
-// };
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (credentials, thunkAPI) => {

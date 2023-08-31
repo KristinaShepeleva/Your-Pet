@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import css from './SecondStep.module.css';
 
-import backIcon from '../../../images/icons/arrow-left.svg';
-import { PawprintIcon } from 'helpers/icons';
+import { ArrowLeftIcon, PawprintIcon } from 'helpers/icons';
 
 const SecondStep = ({
   handleNext,
@@ -132,7 +131,7 @@ const SecondStep = ({
             onClick={() => handlePreviousStep(formData)}
           >
             <div className={css.ButtonEl}>
-              <img src={backIcon} alt="Back" />
+              <ArrowLeftIcon style={{ stroke: 'var(--blue-color)' }} />
               <span>Back</span>
             </div>
           </button>

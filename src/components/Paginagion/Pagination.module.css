@@ -1,0 +1,92 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  max-width: 320px;
+
+  margin: 40px auto 100px;
+  @media screen and (min-width: 768px) {
+    margin: 60px auto;
+    max-width: 400px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 68px auto;
+    max-width: 600px;
+  }
+}
+.pagination-small {
+  max-width: 320px;
+}
+.pagination li a {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  text-align: center;
+  padding: 7px 0;
+}
+.break {
+  color: var(--blue-color);
+  /* width: 35px;
+  height: 35px;
+  border: 1px solid var(--blue-color);
+  border-radius: 50%; */
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.page {
+  border: 1px solid var(--blue-color);
+  border-radius: 50%;
+}
+.page:hover,
+.page:focus {
+  background-color: var(--blue-color);
+  color: var(--bg-color);
+}
+.pageActive {
+  border-radius: 50%;
+  background-color: var(--blue-color);
+  color: var(--bg-color);
+}
+.previous {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--blue-color);
+  border-radius: 50%;
+  stroke: var(--blue-color);
+}
+.previous:hover,
+.previous:focus {
+  background-color: var(--blue-color);
+  stroke: var(--bg-color);
+}
+.next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--blue-color);
+  border-radius: 50%;
+  stroke: var(--blue-color);
+}
+.next:hover,
+.next:focus {
+  background-color: var(--blue-color);
+  stroke: var(--bg-color);
+}
+.disabled {
+  border: 1px solid var(--text-color-grey);
+  border-radius: 50%;
+  stroke: var(--text-color-grey);
+  color: var(--text-color-grey);
+}
+.disabled:hover,
+.disabled:focus {
+  background-color: var(--bg-color);
+  stroke: var(--text-color-grey);
+}

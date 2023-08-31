@@ -36,8 +36,6 @@ const NoticesItem = ({ pet }) => {
   const { isLoggedIn, userId } = useAuth();
   const { noticeById } = useNotices();
 
-  // console.log(pet);
-
   const location = useLocation();
   const pathSegments = location.pathname
     .split('/')
@@ -144,7 +142,7 @@ const NoticesItem = ({ pet }) => {
       {isDeleteModalOpen && (
         <ModalContainer toggleModal={toggleDeleteModal}>
           <DeleteModal
-            nameModal='Delete adverstiment?'
+            nameModal="Delete adverstiment?"
             title={`${pet.title}`}
             id={pet._id}
             toggleDeleteModal={toggleDeleteModal}

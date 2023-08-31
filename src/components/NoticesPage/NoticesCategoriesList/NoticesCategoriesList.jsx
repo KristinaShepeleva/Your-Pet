@@ -6,7 +6,6 @@ import { Empty } from 'components/Empty/Empty';
 const NoticesCategoriesList = () => {
   const { notices } = useNotices();
 
-  // console.log(notices);
   return (
     <div className={css.listCardContainer}>
       {notices.length !== 0 ? (

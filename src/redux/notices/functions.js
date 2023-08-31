@@ -10,7 +10,8 @@ export const handelRejected = (state, { payload }) => {
 };
 
 export const handelFulfilled = (state, { payload }) => {
-  state.notices = payload;
+  state.totalPages = payload.totalPages;
+  state.notices = payload.result;
   state.isLoading = false;
   state.error = { message: '', status: null };
 };

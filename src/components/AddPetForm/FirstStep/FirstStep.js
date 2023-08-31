@@ -70,7 +70,7 @@ const FirstStep = ({
       <ul className={css.LinkAddPet}>
         <ControlButton
           label="Cancel"
-          icon={<ArrowLeftIcon />}
+          icon={<ArrowLeftIcon style={{ stroke: 'var(--blue-color)' }} />}
           onClick={handleCancel}
         />
         <ControlButton
