@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import css from './ThirdStep.module.css';
 
-import backIcon from '../../../images/icons/arrow-left.svg';
-import { PawprintIcon, PlusBigIcon } from 'helpers/icons';
+import { ArrowLeftIcon, PawprintIcon, PlusBigIcon } from 'helpers/icons';
 
 const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
   const [photo, setPhoto] = useState(null);
@@ -85,7 +84,7 @@ const ThirdStep = ({ handlePreviousStep, formData, doneSubmit3 }) => {
             onClick={() => handlePreviousStep(formData)}
           >
             <div className={css.ButtonEl}>
-              <img src={backIcon} alt="Back" />
+              <ArrowLeftIcon style={{ stroke: 'var(--blue-color)' }} />
               <span>Back</span>
             </div>
           </button>

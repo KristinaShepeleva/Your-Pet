@@ -22,6 +22,7 @@ const {
 const initialState = {
   isLoading: false,
   notices: [],
+  totalPages: 0,
   oneNotice: {},
   error: { message: '', status: null },
 };

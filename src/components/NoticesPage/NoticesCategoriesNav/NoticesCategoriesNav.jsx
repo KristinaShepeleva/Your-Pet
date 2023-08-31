@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import css from './NoticesCategoriesNav.module.css';
 import { useAuth } from 'hooks';
 
-const NoticesCategoriesNav = () => {
+const NoticesCategoriesNav = ({ setCurrentPage }) => {
   const { isLoggedIn } = useAuth();
 
   return (
@@ -14,6 +15,7 @@ const NoticesCategoriesNav = () => {
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
+          onClick={() => setCurrentPage(1)}
         >
           sell
         </NavLink>
@@ -24,6 +26,7 @@ const NoticesCategoriesNav = () => {
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
+          onClick={() => setCurrentPage(1)}
         >
           lost/found
         </NavLink>
@@ -34,6 +37,7 @@ const NoticesCategoriesNav = () => {
           className={({ isActive }) =>
             isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
           }
+          onClick={() => setCurrentPage(1)}
         >
           in good hands
         </NavLink>
@@ -47,7 +51,7 @@ const NoticesCategoriesNav = () => {
               className={({ isActive }) =>
                 isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
               }
-              // onClick={handelFavorite}
+              onClick={() => setCurrentPage(1)}
             >
               favorite
             </NavLink>
@@ -58,7 +62,7 @@ const NoticesCategoriesNav = () => {
               className={({ isActive }) =>
                 isActive ? `${css.categoryBtn} ${css.active}` : css.categoryBtn
               }
-              // onClick={handelOwn}
+              onClick={() => setCurrentPage(1)}
             >
               my ads
             </NavLink>
@@ -69,8 +73,8 @@ const NoticesCategoriesNav = () => {
   );
 };
 
-// NoticesCategoriesNav.propTypes = {
-//   isUser: PropTypes.bool.isRequired,
-// };
+NoticesCategoriesNav.propTypes = {
+  setCurrentPage: PropTypes.func.isRequired,
+};
 
 export default NoticesCategoriesNav;
