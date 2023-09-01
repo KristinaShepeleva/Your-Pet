@@ -14,13 +14,16 @@
     width: 395px;
   }
 }
-.form {
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .form {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
-  @media screen and (min-width: 1280px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .form {
     display: block;
   }
 }
