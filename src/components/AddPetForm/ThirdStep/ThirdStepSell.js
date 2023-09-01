@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import female from '../../../images/icons/female.svg';
 import male from '../../../images/icons/male.svg';
@@ -215,3 +216,14 @@ const ThirdStepSell = ({ handlePreviousStep, formData, doneSubmit3 }) => {
 };
 
 export default ThirdStepSell;
+
+ThirdStepSell.propTypes = {
+  handlePreviousStep: PropTypes.func.isRequired,
+  formData: PropTypes.shape({
+    name: PropTypes.string,
+    age: PropTypes.number,
+    breed: PropTypes.string,
+    title: PropTypes.string,
+  }),
+  doneSubmit3: PropTypes.func.isRequired,
+};

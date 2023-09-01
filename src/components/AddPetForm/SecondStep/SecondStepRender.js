@@ -1,4 +1,5 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+
 import SecondStep from './SecondStep';
 import SecondStepSell from './SecondStepSell';
 
@@ -38,3 +39,11 @@ const SecondStepRender = ({
 };
 
 export default SecondStepRender;
+
+SecondStepRender.propTypes = {
+  handleNext: PropTypes.func.isRequired,
+  handlePreviousStep: PropTypes.func.isRequired,
+  formData: PropTypes.shape(),
+  doneSubmit2: PropTypes.func.isRequired,
+  selectedOption: PropTypes.string.isRequired,
+};
