@@ -82,7 +82,8 @@ export const UserForm = () => {
 
   return (
     <div className={css.wrapper}>
-      <form className={css.form} onSubmit={formik.handleSubmit}>
+      <form  onSubmit={formik.handleSubmit}>
+        <div className={css.form}>
         <div className={css.avatarGroup}>
           <div
             className={
@@ -199,7 +200,8 @@ export const UserForm = () => {
               </button>
             </div>
           )}
-        </div>
+          </div>
+          </div>
       </form>
 
       {isActive ? (
