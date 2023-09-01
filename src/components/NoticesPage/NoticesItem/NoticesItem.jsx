@@ -26,6 +26,7 @@ import {
   updateFavorite,
 } from 'redux/notices/operation';
 import { useLocation } from 'react-router-dom';
+import { changePetCategory } from 'helpers/changePetCategory';
 
 const NoticesItem = ({ pet, currentPage }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -80,13 +81,15 @@ const NoticesItem = ({ pet, currentPage }) => {
     togglePetsModal();
     dispatch(getOneNotices(id));
   };
+
+
   // //////////////////////
 
   return (
     <li className={css.listItem}>
       <div className={css.imgContainer}>
         <img className={css.img} src={pet.imgUrl} alt="Animals" />
-        <p className={css.category}>{pet.category}</p>
+        <p className={css.category}>{changePetCategory(pet.category)}</p>
         {pet.category === 'sell' && (
           <p className={`${css.category} ${css.price}`}>{pet.price}</p>
         )}
