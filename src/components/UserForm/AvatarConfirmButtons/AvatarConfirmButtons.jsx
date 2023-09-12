@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { CheckIcon, CrossBigIcon } from 'helpers/icons';
 import css from './AvatarConfirmButtons.module.css';
 
-export const AvatarConfirmButtons = ({ acceptAvatar, rejectAvatar }) => {
+export const AvatarConfirmButtons = ({acceptAvatar, rejectAvatar }) => {
   return (
     <div className={css.confirmBtBox}>
       <button className={css.confirmBt} type="button" onClick={acceptAvatar}>

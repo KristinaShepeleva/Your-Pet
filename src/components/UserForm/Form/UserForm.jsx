@@ -35,9 +35,7 @@ export const UserForm = () => {
     },
     onSubmit: (values, actions) => {
       let formData;
-      const avatar = new FormData();
-      avatar.append('avatarURL', avatarURL);
-
+      // перевірка бо бек робить чек чи є такий імейл в БД
       if (values.email !== user.email) {
         formData = {
           name: values.name,
@@ -55,18 +53,32 @@ export const UserForm = () => {
           city: values.city,
         };
       }
-
+      if (
+        values.email !== user.email ||
+        values.name !== user.name ||
+        values.birthday !== user.birthday ||
+        values.phone !== user.phone ||
+        values.city !== user.city
+      ) {
+        dispatch(updateUser(formData)).then(() => {
+          actions.resetForm();
+        });
+      }
       setIsActive(!isActive);
       setConfirmAvatar(false);
       setAvatarURL(null);
-      dispatch(updateUser(formData));
-
-      if (avatarURL) { dispatch(updateUserAvatar(avatar)); }
-      actions.resetForm();
     },
     validationSchema: userSchema,
   });
 
+  const acceptAvatar = () => {
+    const avatar = new FormData();
+    avatar.append('avatarURL', avatarURL);
+    setConfirmAvatar(false);
+    if (avatarURL) {
+      dispatch(updateUserAvatar(avatar));
+    }
+  };
   const rejectAvatar = () => {
     setConfirmAvatar(false);
     formik.setFieldValue('avatarURL', '');
@@ -82,126 +94,126 @@ export const UserForm = () => {
 
   return (
     <div className={css.wrapper}>
-      <form  onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className={css.form}>
-        <div className={css.avatarGroup}>
-          <div
-            className={
-              isActive ? css.boxAvatar : `${css.boxAvatar} ${css.formActive}`
-            }
-          >
-            {avatarURL ? (
-              <img
-                className={css.imgAvatar}
-                src={URL.createObjectURL(avatarURL)}
-                alt="avatar"
-              />
-            ) : user?.avatarURL ? (
-              <img
-                className={css.imgAvatar}
-                src={user.avatarURL}
-                alt="avatar"
-              />
-            ) : (
-              <PhotoDefault />
-            )}
-          </div>
-
-          {!isActive && confirmAvatar && (
-            <AvatarConfirmButtons
-              acceptAvatar={() => setConfirmAvatar(false)}
-              rejectAvatar={rejectAvatar}
-            />
-          )}
-          <label className={css.labelInputFale}>
-            {!isActive && !confirmAvatar && (
-              <button
-                className={css.editAvatarBt}
-                type="button"
-                onClick={() => setConfirmAvatar(true)}
-              >
-                <CameraIcon className={css.editAvatarIcon} /> Edit photo
-              </button>
-            )}
-
-            <input
-              className={css.inputFile}
-              name="avatarURL"
-              type="file"
-              disabled={isActive}
-              onChange={e => {
-                formik.setFieldValue('avatarURL', e);
-                setAvatarURL(e.target.files[0]);
-              }}
-              accept="image/*,.png,.jpg"
-            />
-            {formik.touched.avatarURL && formik.errors.avatarURL && (
-              <span className={css.errorText}>{formik.errors.avatarURL}</span>
-            )}
-          </label>
-        </div>
-        <div className={css.box}>
-          <div className={css.formGroup}>
-            <UserInput
-              text="Name"
-              name="name"
-              type="text"
-              isActive={isActive}
-              onChange={formik.handleChange}
-              value={formik.values.name}
-              error={formik.touched.name && formik.errors.name}
-              helperText={formik.errors.name}
-            />
-            <UserInput
-              text="Email"
-              name="email"
-              type="email"
-              isActive={isActive}
-              onChange={formik.handleChange}
-              value={formik.values.email}
-              error={formik.touched.email && formik.errors.email}
-              helperText={formik.errors.email}
-            />
-            <UserInput
-              text="Birthday"
-              name="birthday"
-              type="date"
-              isActive={isActive}
-              onChange={formik.handleChange}
-              value={formik.values.birthday}
-              error={formik.touched.birthday && formik.errors.birthday}
-              helperText={formik.errors.birthday}
-            />
-            <UserInput
-              text="Phone"
-              name="phone"
-              type="tel"
-              isActive={isActive}
-              onChange={formik.handleChange}
-              value={formik.values.phone}
-              error={formik.touched.phone && formik.errors.phone}
-              helperText={formik.errors.phone}
-            />
-            <UserInput
-              text="City"
-              name="city"
-              type="text"
-              isActive={isActive}
-              onChange={formik.handleChange}
-              value={formik.values.city}
-              error={formik.touched.city && formik.errors.city}
-              helperText={formik.errors.city}
-            />
-          </div>
-          {!isActive && (
-            <div className={css.saveBtBox}>
-              <button className={css.saveBt} type="submit">
-                Save
-              </button>
+          <div className={css.avatarGroup}>
+            <div
+              className={
+                isActive ? css.boxAvatar : `${css.boxAvatar} ${css.formActive}`
+              }
+            >
+              {avatarURL ? (
+                <img
+                  className={css.imgAvatar}
+                  src={URL.createObjectURL(avatarURL)}
+                  alt="avatar"
+                />
+              ) : user?.avatarURL ? (
+                <img
+                  className={css.imgAvatar}
+                  src={user.avatarURL}
+                  alt="avatar"
+                />
+              ) : (
+                <PhotoDefault />
+              )}
             </div>
-          )}
+
+            {!isActive && confirmAvatar && (
+              <AvatarConfirmButtons
+                acceptAvatar={acceptAvatar}
+                rejectAvatar={rejectAvatar}
+              />
+            )}
+            <label className={css.labelInputFale}>
+              {!isActive && !confirmAvatar && (
+                <button
+                  className={css.editAvatarBt}
+                  type="button"
+                  onClick={() => setConfirmAvatar(true)}
+                >
+                  <CameraIcon className={css.editAvatarIcon} /> Edit photo
+                </button>
+              )}
+
+              <input
+                className={css.inputFile}
+                name="avatarURL"
+                type="file"
+                disabled={isActive}
+                onChange={e => {
+                  formik.setFieldValue('avatarURL', e);
+                  setAvatarURL(e.target.files[0]);
+                }}
+                accept="image/*,.png,.jpg"
+              />
+              {formik.touched.avatarURL && formik.errors.avatarURL && (
+                <span className={css.errorText}>{formik.errors.avatarURL}</span>
+              )}
+            </label>
           </div>
+          <div className={css.box}>
+            <div className={css.formGroup}>
+              <UserInput
+                text="Name"
+                name="name"
+                type="text"
+                isActive={isActive}
+                onChange={formik.handleChange}
+                value={formik.values.name}
+                error={formik.touched.name && formik.errors.name}
+                helperText={formik.errors.name}
+              />
+              <UserInput
+                text="Email"
+                name="email"
+                type="email"
+                isActive={isActive}
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                error={formik.touched.email && formik.errors.email}
+                helperText={formik.errors.email}
+              />
+              <UserInput
+                text="Birthday"
+                name="birthday"
+                type="date"
+                isActive={isActive}
+                onChange={formik.handleChange}
+                value={formik.values.birthday}
+                error={formik.touched.birthday && formik.errors.birthday}
+                helperText={formik.errors.birthday}
+              />
+              <UserInput
+                text="Phone"
+                name="phone"
+                type="tel"
+                isActive={isActive}
+                onChange={formik.handleChange}
+                value={formik.values.phone}
+                error={formik.touched.phone && formik.errors.phone}
+                helperText={formik.errors.phone}
+              />
+              <UserInput
+                text="City"
+                name="city"
+                type="text"
+                isActive={isActive}
+                onChange={formik.handleChange}
+                value={formik.values.city}
+                error={formik.touched.city && formik.errors.city}
+                helperText={formik.errors.city}
+              />
+            </div>
+            {!isActive && (
+              <div className={css.saveBtBox}>
+                <button className={css.saveBt} type="submit">
+                  Save
+                </button>
+              </div>
+            )}
           </div>
+        </div>
       </form>
 
       {isActive ? (
